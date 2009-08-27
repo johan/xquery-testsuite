@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <title>XQuery and XPath Full Text 1.0 Test Suite</title>
+</head>
+
+<body xml:lang="en" lang="en">
+<p class="navbar" align="right"><a href="http://www.w3.org/"><img alt="W3C"
+src="http://www.w3.org/Icons/w3c_home" align="left" border="0" height="48"
+width="72" /></a> <a href="http://www.w3.org/UbiWeb/"
+rel="in-domain"><img src="http://www.w3.org/Icons/ubi212"
+alt="Ubiquitous Web Domain" align="left" border="0" height="48" width="212"
+/></a> <a href="http://www.w3.org/XML/Query/">XML Query</a></p>
+<br clear="all" />
+
+
+<h1 style="text-align: center;">XQuery and XPath Full Text 1.0 Test Suite</h1>
+
+<p style="text-align: center;"></p>
+
+<h1>Overview</h1>
+
+<p>The XQuery and XPath Full Text 1.0 Test Suite (XQFTTS) was designed to test whether
+the <a href="http://www.w3.org/TR/xpath-full-text-10/">W3C XQuery and XPath Full Text 1.0</a> specifcation can be implemented interoperably as published. If you have
+implemented XQuery and XPath Full Text 1.0, using this test suite facility is a
+good way to ensure that your implementation follows the specification, and to
+identify aspects of the specification that should be changed if there are
+implementability issues. Sending us your test suite results helps the XML
+Query and XSL Working Groups to satisfy the requirements to progress toward W3C
+Recommendation status.</p>
+
+<p>Use CVS to get the test suite:</p>
+<pre>$ export CVSROOT=":pserver:anonymous@dev.w3.org:/sources/public"
+$ cvs login
+(Logging in to anonymous@dev.w3.org)
+CVS password: anonymous
+$ cvs get 2007/xpath-full-text-10-test-suite/ </pre>
+
+<p>You can also browse the testsuite using CVSWeb at <a
+href="http://dev.w3.org/cvsweb/2007/xpath-full-text-10-test-suite/">http://dev.w3.org/cvsweb/2007/xpath-full-text-10-test-suite/</a>.</p>
+
+<p>The XQuery and XPath Full Text 1.0 Test Suite version 1.0.0 contains 
+over 650 test cases. It contains
+a catalog that contains general information on the test suite as well as test
+descriptions for each of the test cases included in this release. Test
+queries and expected results are contained in individual files. All
+interpretations of this Recommendation are subject to confirmation by the XML
+Query and XSL Working Groups.</p>
+
+<p>Implementors are encouraged 1) to write a harness for this test suite and
+to test their implementations and 2) to report their results to the XML Query
+and XSL Working Groups. All of these areas are discussed in greater detail below.</p>
+
+<h1>Status</h1>
+
+<p>This is the initial public release of this test suite. It has been
+verified independently by one implementation and one reviewer who inspected
+it in detail.</p>
+
+<h1>Releases</h1>
+
+<table style="border: 1px solid ;">
+  <tbody>
+    <tr>
+      <td width="304">Version</td>
+      <td width="126">Date</td>
+    </tr>
+    <tr>
+      <td>XQuery and XPath Full Text 1.0 Test Suite 1.0.0</td>
+      <td>9 July 2009</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1>Running the Test Suite</h1>
+
+<p>We encourage you, the implementors of XQuery and XPath Full Text 1.0, to run
+these tests and send us your results. These results will help us exit
+Candidate Recommendation (described in the W3C <a
+href="http://www.w3.org/Consortium/Process/">Process</a>).</p>
+
+<p>As there is no de jure or de facto API for implementations of XQuery, we
+are not able to provide a test harness to execute these tests. You will have
+to write your own test harnesses.</p>
+
+<p>We have provided <a
+href="GuidelinesForRunningTheFullTextTestSuite.html">Guidelines
+for Running the XQuery and XPath Full Text 1.0 Test Suite</a> to assist you in running
+these tests. These guidelines will tell you how the queries may be modified
+before they are executed and how to compare your actual results with the
+expected results that we have provided.</p>
+
+<h2>Reporting a Problem</h2>
+
+<p>If you believe that some of the queries or their expected results are
+incorrect, then we encourage you to enter bug reports in the public instance
+of Bugzilla at W3C, <a
+href="http://www.w3.org/Bugs/Public/">http://www.w3.org/Bugs/Public/</a>.
+Please include the query and test results you believe are correct as
+attachments to the bug report.</p>
+
+<p>To enter a bug report you will need a Bugzilla signon (email address and
+password). You can create this signon by following the <a
+href="http://www.w3.org/Bugs/Public/createaccount.cgi">Open a new Bugzilla
+account</a> link on the Bugzilla Main Page. General information on Bugzilla,
+an open-source bug tracking system, is available at <a
+href="http://www.bugzilla.org/">http://www.bugzilla.org/</a>. The standard
+documentation for the version currently being run on the W3C server is
+available at <a
+href="http://www.bugzilla.org/docs/2.20/html/">http://www.bugzilla.org/docs/2.20/html/</a>.</p>
+
+<p>To enter a bug report in Bugzilla you will need to log in, choose the
+action "New", and then choose the "XPath / XQuery / XSLT"
+Product and the &quot;Full Text 1.0&quot; Component. Enter a short description of the problem in the Summary field; it would  be very helpful if every Summary started with the string &quot;[XQFTTS]&quot;.  Detailed information should be entered in the Description field. Please be specific about the problem that you are reporting. Clearly
+identify the test case or test cases that are problematic. If you believe
+that the expected result is wrong, then tell us what result you believe is
+correct. If you believe that another result for a test case is justified,
+then please tell us what it is. In both cases, please cite portions of one or
+more of the XPath, XQuery,  and Full Text specifications that support your position.</p>
+
+<h1>Submission of Test Suite Results</h1>
+
+<p>When you are ready to submit your results to us, we ask that you follow
+the guidelines provided in the <a href="GuidelinesforSubmittingXQFTTSTestResults.html">Guidelines for Submitting XQuery and XPath Full Text 1.0 Test Suite Results</a>.These guidelines will
+tell you how to generate an XML result document that we can use to generate
+our reports. They will also tell you how to generate your own report from the
+XML result file.</p>
+
+<p>If you have indicated that you wish your results to be displayed as
+“Anonymous”, then please send them to the XML Query WG Team Contact, <a
+href="mailto:liam@w3.org">Liam Quin</a>. Otherwise, please send them to <a
+href="mailto:jim.melton@oracle.com">Jim Melton</a>, cc'ing <a
+href="mailto:www-archive@w3.org">www-archive@w3.org</a>.</p>
+
+<p>We encourage you to send us results early, and then to send us updates as
+the XPath and XQuery Full Text 1.0 Test Suite progresses and as your implementation
+progresses.</p>
+<!--
+<h1>Submission of Test Cases</h1>
+
+<p>We welcome submissions of test cases from individuals and organizations
+that are not already participating in the XML Query Working Group. We
+encourage you to look at <a
+href="Guidelines%20for%20Test%20Submission.html">Guidelines for XML Query
+Test Suite Submissions</a> so that the test cases that you submit can be
+added easily to our test suite.</p>
+
+<p>If you would like to submit test cases, then you must:</p>
+<ul>
+  <li>Register for a W3C account. You can request one through the <a
+    href="http://cgi.w3.org/MemberAccess/Public">Public Access Request
+    Form</a>.</li>
+  <li>Submit your test cases using <a>Grant II: Grant of License for
+    Contributed Test Cases Published Outside a W3C Recommendation</a>. This
+    license grant, for non-Participant test case Contributors, is described
+    in <a href="http://www.w3.org/2004/10/27-testcases.html">Policies for
+    Contribution of Test Cases to W3C</a>.</li>
+</ul>
+
+<p>The XML Query Working Group, at its sole discretion, determines
+what tests are incorporated in the test suite.</p> -->
+<!-- <h1>Test Suite Results</h1>
+
+<p>We have received results for the following XQuery implementations:</p>
+<ul>
+  <li>TBD</li>
+</ul>
+
+<p>We have generated both <a
+href="http://www.w3.org/XML/Query/test-suite/XQTSReportSimple.html">summary</a>
+and <a
+href="http://www.w3.org/XML/Query/test-suite/XQTSReport.html">detail</a>
+reports from these results.</p>
+-->
+
+<h1>Contacting Us</h1>
+
+<p>Questions about the XPath and XQuery Full Text 1.0 Test Suite can be sent to the
+<a href="mailto:public-xqts-comments@w3.org">XQTS public mailing list</a>.
+Messages sent to this list can be seen in <a
+href="http://lists.w3.org/Archives/Public/public-xqts-comments/">public-xqts-comments@w3.org
+Mail Archives</a>.</p>
+
+<h1>Acknowledgements</h1>
+
+<p>The following members of the XML Query Working Group and XSL Working Group participated in the
+development of this test suite:</p>
+
+<blockquote>
+  <p>Thomas Baby (Oracle), Pat Case  (Library of Congress), Michael Dyck (Invited expert), Mary Holstege (Marklogic), Zhen Hua Liu (Oracle), Jim Melton (Oracle)</p>
+</blockquote>
+
+<hr />
+
+<p>The XML Query WG and XSL WG would especially like to thank Christian Grün of the Universitaet Konstanz for his invaluable assistance in
+the completion and testing of the Full Text Test Suite. </p>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<paragraphs><p>
+It is a static error
+<errorref class="ST" code="0019"/> 
+if, within a single <nt xmlns:xlink="http://www.w3.org/1999/xlink" def="doc-xquery-FTMatchOptions" xlink:type="simple">FTMatchOptions</nt>,
+there is more than one match option of any given 
+<termref def="dt-match-option-group">match option group</termref>.
+For example, if the <nt xmlns:xlink="http://www.w3.org/1999/xlink" def="doc-xquery-FTCaseOption" xlink:type="simple">FTCaseOption</nt> "lowercase" 
+is specified, then "uppercase" cannot also be specified as part of the same 
+<nt xmlns:xlink="http://www.w3.org/1999/xlink" def="doc-xquery-FTMatchOptions" xlink:type="simple">FTMatchOptions</nt>.
+</p><p>
+               <termdef id="dt-match-option-order" term="match option application order">
+The order in which effective match options for an 
+<nt xmlns:xlink="http://www.w3.org/1999/xlink" def="doc-xquery-FTWords" xlink:type="simple">FTWords</nt> are applied 
+ is called the <term>match option application order</term>.</termdef>
+This order is significant
+because match options are not always commutative.
+For example,
+    synonym(stem(word))
+is not always the same as
+    stem(synonym(word)).
+</p></paragraphs>

@@ -1,0 +1,67 @@
+<xs:schema targetNamespace="http://www.w3.org/2007/xqftts/thesaurus"
+ elementFormDefault="qualified"
+ xmlns="http://www.w3.org/xqftts/thesaurus"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<!--
+equivalence relationships (synonyms): PREFERRED TERM (USE), NONPREFERRED USED FOR TERM (UF);
+
+hierarchical relationships: BROADER TERM (BT), NARROWER TERM (NT), BROADER TERM GENERIC (BTG), NARROWER TERM GENERIC (NTG), BROADER TERM PARTITIVE (BTP), NARROWER TERM PARTITIVE (NTP), TOP Terms (TT); and
+
+associative relationships: RELATED TERM (RT).
+-->
+<xs:simpleType name="defined-relationship">
+  <xs:restriction base="xs:token">
+    <xs:enumeration value="USE"/>
+    <xs:enumeration value="UF"/>
+    <xs:enumeration value="BT"/>
+    <xs:enumeration value="NT"/>
+    <xs:enumeration value="BTG"/>
+    <xs:enumeration value="NTG"/>
+    <xs:enumeration value="BTP"/>
+    <xs:enumeration value="NTP"/>
+    <xs:enumeration value="TT"/>
+    <xs:enumeration value="RT"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="relationship">
+  <xs:union memberTypes="defined-relationship xs:token"/>
+</xs:simpleType>
+
+<xs:complexType name="synonym">
+  <xs:sequence>
+    <xs:element name="term" type="xs:string"/>
+    <xs:element name="relationship" type="relationship" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="entry">
+  <xs:sequence>
+    <xs:element name="term" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    <xs:element name="synonym" type="synonym" minOccurs="0" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="entry" type="entry">
+  <xs:annotation>
+    <xs:documentation>
+      An entry in the thesaurus
+    </xs:documentation>
+  </xs:annotation>
+</xs:element>
+
+<xs:element name="thesaurus">
+  <xs:annotation>
+    <xs:documentation>
+      Root of thesaurus.
+    </xs:documentation>
+  </xs:annotation> 
+  <xs:complexType>
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="entry"/>
+    </xs:sequence>    
+  </xs:complexType>
+</xs:element>
+
+</xs:schema>

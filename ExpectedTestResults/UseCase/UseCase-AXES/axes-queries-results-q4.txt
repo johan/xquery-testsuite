@@ -1,0 +1,40 @@
+<title shortTitle="Improving Web Site Usability">Improving 
+      the Usability of a Web Site Through Expert Reviews and 
+      Usability Testing</title><chapter>
+            <title>Heuristic Evaluation</title>
+            <p>Expert reviewers critique an interface to 
+            determine conformance with recognized 
+            usability principles. <footnote>One of the 
+            best known lists of heuristics is <citation url="http://www.useit.com/papers/heuristic/heuristic_list.html">Ten Usability 
+            Heuristics by Jacob Nielson</citation>. Another 
+            is <citation url="http://usability.gov/guidelines/index.html"> Research-Based Web 
+            Design and Usability Guidelines</citation>
+            </footnote></p> 
+         </chapter><chapter>
+            <title>Cognitive Walk-Through</title>
+            <p>Expert reviewers evaluate Web site 
+            understandability and ease of learning while 
+            performing specified tasks. They walk through 
+            the site answering questions such as "Would a 
+            user know by looking at the screen how to 
+            complete the first step of the task?" and "If 
+            the user completed the first step, would the 
+            user know what to do next?," with the goal of 
+            identifying any obstacles to completing the 
+            task and assessing whether the user would 
+            cognitively be aware that he was successful in 
+            completing a step in the process.</p>
+         </chapter><chapter>
+            <title>Usability Testing</title>
+            <p>Once the problems identified by expert 
+            reviews have been corrected, it is time to 
+            conduct some tests of the site with your unique 
+            audience or audiences by conducting usability 
+            testing.</p>
+            <p>Users are asked to complete tasks which 
+            measure the success of the information 
+            architecture and navigational elements of the 
+            site.</p>
+            <p>Then changes are made to improve service to 
+            users.</p>
+         </chapter>

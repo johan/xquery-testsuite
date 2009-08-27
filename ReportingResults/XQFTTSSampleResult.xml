@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-suite-result
+   xmlns='http://www.w3.org/2005/02/query-test-XQTSResult'
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+   <implementation
+      name='XQuery Full Text Transmogrifier'
+      version='13.7'
+      anonymous-result-column="false">
+
+      <organization
+         name='Text Transmogrification Technologies, Inc.'
+         website="http://www.example.com/ttt"
+         anonymous="false" />
+
+      <submittor
+         name="Lib R. Arian"
+         email="lra@ttt.com" />
+
+      <description>
+         <p>XQuery Full Text Transmogrifier searches your documents better than the competition.</p>
+      </description>
+
+      <implementation-defined-items>
+         <implementation-defined-item
+            name="implicit timezone"
+            value="Z" />
+         <implementation-defined-item
+            name="DTD validation or schema validation for fn:doc"
+            value="schema validation" />
+      </implementation-defined-items>
+
+      <features>
+         <feature
+            name='Minimum Conformance'
+            supported='true' />
+      </features>
+
+      <context-properties>
+         <context-property
+            name="Default collation"
+            context-type='static'
+            value="not overwritten" />
+         <context-property
+            name="Statically known namespaces"
+            context-type='static'
+            value="augmented with xmlns:ttt='http://www.tttcom/xquery'" />
+      </context-properties>
+
+   </implementation>
+
+   <syntax>XQuery</syntax>
+
+   <test-run dateRun='2008-03-14'>
+      <test-suite version="0.1" />
+      <transformation>
+         <p>No unusual transformations.</p>
+         <p>Really!</p>
+      </transformation>
+      <comparison>
+         <p>No unusual comparisons</p>
+      </comparison>
+      <otherComments>
+         <p>The test run took 100 seconds.</p>
+      </otherComments>
+   </test-run>
+
+   <test-case
+      name="id-insert-expr-01"
+      result='pass' />
+   <test-case
+      name="id-insert-expr-02"
+      result='fail' />
+   <test-case
+      name="id-insert-expr-03"
+      result='not tested'
+      comment='This was hard.' />
+</test-suite-result>

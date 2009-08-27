@@ -1,0 +1,11 @@
+<title shortTitle="Usability Basics">Usability 
+      Basics: How to Plan for and Conduct Usability Tests 
+      on Web Site Thereby Improving the Usability of Your 
+      Web Site</title>
+<p>Users can be tested at any computer 
+      workstation <footnote>They may be more 
+      comfortable at their own workstation than in 
+      a lab.</footnote> or in a lab.</p>
+<footnote>They may be more 
+      comfortable at their own workstation than in 
+      a lab.</footnote>

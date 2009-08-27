@@ -1,0 +1,12 @@
+<book number="3"><title shortTitle="Usabilityguy Manuscript Guide">John Wesley Usabilityguy: A Register of His 
+      Papers</title><introduction>
+         <p>The papers of John Wesley Usabilityguy span the 
+         years 1946-2001, with the bulk of the items 
+         concentrated in the period from 1985 to 2001. The 
+         papers feature his career as a developer of software 
+         applications and usability specialist. The collection 
+         consists of correspondence, memoranda, journals, 
+         speeches, article drafts, book drafts, notes, charts, 
+         graphs, family papers, clippings, printed matter, 
+         photographs, résumés and other materials.</p>
+      </introduction></book>

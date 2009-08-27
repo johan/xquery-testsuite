@@ -1,0 +1,7 @@
+(: FTMildNot-or1: mild not with ors :)
+
+(: insert-start :)
+declare variable $input-context external;
+(: insert-end :)
+
+$input-context/books/book[para ftcontains "usability" ftor ("ninja" not in "ninja coder")]/title

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
+<!--* xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation = "http://www.w3.org/2001/xml.xsd"/ *-->
+   <xs:element name="books">
+      <xs:annotation>
+         <xs:documentation>A possible XML Schema for Sample Data 
+             for the examples in the Full Text specification
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence maxOccurs="unbounded">
+            <xs:element name="book">
+               <xs:complexType>
+                  <xs:choice maxOccurs="unbounded">
+                     <xs:element name="author" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                     <xs:element name="title" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                     <xs:element name="date" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+                     <xs:element name="price" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+                     <xs:element name="publisher" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                     <xs:element name="para" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                  </xs:choice>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

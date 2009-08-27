@@ -1,0 +1,2176 @@
+<?xml version="1.0"?>
+<!DOCTYPE spec SYSTEM "../schema/xsl-query.dtd" [
+
+<!ENTITY date.year "2007">
+<!ENTITY date.month "January">
+<!ENTITY date.MM "01">
+<!ENTITY date.day "23">
+<!ENTITY date.DD "23">
+<!ENTITY doc.date "&date.year;&date.MM;&date.DD;">
+
+<!ENTITY doc.prefix "REC-xslt-xquery-serialization">
+<!ENTITY url.external "http://www.w3.org/TR/&date.year;/&doc.prefix;-&doc.date;/">
+<!ENTITY url.this "&url.external;">
+<!ENTITY tm "&#x2122;">
+<!ENTITY mdash "&#x2014;">
+<!ENTITY rsquo "&#x2019;">
+<!ENTITY ldquo "&#x201C;">
+<!ENTITY rdquo "&#x201D;">
+
+<!ENTITY status-section SYSTEM "../etc/status-REC.xml">
+<!ENTITY errors SYSTEM "errors.xml">
+<!ENTITY bibl SYSTEM "bibl.xml">
+
+<!ENTITY % status-entities SYSTEM "../etc/status-entities.dtd">
+%status-entities;
+<!ENTITY status-section-id "status">
+<!ENTITY spec-devby    "&ser-devby;">
+<!ENTITY changelog-id  "&ser-changelog-id;">
+<!ENTITY changes-para  "&post.PR.nochanges;">
+<!ENTITY implementation-para  "&no-implementation-report-exists;">
+<!ENTITY Bugzilla-key "[&ser-Bugzilla-key;]">
+<!ENTITY patent-policy-paragraph "&ser-ppp;">
+
+]>
+<spec w3c-doctype="rec">
+
+<header>
+  <title>XSLT 2.0 and XQuery 1.0 Serialization</title>
+  <version/>
+  <w3c-designation>&doc.prefix;-&doc.date;</w3c-designation>
+  <w3c-doctype>W3C Recommendation</w3c-doctype>
+  <pubdate>
+    <day>&date.day;</day>
+    <month>&date.month;</month>
+    <year>&date.year;</year>
+  </pubdate>
+  <publoc>
+     <loc href="&url.this;">&url.this;</loc>
+  </publoc>
+  <altlocs>
+    <loc href="&url.this;serialization.xml">XML</loc>
+<!--* <loc href="&url.this;diff-from-20060608.html">Recent revisions</loc> *-->
+  </altlocs>
+  <latestloc>
+    <loc href="http://www.w3.org/TR/xslt-xquery-serialization/">http://www.w3.org/TR/xslt-xquery-serialization/</loc>
+  </latestloc>
+  <prevlocs>
+    <loc href="http://www.w3.org/TR/2006/PR-xslt-xquery-serialization-20061121/">http://www.w3.org/TR/2006/PR-xslt-xquery-serialization-20061121/</loc>  
+  </prevlocs>
+  <authlist>
+<author>
+      <name>Scott Boag</name>
+      <affiliation>IBM</affiliation>
+      <email href="mailto:scott_boag@us.ibm.com">scott_boag@us.ibm.com</email>
+    </author>  
+    <author>
+      <name>Michael Kay</name>
+      <affiliation>Saxonica</affiliation>
+      <email href="http://www.saxonica.com">http://www.saxonica.com</email>
+    </author>
+<author>
+      <name>Joanne Tong</name>
+      <affiliation>IBM</affiliation>
+      <email href="mailto:joannet@ca.ibm.com">joannet@ca.ibm.com</email>
+    </author>    
+    <author>
+      <name>Norman Walsh</name>
+      <affiliation>Sun Microsystems</affiliation>
+      <email href="mailto:Norman.Walsh@Sun.COM">Norman.Walsh@Sun.COM</email>
+    </author>
+    <author>
+      <name>Henry Zongaro</name>
+      <affiliation>IBM</affiliation>
+      <email href="mailto:zongaro@ca.ibm.com">zongaro@ca.ibm.com</email>
+    </author>
+  </authlist>
+  <errataloc href="http://www.w3.org/XML/2007/qt-errata/xslt-xquery-serialization-errata.html" 
+    xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink"
+  />
+
+  <translationloc 
+    href="http://www.w3.org/2003/03/Translations/byTechnology?technology=xslt-xquery-serialization"/>
+
+&status-section;
+
+<!--* <status id="status">
+
+<p><emph>This section describes the status of this document at the
+time of its publication.
+Other documents may supersede this document.
+A list of current W3C publications and the latest revision of this
+technical report can be found in the
+<loc href="http://www.w3.org/TR/">W3C technical reports index</loc>
+at http://www.w3.org/TR/.</emph></p>
+
+
+<p>This is a <loc
+href="http://www.w3.org/2004/02/Process-20040205/tr.html#RecsPR">Proposed
+Recommendation</loc>.
+On 3 November 2005, this specification <loc
+href="http://www.w3.org/TR/2005/CR-xslt-xquery-serialization-20051103/">was 
+published</loc>
+as a <loc
+href="http://www.w3.org/2004/02/Process-20040205/tr.html#RecsCR">Candidate
+Recommendation</loc>,
+and a Call for Implementations was announced.
+On
+08 June 2006,
+a revision
+<loc
+href="http://www.w3.org/TR/2006/CR-xslt-xquery-serialization-20060608/">was 
+published</loc>
+in order to give visibility to the technical decisions that had been
+made in response to
+comments received since initial publication of the Candidate
+Recommendation.</p>
+
+
+<p>Publication as a Proposed Recommendation does not imply
+endorsement by the W3C Membership.
+This is a draft document and may be updated, replaced or obsoleted by
+other documents at any time.
+It is inappropriate to cite this document as other than work in progress.
+This specification will remain a Proposed Recommendation until at least
+&AC.close.date;.
+
+</p>
+
+
+<p>This document was produced
+
+jointly by the
+<loc href="http://www.w3.org/XML/Query">XML Query Working Group</loc> and the
+<loc href="http://www.w3.org/Style/XSL">XSL Working Group</loc>, both 
+of which are
+
+part of the <loc  href="http://www.w3.org/XML/Activity">XML Activity</loc>.</p>
+
+
+<p>This draft includes corrections and changes based on
+
+<loc
+href="http://www.w3.org/Bugs/Public/buglist.cgi?query_format=advanced&amp;short_desc_type=allwordssubstr&amp;short_desc=&amp;product=XPath+%2F+XQuery+%2F+XSLT&amp;component=Serialization&amp;version=Candidate+Recommendation&amp;long_desc_type=allwordssubstr&amp;long_desc=&amp;bug_file_loc_type=allwordssubstr&amp;bug_file_loc=&amp;status_whiteboard_type=allwordssubstr&amp;status_whiteboard=&amp;keywords_type=allwords&amp;keywords=&amp;bug_status=RESOLVED&amp;bug_status=VERIFIED&amp;bug_status=CLOSED&amp;emailtype1=substring&amp;email1=&amp;emailtype2=substring&amp;email2=&amp;bugidtype=include&amp;bug_id=&amp;votes=&amp;chfieldfrom=&amp;chfieldto=Now&amp;chfieldvalue=&amp;cmdtype=doit&amp;order=Reuse+same+sort+as+last+time&amp;field0-0-0=noop&amp;type0-0-0=noop&amp;value0-0-0=">public 
+
+comments</loc>
+
+recorded in the W3C public Bugzilla repository
+(<loc
+href="http://www.w3.org/Bugs/Public/">http://www.w3.org/Bugs/Public/</loc>)
+used for issue tracking on the
+
+<loc
+href="http://www.w3.org/TR/2005/CR-xpath-functions-20051103/">Candidate
+Recommendation</loc>.
+
+
+A list of substantive changes since the publication of the
+
+<loc
+href="http://www.w3.org/TR/2005/CR-xslt-xquery-serialization-20051103/">Candidate 
+Recommendation</loc>
+
+of 03 November 2005 can be found in
+
+<specref ref="revision-log"/>.</p>
+
+
+<p>This specification is designed to be referred to normatively from
+other specifications defining a host language for it; it is not
+intended to be implemented outside a host language.  The
+implementability of this specification has been tested in the context
+of its normative inclusion in host languages defined by the <loc
+href="http://www.w3.org/TR/xslt20">XSLT 2.0</loc> and <loc
+href="http://www.w3.org/TR/xquery">XQuery 1.0</loc> specifications;
+see those specifications for implementation reports.</p>
+
+<p>
+The W3C Membership and other interested parties are invited to review
+the document and, through
+&AC.close.date;,
+submit comments in W3C's
+<loc href="http://www.w3.org/Bugs/Public/">public Bugzilla
+system</loc> (instructions can be found at
+<loc
+href="http://www.w3.org/XML/2005/04/qt-bugzilla">http://www.w3.org/XML/2005/04/qt-bugzilla</loc>).
+If access to that system is not feasible, you may send your comments
+to the W3C XSLT/XPath/XQuery public comments
+mailing list, <loc
+href="mailto:public-qt-comments@w3.org">public-qt-comments@w3.org</loc>.
+It will be very helpful if you include the string
+
+[Ser]
+
+in the subject line of your comment,
+whether made in Bugzilla or in email.
+Each Bugzilla entry and email message should contain only one comment.
+Archives of the comments and responses are available at
+<loc
+href="http://lists.w3.org/Archives/Public/public-qt-comments/">http://lists.w3.org/Archives/Public/public-qt-comments/</loc>.</p>
+
+
+<p>
+Members of the W3C Advisory Committee will find the appropriate review
+form for this document by consulting their <loc
+href="http://www.w3.org/2002/09/wbs/myQuestionnaires">list of current
+WBS questionnaires</loc>.
+Note that substantive technical comments were expected during the Last Call
+review period that ended 15 February 2004.
+</p>
+
+
+<p>This document was produced by
+groups
+operating under the <loc
+href="http://www.w3.org/Consortium/Patent-Policy-20040205/">5
+February 2004 W3C Patent Policy</loc>.
+W3C maintains a <loc
+href="http://www.w3.org/2004/01/pp-impl/18797/status#disclosures">public list of any
+patent disclosures</loc> made in connection with the deliverables of
+the XML Query Working Group
+and also maintains a <loc
+href="http://www.w3.org/2004/01/pp-impl/19552/status#disclosures">public list of any patent
+disclosures</loc> made in connection with the deliverables of the XSL
+Working Group;
+those pages also include instructions for disclosing a patent.
+An individual who has actual knowledge of a patent which the
+individual believes contains
+<loc
+href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential
+Claim(s)</loc> with respect to this specification should disclose the
+information in accordance with
+<loc
+href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section
+6 of the W3C Patent Policy</loc>. </p>
+
+</status>
+*-->
+
+<abstract>
+<p>This document defines serialization of an instance of the data model as defined in <bibref ref="xpath-datamodel"/> into a sequence of octets.  Serialization is designed to be a component that can be used by other specifications such as <bibref ref="xslt20"/> or
+<bibref ref="xquery"/>.</p>
+</abstract>
+
+<langusage>
+<language id="en">English</language>
+</langusage>
+
+<revisiondesc>
+<p>See the CVS changelog.</p>
+</revisiondesc>
+</header>
+
+<body>
+
+<div1 id="intro">
+<head>Introduction</head>
+
+<p>This document defines serialization of the W3C XQuery 1.0 and XPath 2.0 Data Model (XDM),
+which is the data model of at least <bibref ref="xpath20"/>,
+<bibref ref="xslt20"/>, and
+<bibref ref="xquery"/>, and any other specifications that reference it.</p>
+
+<p>Serialization is the process of converting an instance of the
+<bibref ref="xpath-datamodel"/> into a sequence of octets. Serialization is
+well-defined for most data model instances.</p>
+
+<div2 id="terminology">
+<head>Terminology</head>
+<p>In this specification,
+where they appear in upper case,
+the words "MUST", "MUST NOT",
+"SHOULD", "SHOULD NOT", "MAY", "REQUIRED", and
+"RECOMMENDED" are to be interpreted as described in
+<bibref ref="RFC2119"/>.</p>
+
+<p><termdef id="serializer" term="serializer">As is indicated in
+<specref ref="conformance"/>, conformance criteria for serialization
+are determined by other specifications that refer to this specification.
+A <term>serializer</term> is software that implements some or all of the
+requirements of this specification in accordance with such conformance
+criteria.</termdef>  A serializer is not <rfc2119>REQUIRED</rfc2119> to directly provide a
+programming interface that permits a user to set serialization parameters
+or to provide an input sequence for serialization.</p>
+
+<p>Certain aspects of serialization are described in this specification as <termref def="impdef">implementation-defined</termref> or <termref def="impdep">implementation-dependent</termref>.</p><p>
+<termdef id="impdef" term="implementation-defined"><term>Implementation-defined</term> indicates an
+aspect that <rfc2119>MAY</rfc2119> differ between
+<termref def="serializer">serializers</termref>, but whose actual
+behavior <rfc2119>MUST</rfc2119> be specified either by another specification that sets
+conformance criteria for serialization (see <specref ref="conformance"/>)
+or in documentation that accompanies the
+<termref def="serializer">serializer</termref>.</termdef></p>
+
+<p>
+<termdef id="impdep" term="implementation-dependent"><term>Implementation-dependent</term> indicates an
+aspect that <rfc2119>MAY</rfc2119> differ between
+<termref def="serializer">serializers</termref>, and whose actual
+behavior is not <rfc2119>REQUIRED</rfc2119>  to be specified either by another specification
+that sets conformance criteria for serialization (see
+<specref ref="conformance"/>) or in documentation that accompanies the
+<termref def="serializer">serializer</termref>.</termdef></p>
+
+<p>
+<termdef id="serial-err" term="serialization error">In some instances, the
+sequence that is input to serialization cannot be successfully converted
+into a sequence of octets given the set of serialization parameter
+(<specref ref="serparam"/>) values specified.  A
+<term>serialization error</term> is said to occur in such an instance.</termdef>
+In some cases, a <termref def="serializer">serializer</termref> is
+<rfc2119>REQUIRED</rfc2119>  to signal such an error.
+What it means to signal a serialization error is determined by the
+relevant conformance criteria (<specref ref="conformance"/>) to which
+the <termref def="serializer">serializer</termref> conforms.  In other cases,
+there is an <termref def="impdef">implementation-defined</termref> choice
+between signaling a serialization error and performing a recovery action.
+Such a recovery action will allow a
+<termref def="serializer">serializer</termref> to produce a sequence of
+octets that might not fully reflect the usual requirements of the
+parameter settings that are in effect.
+</p>
+<p>Many terms used in this document are defined in the XPath specification 
+<bibref ref="xpath20"/> or the Data Model specification <bibref ref="xpath-datamodel"/>. Particular
+attention is drawn to the following:</p>
+
+<ulist>
+<item><p><termdef id="dt-atomization" term="atomize">The term <term>atomization</term> is defined
+in <xspecref spec="XP" ref="id-atomization"/>. It is a process that takes as input a sequence of <termref def="dt-node">nodes</termref> and <xtermref spec="XP" ref="dt-atomic-value">atomic values</xtermref>, and
+returns a sequence of <xtermref spec="XP" ref="dt-atomic-value">atomic values</xtermref>, in which the <termref def="dt-node">nodes</termref> are replaced by their <xtermref spec="XP" ref="dt-typed-value">typed values</xtermref> as defined in
+<bibref ref="xpath-datamodel"/>.</termdef></p></item>
+
+<item><p><termdef id="dt-node" term="node">The term <term>Node</term>
+is defined as part of   <xspecref spec="DM" ref="Node"/>. 
+There are seven kinds of <termref def="dt-node">nodes</termref> in the data model: document, element, attribute, text, namespace, processing instruction, and comment.</termdef></p></item><item><p><termdef id="dt-sequence" term="sequence">The term <term>sequence</term>
+is defined in <xspecref spec="XP" ref="id-basics"/>. 
+A <termref def="dt-sequence">sequence</termref> is an ordered collection of zero or more items.</termdef></p></item><item><p><termdef id="dt-string-value" term="string value">The term <term>string value</term>
+is defined in <xspecref spec="DM" ref="dm-string-value"/>. 
+Every <termref def="dt-node">node</termref> has a <termref def="dt-string-value">string value</termref>. For example, the <termref def="dt-string-value">string value</termref>
+of an element is the concatenation of the <termref def="dt-string-value">string values</termref> of all its descendant text <termref def="dt-node">nodes</termref>.</termdef></p></item>
+
+<item><p><termdef id="dt-expanded-qname" term="expanded QName">The term <term>expanded QName</term>
+is defined in <xspecref spec="XP" ref="id-basics"/>. 
+An <termref def="dt-expanded-qname">expanded QName</termref> consists of an optional namespace URI and a local name. An <termref def="dt-expanded-qname">expanded QName</termref> also retains its original namespace prefix (if any), to facilitate casting the expanded QName into a string.</termdef></p></item><item><p><termdef id="null-namespace-URI" term="null namespace URI">An element or attribute that is in no namespace, or an <termref def="dt-expanded-qname">expanded-QName</termref> whose namespace part is an empty sequence, is referred to as having a <term>null namespace URI</term></termdef>.</p></item><item><p><termdef id="non-null-namespace-URI" term="non-null namespace URI">An element or attribute that does not have a <termref def="null-namespace-URI">null namespace URI</termref>, is referred to as having a <term>non-null namespace URI</term></termdef>.</p></item></ulist>
+</div2>
+</div1>
+
+<div1 id="serdm">
+<head>Sequence Normalization</head>
+<p>An instance of the data model that is input to the serialization
+process is a sequence.
+Prior to serializing a sequence using any of
+the output methods whose behavior is specified by this document
+(<specref ref="serparam"/>), 
+the <termref def="serializer">serializer</termref> <rfc2119>MUST</rfc2119> first
+compute a normalized sequence for serialization; it
+is the normalized sequence that is actually serialized.
+<termdef id="sequence-normalization" term="sequence normalization">The purpose of <term>sequence normalization</term> is
+to create a sequence that can be serialized as a
+well-formed XML document or external general parsed entity, that
+also reflects the content of the input sequence to the extent possible.</termdef>
+<termdef term="result tree" id="result-tree">The result of the <termref def="sequence-normalization">sequence normalization</termref> process is a <term>result tree</term>.</termdef></p>
+<p>The normalized sequence for serialization is constructed by applying all
+of the following rules in order, with the initial sequence being
+input to the first step, and the sequence that results from any
+step being used as input to the subsequent step.
+For any <termref def="impdef">implementation-defined</termref>
+output method, it is <termref def="impdef">implementation-defined</termref>
+whether this sequence normalization process takes place.</p>
+
+<imp-def-feature>For any <termref def="impdef">implementation-defined</termref>
+output method, it is <termref def="impdef">implementation-defined</termref>
+whether  <termref def="sequence-normalization">sequence normalization</termref>
+process takes place.</imp-def-feature>
+<p>Where the process of converting the input sequence
+to a normalized sequence indicates that a value <rfc2119>MUST</rfc2119> be cast to
+<code role="SCHEMATYPE">xs:string</code>, that operation is
+defined in <xspecref spec="FO" ref="casting-to-string"/> of
+<bibref ref="xpath-functions"/>.
+
+The steps in computing the normalized sequence are:
+</p>
+<olist>
+<item>
+<p>If the sequence that is input to serialization is
+empty, create a sequence <emph>S<sub>1</sub></emph> that consists of a
+zero-length string.  Otherwise, copy each item in the sequence that is
+input to serialization to create the new sequence <emph>S<sub>1</sub></emph>.</p>
+</item>
+
+<item>
+<p>For each item in <emph>S<sub>1</sub></emph>, if the item is atomic, obtain the 
+lexical representation of the item by casting it to an <code role="SCHEMATYPE">xs:string</code>
+and copy the string representation to the new sequence; otherwise, copy the
+item, which will be a <termref def="dt-node">node</termref>, to the new sequence.
+The new sequence is <emph>S<sub>2</sub></emph>.</p>
+</item>
+
+<item>
+<p>For each subsequence of adjacent strings in <emph>S<sub>2</sub></emph>,
+copy a single string to the new sequence equal to the values of the
+strings in the subsequence concatenated in order, each separated by a
+single space.  Copy all other items to the new sequence.  The new
+sequence is <emph>S<sub>3</sub></emph>.</p>
+</item>
+
+<item>
+<p>For each item in <emph>S<sub>3</sub></emph>, if the item is a string,
+create a text <termref def="dt-node">node</termref> in the new sequence whose <termref def="dt-string-value">string value</termref> is equal to
+the string; otherwise, copy the item to the new sequence.  The new
+sequence is <emph>S<sub>4</sub></emph>.</p>
+</item>
+
+<item>
+<p>For each item in <emph>S<sub>4</sub></emph>, if the item is a document <termref def="dt-node">node</termref>,
+copy its children to the new sequence; otherwise, copy the item to the new 
+sequence.  The new sequence is <emph>S<sub>5</sub></emph>.</p>
+</item>
+
+<item>
+<p>For each subsequence of adjacent text nodes in <emph>S<sub>5</sub></emph>, copy a single text node to the new sequence equal to the values of the text nodes in the subsequence concatenated in order.  Any text nodes with values of zero length are dropped.  Copy all other items to the new sequence. The new sequence is <emph>S<sub>6</sub></emph>.</p></item><item>
+<p>It is a <termref def="serial-err">serialization error</termref> <errorref code="0001" class="NR"/> if an item in <emph>S<sub>6</sub></emph> is an
+attribute <termref def="dt-node">node</termref> or a namespace <termref def="dt-node">node</termref>. Otherwise, construct a new sequence,
+<emph>S<sub>7</sub></emph>, that consists of a single document <termref def="dt-node">node</termref> and
+copy all the items in the sequence, which are all <termref def="dt-node">nodes</termref>, as children of
+that document <termref def="dt-node">node</termref>.</p>
+
+</item>
+</olist>
+<p><emph>S<sub>7</sub></emph> is the normalized sequence.</p>
+<p>The <termref def="result-tree">result tree</termref> rooted at the document <termref def="dt-node">node</termref> that is
+created by the final step of this sequence
+normalization process is the
+instance of the data model to which the rules of the appropriate
+output method are applied.  If the sequence
+normalization process results
+in a <termref def="serial-err">serialization error</termref>, the
+<termref def="serializer">serializer</termref> <rfc2119>MUST</rfc2119> signal the error.</p>
+<note><p>The sequence normalization process for a sequence <code>$seq</code> is equivalent
+to constructing a document <termref def="dt-node">node</termref> using the XSLT instruction:</p>
+
+<eg xml:space="preserve">&lt;xsl:document&gt;
+  &lt;xsl:copy-of select="$seq"/&gt;
+&lt;/xsl:document&gt;</eg>
+<p>or the XQuery expression:</p>
+<eg xml:space="preserve">document {
+  for $s in $seq return
+    if ($s instance of document-node())
+    then $s/child::node()
+    else $s
+}</eg>
+<p>This process results in a <termref def="serial-err">serialization error</termref> <errorref code="0001" class="NR"/>
+if sequences contain parentless attribute and/or namespace
+<termref def="dt-node">nodes</termref>.</p>
+</note>
+</div1>
+
+<div1 id="serparam">
+<head>Serialization Parameters</head>
+
+<p>There are a number of parameters that influence how serialization
+is performed. <termref def="host-language">Host languages</termref> <rfc2119>MAY</rfc2119> allow users to specify any or all of these parameters, but
+they are not <rfc2119>REQUIRED</rfc2119> to be able to do so. However, the <termref def="host-language">host language</termref>
+specification <rfc2119>MUST</rfc2119> specify how the value of all applicable parameters is to be
+determined. </p>
+
+<p>It is a <termref def="serial-err">serialization error</termref> <errorref code="0016" class="PM"/> if a parameter value is invalid for the given parameter.   It
+is the responsibility of the <termref def="host-language">host language</termref> to specify how invalid values should be handled at the level of that language.</p><p>The following serialization parameters are defined:</p>
+<table border="1" summary="Serialization parameters">
+  <col width="180" span="1"/>
+  <col span="1"/>
+  <thead>
+    <tr>
+      <th align="left" rowspan="1" colspan="1">Serialization parameter name</th>
+      <th align="left" rowspan="1" colspan="1">Permitted values for parameter</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="1" colspan="1"><code>byte-order-mark</code></td>
+      <td rowspan="1" colspan="1">One of the enumerated values
+          <code>yes</code> or <code>no</code>.  This parameter indicates
+          whether the serialized sequence of octets is to be preceded by
+          a Byte Order Mark.  (See Section 5.1 of
+          <bibref ref="UNICODE-ENCODING"/>.)  The actual octet order used is
+          <termref def="impdep">implementation-dependent</termref>.
+          If the encoding defines no Byte Order Mark, or if the Byte Order Mark is
+          prohibited for the specific Unicode encoding or implementation environment, then
+          this parameter is ignored.</td>
+    </tr>
+    <tr>
+      <td rowspan="1" colspan="1"><code>cdata-section-elements</code></td>
+      <td rowspan="1" colspan="1">A list of expanded QNames, possibly empty.</td>
+    </tr>
+    <tr>
+      <td rowspan="1" colspan="1"><code>doctype-public</code></td>
+      <td rowspan="1" colspan="1">A string of Unicode characters.  This parameter may be absent.</td>
+    </tr>
+    <tr>
+      <td rowspan="1" colspan="1"><code>doctype-system</code></td>
+      <td rowspan="1" colspan="1">A string of Unicode characters.  This parameter may be absent.</td>
+    </tr>
+    <tr>
+      <td rowspan="1" colspan="1"><code>encoding</code></td>
+      <td rowspan="1" colspan="1">A string of Unicode characters in the range #x21 to #x7E (that is,
+          printable ASCII characters); the value <rfc2119>SHOULD</rfc2119> be a charset
+          registered with the Internet Assigned Numbers Authority
+          <bibref ref="IANA"/>, <bibref ref="RFC2278"/> or begin with the
+          characters <code>x-</code> or <code>X-</code>.</td>
+    </tr>
+    <tr>
+      <td rowspan="1" colspan="1"><code>escape-uri-attributes</code></td>
+      <td rowspan="1" colspan="1">One of the enumerated values <code>yes</code> or <code>no</code>.</td>
+    </tr>
+    <tr>
+      <td rowspan="1" colspan="1"><code>include-content-type</code></td>
+      <td rowspan="1" colspan="1">One of the enumerated values <code>yes</code> or <code>no</code>.</td>
+    </tr>
+    <tr>
+      <td rowspan="1" colspan="1"><code>indent</code></td>
+      <td rowspan="1" colspan="1">One of the enumerated values <code>yes</code> or <code>no</code>.</td>
+    </tr>
+    <tr>
+      <td rowspan="1" colspan="1"><code>media-type</code></td>
+      <td rowspan="1" colspan="1">A string of Unicode characters specifying the media type (MIME
+          content type) <bibref ref="RFC2046"/>;
+          the charset parameter of
+          the media type <rfc2119>MUST NOT</rfc2119> be specified explicitly in the value of
+          the <code>media-type</code> parameter.
+          If the destination of the serialized output
+          is annotated with a media type, this parameter <rfc2119>MAY</rfc2119> be used to
+          provide such an annotation.  For example, it <rfc2119>MAY</rfc2119> be used to set
+          the media type in an HTTP header.</td>
+    </tr>
+    <tr>
+      <td rowspan="1" colspan="1"><code>method</code></td>
+      <td rowspan="1" colspan="1">An expanded QName with a <termref def="null-namespace-URI">null namespace URI</termref>, and the local part of
+          the name equal to one of <code>xml</code>, <code>xhtml</code>,
+          <code>html</code> or <code>text</code>, or having a <termref def="non-null-namespace-URI">non-null
+          namespace URI</termref>.  If the namespace URI is non-null, the parameter
+          specifies an <termref def="impdef">implementation-defined</termref> output method.</td>
+    </tr>
+    <tr>
+      <td rowspan="1" colspan="1"><code>normalization-form</code></td>
+      <td rowspan="1" colspan="1">One of the enumerated values <code>NFC</code>, <code>NFD</code>,
+          <code>NFKC</code>, <code>NFKD</code>, <code>fully-normalized</code>,
+          <code>none</code> or an
+          <termref def="impdef">implementation-defined</termref> value.</td>
+    </tr>
+    <tr>
+      <td rowspan="1" colspan="1"><code>omit-xml-declaration</code></td>
+      <td rowspan="1" colspan="1">One of the enumerated values <code>yes</code> or <code>no</code>.</td>
+    </tr>
+    <tr>
+      <td rowspan="1" colspan="1"><code>standalone</code></td>
+      <td rowspan="1" colspan="1">One of the enumerated values <code>yes</code>, <code>no</code> or
+          <code>omit</code>.</td>
+    </tr>
+    <tr>
+      <td rowspan="1" colspan="1"><code>undeclare-prefixes</code></td>
+      <td rowspan="1" colspan="1">One of the enumerated values <code>yes</code> or <code>no</code>.</td>
+    </tr>
+    <tr>
+      <td rowspan="1" colspan="1"><code>use-character-maps</code></td>
+      <td rowspan="1" colspan="1">A list of pairs, possibly empty, with each pair consisting of
+          a single Unicode character and a string of Unicode characters.</td>
+    </tr>
+    <tr>
+      <td rowspan="1" colspan="1"><code>version</code></td>
+      <td rowspan="1" colspan="1">A string of Unicode characters.</td>
+    </tr>
+  </tbody>
+</table>
+
+<imp-dep-feature>The  octet order of the serialized result sequence of octects is
+<termref def="impdep">implementation-dependent</termref>.</imp-dep-feature>
+<p>The value of the <code>method</code> parameter is an <termref def="dt-expanded-qname">expanded QName</termref>. 
+If the value has a <termref def="null-namespace-URI">null namespace URI</termref>, then the local name identifies 
+a method specified in this document and <rfc2119>MUST</rfc2119> be one of <code>xml</code>, <code>html</code>, 
+<code>xhtml</code>, or <code>text</code>; in this case, the output method specified <rfc2119>MUST</rfc2119> be 
+used for serializing. If the namespace URI is non-null, then it identifies an 
+<termref def="impdef">implementation-defined</termref> output method; the behavior in this case is not specified 
+by this document.</p>
+<imp-def-feature>If the namespace URI is non-null for the <code>method</code> serialization 
+parameter, then the parameter specifies an <termref def="impdef">implementation-defined</termref>
+output method.</imp-def-feature>
+<p>In those cases where they have no important
+effect on the content of the serialized result, details of the
+output methods defined by this specification are left unspecified
+and are regarded as <termref def="impdep">implementation-dependent</termref>.
+Whether a <termref def="serializer">serializer</termref> uses
+apostrophes or quotation marks to delimit attribute values in the
+XML output method is an example of such a detail.</p>
+<imp-dep-feature>In those cases where they have no important
+effect on the content of the serialized result, details of the
+output methods defined by this specification are left unspecified
+and are regarded as <termref def="impdep">implementation-dependent</termref>.</imp-dep-feature><p>The detailed semantics of each parameter will be described
+separately for each output method<phrase diff="del"> for which it is applicable</phrase>. <phrase diff="del">If the
+semantics of a parameter are not described for an output method, then
+it is not applicable to that output method.</phrase></p>
+<p>Implementations <rfc2119>MAY</rfc2119> define additional serialization parameters, and <rfc2119>MAY</rfc2119>
+allow users to do so. For this purpose, the name of a serialization
+parameter is considered to be a QName; the parameters listed above are
+QNames in no namespace, while any additional serialization parameters must
+have names that are namespace-qualified. If the serialization method is one
+of the four methods <code>xml</code>, <code>html</code>, 
+<code>xhtml</code>, or <code>text</code>, then the additional serialization parameters <rfc2119>MAY</rfc2119>
+affect the output of the serializer to the extent (but only to the extent)
+that this specification leaves the output <termref def="impdef">implementation-defined</termref> or
+<termref def="impdep">implementation-dependent</termref>. For example, such parameters might control whether
+namespace declarations on an element are written before or after the
+attributes of the element, or they might define the number of space or tab
+characters to be inserted when the <code>indent</code> parameter is set to <code>yes</code>; but they
+could not instruct the serializer to suppress the error that occurs when the
+HTML output method encounters illegal characters (see error <errorref code="0014" class="RE"/>).</p> 
+<imp-def-feature>The effect of additional serialization parameters on the output of the serializer, 
+where the name of such a parameter must be namespace-qualified, is 
+<termref def="impdef">implementation-defined</termref> or <termref def="impdep">implementation-dependent</termref>.  
+The extent of this effect on the output must not override the provisions of this specification. 
+</imp-def-feature>
+</div1>
+<div1 id="serphases">
+<head>Phases of Serialization</head>
+<p>Serialization comprises three phases of processing 
+(preceded optionally by the sequence normalization process 
+described in <specref ref="serdm"/>).</p>
+<!--Should the below be implementation-dependent?  -sb 3/16/05--><p>For an
+<termref def="impdef">implementation-defined</termref> output method,
+any of these phases <rfc2119>MAY</rfc2119> be skipped or <rfc2119>MAY</rfc2119> be performed in a different
+order than is specified here.
+For the output methods defined in this specification,
+these phases are carried out sequentially as follows:</p>
+
+<olist>
+<item><p>A <code>meta</code> element is added to the normalized sequence along with discarding an existing 
+<code>meta</code> element, as controlled by the <code>include-content-type</code> parameter for the XHTML and HTML output methods.
+</p></item>
+<item><p><emph>Markup generation</emph> produces the character representation of
+those parts of the serialized result that describe the structure of the normalized 
+sequence.  In the cases of the XML, HTML and XHTML
+output methods, this phase produces the character representations of the following:</p>
+<ulist>
+<item><p>the document type declaration;
+</p></item>
+
+<item><p>start tags and end tags (except for
+attribute values, whose representation is produced by the character
+expansion phase);
+</p></item>
+
+<item><p>processing instructions; and</p></item>
+<item><p>comments.</p></item>
+</ulist>
+
+<p>In the cases of the XML and XHTML output methods,
+this phase also produces the following:
+
+<ulist>
+<item><p>the XML or text declaration; and</p></item>
+<item><p>empty element tags (except for the attribute
+values);</p></item>
+</ulist>
+
+In the case of the text output method, this phase has no effect.
+</p>
+</item>
+<item><p><emph>Character expansion</emph> 
+is concerned with the representation of characters appearing in text and attribute <termref def="dt-node">nodes</termref>
+in the normalized sequence. For each text and attribute <termref def="dt-node">node</termref>, the following rules are applied in sequence. 
+</p>
+<olist>
+<item><p>
+If the node is an attribute that is a <termref def="uri-attribute-values">URI attribute value</termref> 
+and the <code>escape-uri-attributes</code> parameter is set to require escaping of URI attributes, 
+apply <termref def="uri-escaping">URI escaping</termref> as defined below, 
+and skip rules b-e. Otherwise, continue with rule b.</p>
+<p><termdef term="URI Escaping" id="uri-escaping"><term>URI escaping</term> consists of the following three steps applied in sequence to the content of 
+<termref def="uri-attribute-values">URI attribute values</termref>:</termdef>
+</p>
+<olist>
+<item>
+<p>normalize to NFC using the method defined in <xspecref spec="FO" ref="func-normalize-unicode"/></p>
+</item>
+<item>
+<p>percent-encode any special characters in the URI using the method defined in <xspecref spec="FO" ref="func-escape-html-uri"/></p>
+</item>
+<item>
+<p>escape according to HTML rules any characters (such as <code>&lt;</code> and <code>&amp;</code>) where HTML requires 
+escaping, and any characters that cannot be represented in the selected encoding. 
+For example, replace <code>&lt;</code> with <code>&amp;lt;</code>.
+(See also section <specref ref="HTML_CHARDATA"/>)
+</p>
+</item>
+</olist>
+<p>
+<termdef term="URI attribute values" id="uri-attribute-values"> The values of attributes listed in 
+<specref ref="list-of-uri-attributes"/> are <term>URI attribute values</term>. 
+Attributes are not considered to be URI attributes simply because they are namespace declaration attributes or have the type annotation <code>xs:anyURI</code>.</termdef></p></item>
+<item><p>
+If the node is a text node whose parent element is selected by the rules of the 
+<code>cdata-section-elements</code> parameter for the applicable output method, 
+create CDATA sections as described below, and skip rules c-e. Otherwise, continue with rule c.
+</p>
+<p>Apply the following two processes in sequence to create CDATA sections
+<olist>
+<item><p><termref def="unicode-normalization">Unicode Normalization</termref> if requested by the <code>normalization-form</code> parameter.</p></item>
+<item><p>apply changes as detailed in the description of the <code>cdata-section-elements</code> parameter for the applicable output method.</p></item>
+</olist>
+</p>
+</item>
+<item><p>Apply character mapping as determined by the 
+<code>use-character-maps</code> parameter for the applicable output method.  
+For characters that were substituted by this process, skip rules d and e. 
+For the remaining characters that were not modified by character mapping, continue with rule d. 
+</p></item>
+<item><p>Apply <termref def="unicode-normalization">Unicode Normalization</termref> if requested by the <code>normalization-form</code> parameter.  </p>
+<p>
+<termdef term="Unicode Normalization" id="unicode-normalization"><term>Unicode Normalization</term>
+is the process of removing alternate representations of equivalent sequences from textual data,
+to convert the data into a form that can be binary-compared for equivalence, as specified in 
+<bibref ref="UNICODE-NORMALIZATION-FORM"/>.   
+For specific recommendations for character normalization on the World Wide Web, 
+see <bibref ref="charmod-norm"/>.</termdef></p>
+<p>
+The meanings associated with the possible values of the <code>normalization-form</code> parameter 
+are defined in section <specref ref="XML_NORMALIZATION-FORM" />. </p><p>Continue with step e.
+</p>
+</item>
+<item><p>Escape according to XML or HTML rules, as determined by the applicable output method, 
+any characters (such as <code>&lt;</code> and <code>&amp;</code>) where XML or HTML requires 
+escaping, and any characters that cannot be represented in the selected encoding. 
+For example, replace <code>&lt;</code> with <code>&amp;lt;</code>. 
+(See also section <specref ref="HTML_CHARDATA"/>).
+For characters such as <code>&gt;</code> where XML defines a built-in entity but does not 
+require its use in all circumstances, it is implementation-dependent whether the character 
+is escaped.
+</p></item>
+</olist>
+</item>
+<item><p><emph>Indentation</emph>, as controlled by the <code>indent</code> parameter, MAY add or remove whitespace according to the rules defined by the applicable output method.</p></item>
+<item><p><emph>Encoding</emph>, as controlled by the
+<code>encoding</code> parameter, converts the character stream
+produced by the previous phases into an octet stream.</p>
+
+<note><p>Serialization is only defined in terms of encoding the result as a stream of octets.  
+However, a <termref def="serializer">serializer</termref> may provide an option that allows the encoding phase to be skipped, so
+that the result of serialization is a stream of Unicode characters.
+The effect of any such option is <termref def="impdef">implementation-defined</termref>, 
+and a <termref def="serializer">serializer</termref> is not required to support such an option.
+</p><imp-def-feature>The effect of providing an option that allows the encoding phase to be skipped, 
+so that the result of serialization is a stream of Unicode characters, is <termref def="impdef">implementation-defined</termref>.  
+The <termref def="serializer">serializer</termref> is not required  to support such an option.
+<!--It's not clear to me that this should be a formal implementation-defined item, since it's in a note, but it's here for review.  -sb 3/16/05--></imp-def-feature></note>
+</item>
+</olist>
+</div1>
+
+<div1 id="xml-output">
+<head>XML Output Method</head>
+<p>The XML output method serializes the normalized sequence as an XML entity that
+<rfc2119>MUST</rfc2119> satisfy the rules for either a well-formed XML document entity or a well-formed XML
+external general parsed entity, or both.
+A <termref def="serial-err">serialization error</termref> <errorref code="0003" class="RE"/> results if the
+<termref def="serializer">serializer</termref>
+is unable to satisfy those rules,
+except for content modified by the character expansion phase of serialization,
+as described in <specref ref="serphases"/>.
+The effects of the character expansion phase could result in the serialized output 
+being not well-formed, but will not result in a <termref def="serial-err">serialization error</termref>.  
+If a <termref def="serial-err">serialization error</termref> results, the 
+<termref def="serializer">serializer</termref> <rfc2119>MUST</rfc2119> signal the error.</p>
+<p>If the document <termref def="dt-node">node</termref> of the
+normalized sequence has a single element
+<termref def="dt-node">node</termref> child and no text <termref def="dt-node">node</termref> children,
+then the serialized output
+is a well-formed XML document entity, and the serialized output
+<rfc2119>MUST</rfc2119> conform to the
+appropriate version of the
+XML Namespaces Recommendation <bibref ref="REC-xml-names"/>
+or <bibref ref="xml-names11"/>.
+If the normalized sequence does not take this form, then
+the serialized output is a well-formed XML external general parsed entity,
+which, when referenced within a trivial XML document wrapper
+like this:</p>
+<eg xml:space="preserve">
+&lt;?xml version="<emph>version</emph>"?&gt;
+&lt;!DOCTYPE doc [
+&lt;!ENTITY e SYSTEM "<emph>entity-URI</emph>"&gt;
+]&gt;
+&lt;doc&gt;&amp;e;&lt;/doc&gt;</eg>
+
+<p>where <code>entity-URI</code> is a URI for the entity,
+and the value of the <code>version</code>
+pseudo-attribute is the value of the <code>version</code>
+parameter, produces a
+document which <rfc2119>MUST</rfc2119> itself be a
+well-formed XML document conforming
+to the
+corresponding version of the
+XML Namespaces Recommendation <bibref ref="REC-xml-names"/>
+or <bibref ref="xml-names11"/>.</p>
+<p><termdef id="reconstructed-tree" term="reconstructed tree">A <term>reconstructed tree</term> may be
+constructed by parsing the XML document and converting it into an
+instance of the data model as specified in 
+<bibref ref="xpath-datamodel"/>.</termdef>
+The result of serialization <rfc2119>MUST</rfc2119> be such that the <termref def="reconstructed-tree">reconstructed tree</termref>
+is the same as the <termref def="result-tree">result tree</termref> except for the following permitted differences:</p>
+
+<ulist>
+<item>
+<p>If the document was produced by adding a document wrapper, as
+described above, then it will contain an extra <code>doc</code>
+element as the document element.</p>
+</item>
+<item>
+<p>The order of attribute and namespace <termref def="dt-node">nodes</termref> in the two trees <rfc2119>MAY</rfc2119> be
+different.</p>
+</item>
+<item>
+<p>
+The following properties of corresponding <termref def="dt-node">nodes</termref>
+in the two trees <rfc2119>MAY</rfc2119> be different:
+<ulist>
+<item><p>the base-uri property of document <termref def="dt-node">nodes</termref> and element <termref def="dt-node">nodes</termref>;</p></item>
+<item><p>the document-uri and unparsed-entities properties of document
+<termref def="dt-node">nodes</termref>;</p></item>
+<item><p>the type-name and typed-value properties of element and attribute
+<termref def="dt-node">nodes</termref>;</p></item>
+<item><p>the nilled property of element <termref def="dt-node">nodes</termref>;</p></item>
+<item><p>the content property of text <termref def="dt-node">nodes</termref>, due to the effect of the
+<code>indent</code> and <code>use-character-maps</code>
+parameters.</p></item>
+</ulist>
+</p>
+</item>
+<item>
+<p>The <termref def="reconstructed-tree">reconstructed tree</termref> <rfc2119>MAY</rfc2119> contain additional attributes and text <termref def="dt-node">nodes</termref> resulting from the
+expansion of default and fixed values in its DTD or schema;
+also, in the presence of a DTD, non-CDATA attributes may lose whitespace
+characters as a result of attribute value normalization.</p>
+</item>
+<item>
+<p>The type annotations of the <termref def="dt-node">nodes</termref> in the two trees <rfc2119>MAY</rfc2119> be different. 
+Type annotations in a <termref def="result-tree">result tree</termref> are discarded when the tree is serialized. 
+Any new type annotations obtained by parsing the document will depend on whether the serialized XML document is assessed against a schema, 
+and this <rfc2119>MAY</rfc2119> result in type annotations that are different from
+those in the original <termref def="result-tree">result tree</termref>.
+</p>
+<note>
+<p>In order to influence the type annotations in the
+instance of the data model that would result from processing a serialized XML document,
+the author of the XSLT stylesheet, XQuery expression or other process
+might wish to create the instance of the data model that is input to the
+serialization process so that it makes use of mechanisms provided by
+<bibref ref="xmlschema-1"/>, such as <code>xsi:type</code> and
+<code>xsi:schemaLocation</code> attributes.  The serialization process
+will not automatically create such attributes in the serialized
+document if those attributes were not part of the <termref def="result-tree">result tree</termref> that is
+to be serialized.</p>
+<p>Similarly, it is possible that an element <termref def="dt-node">node</termref> in
+the instance of the data model that is to be serialized has the <code>nilled</code>
+property with the value <code>true</code>, but no <code>xsi:nil</code>
+attribute.  The serialization process will not create such an attribute
+in the serialized document simply to reflect the value of the property.
+The value of the <code>nilled</code> property has no direct effect on
+the serialized result.
+</p>
+</note>
+</item>
+<item>
+<p>Additional namespace <termref def="dt-node">nodes</termref> <rfc2119>MAY</rfc2119> be present
+in the <termref def="reconstructed-tree">reconstructed tree</termref> if the serialization process
+did not undeclare one or more namespaces,
+as described in <specref ref="xml-undeclare-NS"/>,
+and the starting instance of the data model contained an element <termref def="dt-node">node</termref>
+with a namespace <termref def="dt-node">node</termref> that declared some prefix, but a child element
+of that <termref def="dt-node">node</termref> did not have any namespace <termref def="dt-node">node</termref> that declared the same prefix.</p>
+<p>
+The <termref def="result-tree">result tree</termref> <rfc2119>MAY</rfc2119> contain namespace <termref def="dt-node">nodes</termref>
+that are not present in the <termref def="reconstructed-tree">reconstructed tree</termref>, as the process of creating an instance
+of the data model <rfc2119>MAY</rfc2119> ignore namespace declarations in some circumstances.
+See <xspecref spec="DM" ref="const-infoset-element"/> and
+<xspecref spec="DM" ref="const-psvi-element"/> of <bibref ref="xpath-datamodel"/>
+for additional information.
+</p>
+</item>
+<item><p>If the <code>indent</code> parameter has
+the value <code>yes</code>,</p>
+<ulist>
+<item><p>additional text <termref def="dt-node">nodes</termref> consisting of
+whitespace characters <rfc2119>MAY</rfc2119> be present in the <termref def="reconstructed-tree">reconstructed tree</termref>; and</p></item>
+<item><p>text <termref def="dt-node">nodes</termref> in the <termref def="result-tree">result tree</termref> that contained only whitespace
+characters <rfc2119>MAY</rfc2119> correspond to text <termref def="dt-node">nodes</termref> in the <termref def="reconstructed-tree">reconstructed tree</termref> that contain additional
+whitespace characters that were not present in the <termref def="result-tree">result tree</termref></p></item>
+</ulist>
+<p>See <specref ref="xml-indent"/> for more information on the
+<code>indent</code> parameter.</p>
+</item>
+<item>
+<p>Additional <termref def="dt-node">nodes</termref> <rfc2119>MAY</rfc2119> be present in the
+<termref def="reconstructed-tree">reconstructed tree</termref> due to the effect of character mapping in the character expansion phase,
+and the values of attribute <termref def="dt-node">nodes</termref> and text <termref def="dt-node">nodes</termref> in the
+<termref def="reconstructed-tree">reconstructed tree</termref> <rfc2119>MAY</rfc2119> be different from those in the <termref def="result-tree">result tree</termref>, due to
+the effects of URI expansion, character mapping
+and <termref def="unicode-normalization">Unicode Normalization</termref> in
+the character expansion phase of serialization.
+</p>
+<note>
+<p>The <code>use-character-maps</code> parameter can
+cause arbitrary characters to be inserted into the serialized XML document
+in an unescaped form, including characters that would be considered to be
+part of XML markup.  Such characters could result in arbitrary new element
+<termref def="dt-node">nodes</termref>, attribute <termref def="dt-node">nodes</termref>, and so on, in the <termref def="reconstructed-tree">reconstructed tree</termref> that results from
+processing the serialized XML document.</p>
+</note></item>
+</ulist>
+<p>A consequence of this rule is that certain characters
+<rfc2119>MUST</rfc2119> be output as character
+references, to ensure that they survive
+the round trip through serialization and parsing.
+Specifically, CR, NEL and LINE
+SEPARATOR characters in text <termref def="dt-node">nodes</termref> <rfc2119>MUST</rfc2119> be output respectively as
+"<code>&amp;#xD;</code>", "<code>&amp;#x85;</code>", and
+"<code>&amp;#x2028;</code>", or their equivalents; while CR, NL, TAB, NEL and
+LINE SEPARATOR characters in attribute <termref def="dt-node">nodes</termref> <rfc2119>MUST</rfc2119> be output respectively
+as "<code>&amp;#xD;</code>", "<code>&amp;#xA;</code>", "<code>&amp;#x9;</code>",
+"<code>&amp;#x85;</code>", and "<code>&amp;#x2028;</code>", or their equivalents.
+In addition, the non-whitespace control characters
+#x1 through #x1F and #x7F through #x9F in text <termref def="dt-node">nodes</termref> and attribute <termref def="dt-node">nodes</termref> <rfc2119>MUST</rfc2119> be
+output as character references.
+</p>
+
+<p>For example, an attribute with the value "x" followed by "y"
+separated by a newline will result in the output
+<code>"x&amp;#xA;y"</code> (or with any equivalent character
+reference). The XML output cannot be "x" followed by a literal newline
+followed by a "y" because after parsing, the attribute value would be
+<code>"x y"</code> as a consequence of the XML attribute normalization
+rules.</p>
+<note><p>XML 1.0 did not permit
+an XML processor to normalize NEL or LINE SEPARATOR characters to a LINE FEED character.  However, if
+a document entity that specifies version 1.1 invokes an external general
+parsed entity with no text declaration or a text declaration that specifies
+version 1.0, the external parsed entity is processed according to the rules
+of XML 1.1.  For this reason, NEL and LINE SEPARATOR characters in text and
+attribute <termref def="dt-node">nodes</termref> must always be escaped using character references,
+regardless of the value of the <code>version</code> parameter.
+</p>
+<p>
+XML 1.0 permitted control characters in the range #x7F through #x9F
+to appear as literal characters in an XML document, but XML 1.1
+requires such characters, other than NEL,
+to be escaped as character references.  An
+external general parsed entity with no text declaration or a text
+declaration that specifies a version pseudo-attribute with value
+<code>1.0</code> that is invoked by an XML 1.1 document entity must
+follow the rules of XML 1.1.  Therefore, the non-whitespace control
+characters in the ranges #x1 through #x1F and #x7F through #x9F must
+always be escaped, regardless of the value of the <code>version</code> parameter.
+</p>
+</note>
+
+<!--
+   Dropped Henry's editorial comments.
+<ednote><edtext>This section seems to become increasingly unwieldy.  The
+list of exceptions seems endless.  Should
+we consider a completely different approach to the description of
+serialization other than the "round-trip" definition?  A constructive
+definition, perhaps?
+</edtext></ednote>
+-->
+
+<p>It is a <termref def="serial-err">serialization error</termref> <errorref code="0004" class="PM"/> to specify the doctype-system parameter, or to specify the standalone parameter with a value other than <code>omit</code>, if the
+instance of the data model contains text <termref def="dt-node">nodes</termref> or multiple element <termref def="dt-node">nodes</termref> as children
+of the root <termref def="dt-node">node</termref>. The
+<termref def="serializer">serializer</termref>
+<rfc2119>MUST</rfc2119> either signal the error, or recover
+by ignoring the request to output a document type declaration or
+<code>standalone</code> parameter.</p>
+<div2 id="XML_PARAMS"><head>The Influence of Serialization Parameters upon the XML Output Method</head>
+<div3 id="XML_VERSION"><head>XML Output Method: the <code>version</code> Parameter</head>
+<p>The <code>version</code> parameter specifies the version of XML
+and the version of Namespaces in XML to
+be used for outputting the instance of the data model.   
+The version output in the XML declaration (if an XML declaration is not omitted) 
+<rfc2119>MUST</rfc2119> correspond to the version of XML that
+the <termref def="serializer">serializer</termref>
+used for outputting the instance of the data model. <phrase diff="del">The value of the
+<code>version</code> parameter 
+<rfc2119>MUST</rfc2119> match the
+<xnt xmlns:xlink="http://www.w3.org/1999/xlink" spec="XML" ref="NT-VersionNum" xlink:type="simple"/>
+production of the XML Recommendation <bibref ref="REC-xml"/> or <bibref ref="xml11"/>.</phrase>
+A serialization error <errorref code="0013" class="SU"/> results if the value of the <code>version</code> parameter specifies 
+a version of XML that is not supported by the <termref def="serializer">serializer</termref>; 
+the <termref def="serializer">serializer</termref> <rfc2119>MUST</rfc2119> signal the error.</p>
+<p>If the serialized result would contain an
+<xnt xmlns:xlink="http://www.w3.org/1999/xlink" spec="Names" ref="NT-NCName" xlink:type="simple"/> that contains a character that is not
+permitted by the version of Namespaces in XML specified by the
+<code>version</code> parameter, a <termref def="serial-err">serialization error</termref> <errorref code="0005" class="RE"/> results.
+The <termref def="serializer">serializer</termref> <rfc2119>MUST</rfc2119> signal the error.</p>
+
+<p>If the serialized result would contain a character
+that is not permitted by the version of XML specified by the
+<code>version</code> parameter, a <termref def="serial-err">serialization error</termref> <errorref code="0006" class="RE"/> results.  The
+<termref def="serializer">serializer</termref> <rfc2119>MUST</rfc2119> signal the error.</p>
+<example><p>For example, if the <code>version</code>
+parameter has the value <code>1.0</code>, and the instance of the data
+model contains a non-whitespace control character in the range #x1 to
+#x1F, a <termref def="serial-err">serialization error</termref> <errorref code="0006" class="RE"/> results.
+If the <code>version</code> parameter has the value <code>1.1</code>
+and a comment <termref def="dt-node">node</termref> in the instance of the data model contains a
+non-whitespace control character in the range #x1 to #x1F or a
+control character other than NEL in the range #x7F to #x9F, a
+<termref def="serial-err">serialization error</termref> <errorref code="0006" class="RE"/> results.</p></example>
+</div3>
+<div3 id="XML_ENCODING">
+<head>XML Output Method: the <code>encoding</code> Parameter</head>
+<p>The <code>encoding</code> parameter specifies the
+encoding to be used for outputting the instance of the data model.
+<termref def="serializer">Serializers</termref>
+are <rfc2119>REQUIRED</rfc2119>  to support values of <code>UTF-8</code> and
+<code>UTF-16</code>. A <termref def="serial-err">serialization error</termref> <errorref code="0007" class="SU"/> occurs if an output
+encoding other than <code>UTF-8</code> or <code>UTF-16</code> is
+requested and the <termref def="serializer">serializer</termref>
+does not support that encoding. The <termref def="serializer">serializer</termref>
+<rfc2119>MUST</rfc2119> signal the error, or recover by using
+<code>UTF-8</code> or <code>UTF-16</code> instead.
+The <termref def="serializer">serializer</termref>
+<rfc2119>MUST NOT</rfc2119> use an encoding whose name does not match the
+<xnt xmlns:xlink="http://www.w3.org/1999/xlink" spec="XML" ref="NT-EncName" xlink:type="simple"/>
+production of the XML Recommendation <bibref ref="REC-xml"/>.
+</p>
+<p>When outputting a newline character in the instance of the data model, the
+<termref def="serializer">serializer</termref> is free to represent it using any character sequence
+that will be normalized to a newline character by an XML parser,
+unless a specific mapping for the newline character is
+provided in a character map (see <specref ref="character-maps"/>).</p>
+<p>When outputting any other character that is defined in the
+selected encoding, the character 
+<rfc2119>MUST</rfc2119> be output
+using the correct representation of that character in the selected encoding.</p>
+<p>It is possible that the instance of the data model will contain a character that
+cannot be represented in the encoding that the <termref def="serializer">serializer</termref>
+is using for output. In this case, if the character occurs in a context where XML
+recognizes character references (that is, in the value of an attribute
+<termref def="dt-node">node</termref> or text <termref def="dt-node">node</termref>), then the character <rfc2119>MUST</rfc2119> be output as a character
+reference. A <termref def="serial-err">serialization error</termref> <errorref code="0008" class="RE"/> occurs if such a character appears in
+a context where character references are not allowed (for example, if
+the character occurs in the name of an element). The <termref def="serializer">serializer</termref>
+<rfc2119>MUST</rfc2119> signal the error.
+</p>
+<example>
+<p>For example,
+if a text <termref def="dt-node">node</termref> contains the character LATIN SMALL LETTER E WITH ACUTE (#xE9),
+and the value of the <code>encoding</code> parameter is
+<code>US-ASCII</code>, the character <rfc2119>MUST</rfc2119> be serialized as a character
+reference.  If a comment <termref def="dt-node">node</termref> contains the same character, a
+<termref def="serial-err">serialization error</termref> <errorref code="0008" class="RE"/> results.
+</p>
+</example>
+
+</div3>
+<div3 id="xml-indent"><head>XML Output Method: the <code>indent</code> Parameter</head><p>If the <code>indent</code> parameter has the value
+<code>yes</code>, then the XML output method <rfc2119>MAY</rfc2119> output
+whitespace in addition to the whitespace in the instance of the data model
+in order to indent the result so that a person will find it easier to read; if the
+<code>indent</code> parameter has the value <code>no</code>, it
+<rfc2119>MUST NOT</rfc2119> output any additional whitespace.
+If the XML
+output method does output additional whitespace, it
+<rfc2119>MUST</rfc2119> use an
+algorithm to output additional whitespace that satisfies all of the
+following constraints:</p>
+<ulist>
+<item><p>Whitespace characters <rfc2119>MUST NOT</rfc2119> be added adjacent to a text
+<termref def="dt-node">node</termref> that contains non-whitespace characters.</p></item>
+<item><p>Whitespace characters <rfc2119>MUST NOT</rfc2119> be added other than adjacent to an element <termref def="dt-node">node</termref>,
+that is, immediately before a start tag or immediately after an end
+tag.</p></item>
+
+<item><p>Whitespace characters <rfc2119>MUST NOT</rfc2119> be inserted in a part of the
+result document that is controlled by an <code>xml:space</code> attribute with value
+<code>preserve</code>.  (See <bibref ref="REC-xml"/> for more information
+about the <code>xml:space</code> attribute.)
+</p></item>
+<item><p>Whitespace characters 
+<rfc2119>SHOULD NOT</rfc2119> be added in places where the characters would constitute
+significant whitespace, for example, in the content of an element whose content model is known to be
+mixed. </p></item>
+</ulist>
+
+<p>In any location where the above rules allow the addition of whitespace 
+characters, existing whitespace characters <rfc2119>MAY</rfc2119> also be removed or replaced.  
+For example, a tab <rfc2119>MAY</rfc2119> be inserted as a replacement for existing spaces.</p>
+
+<note><p>The effect of these rules is to ensure that whitespace is only
+added in places where (a) XSLT's <code>&lt;xsl:strip-space&gt;</code>
+declaration could cause it to be removed, and
+(b) it does not affect the <termref def="dt-string-value">string value</termref> of any element <termref def="dt-node">node</termref> with
+simple content. It is usually not safe to indent document types that include elements
+with mixed content.</p>
+</note>
+<note><p>The whitespace added may possibly
+be based on whitespace stripped from either the source document or the
+stylesheet (in the case of XSLT), or
+guided by other means that might depend on the <termref def="host-language">host language</termref>,
+in the case of an instance of the data model created using some other process.</p></note></div3>
+<div3 id="XML_CDATA-SECTION-ELEMENTS"><head>XML Output Method: the <code>cdata-section-elements</code> Parameter</head><p>The <code>cdata-section-elements</code> parameter contains a list
+of expanded QNames. If the expanded QName of the parent of a text <termref def="dt-node">node</termref>
+is a member of the list, then the text <termref def="dt-node">node</termref>
+
+<rfc2119>MUST</rfc2119> be output as a
+CDATA section, except in those circumstances
+described below.</p>
+
+<p>If the text <termref def="dt-node">node</termref> contains the sequence of characters
+<code>]]&gt;</code>, then the currently open CDATA section
+
+<rfc2119>MUST</rfc2119> be
+closed following the <code>]]</code> and a new CDATA section opened
+before the <code>&gt;</code>.</p>
+
+<p>If the text <termref def="dt-node">node</termref> contains characters that are not
+representable in the character encoding being used to output the
+instance of the data model, then the currently open CDATA section
+
+<rfc2119>MUST</rfc2119> be closed
+before such characters, the characters
+
+<rfc2119>MUST</rfc2119> be output using
+character references or entity references, and a new CDATA
+section
+
+<rfc2119>MUST</rfc2119> be opened for any further
+characters in the text <termref def="dt-node">node</termref>.</p>
+
+<p>CDATA sections 
+<rfc2119>MUST NOT</rfc2119> be used except where they
+have been explicitly requested by the user, either by using the
+<code>cdata-section-elements</code> parameter, or by using some other
+<termref def="impdef">implementation-defined</termref> mechanism.</p>
+
+<note>
+<p>This is phrased to permit an implementor to provide an option that
+attempts to preserve CDATA sections present in the source
+document.</p>
+</note>
+
+<imp-def-feature>An <termref def="serializer">serializer</termref> may provide an <termref def="impdef">implementation-defined</termref> mechanism to place CDATA sections in the <termref def="result-tree">result tree</termref>.</imp-def-feature></div3>
+<div3 id="XML_OMIT-XML-DECLARATION"><head>XML Output Method: the <code>omit-xml-declaration</code> and <code>standalone</code> Parameters</head>
+<p>The XML output method
+<rfc2119>MUST</rfc2119> output an XML declaration if the <code>omit-xml-declaration</code> parameter has the value <code>no</code>.   
+The XML declaration <rfc2119>MUST</rfc2119> include both version information and an encoding declaration. 
+If the <code>standalone</code> parameter has the value <code>yes</code> or the value <code>no</code>,
+the XML declaration <rfc2119>MUST</rfc2119> include a standalone document declaration with the same value as the value of the <code>standalone</code> parameter.
+
+If the <code>standalone</code> parameter has
+the value <code>omit</code>, the XML declaration
+<rfc2119>MUST NOT</rfc2119> include a standalone document declaration; this ensures
+that it is both an XML declaration (allowed at the beginning of a
+document entity) and a text declaration (allowed at the beginning of
+an external general parsed entity).</p>
+<p>A <termref def="serial-err">serialization error</termref> <errorref code="0009" class="PM"/> results if the
+<code>omit-xml-declaration</code> parameter has the value
+<code>yes</code>, and
+<ulist>
+<item><p>the <code>standalone</code> parameter has a value other than
+<code>omit</code>; or
+</p></item>
+<item><p>the <code>version</code> parameter has a value other than
+<code>1.0</code> and the <code>doctype-system</code>
+parameter is specified.</p></item>
+</ulist>
+The <termref def="serializer">serializer</termref> <rfc2119>MUST</rfc2119> signal the error.
+</p>
+<p>Otherwise, if the
+<code>omit-xml-declaration</code> parameter has the value
+<code>yes</code>, the XML output method
+
+<rfc2119>MUST NOT</rfc2119> output an XML declaration.</p></div3>
+<div3 id="XML_DOCTYPE"><head>XML Output Method: the <code>doctype-system</code> and <code>doctype-public</code> Parameters</head><p>If the <code>doctype-system</code> parameter is specified, the
+XML output method 
+<rfc2119>MUST</rfc2119> output a document type
+declaration immediately before the first element. The name following
+<code>&lt;!DOCTYPE</code> 
+<rfc2119>MUST</rfc2119> be the name of the first element,
+if any. If the <code>doctype-public</code> parameter is also specified, then the
+XML output method <rfc2119>MUST</rfc2119> output <code>PUBLIC</code>
+followed by the public identifier and then the system identifier;
+otherwise, it <rfc2119>MUST</rfc2119> output <code>SYSTEM</code>
+followed by the system
+identifier. The internal subset 
+<rfc2119>MUST</rfc2119> be empty. The
+<code>doctype-public</code> parameter 
+<rfc2119>MUST</rfc2119> be ignored unless the
+<code>doctype-system</code> parameter is specified.</p>
+
+</div3>
+<div3 id="xml-undeclare-NS"><head>XML Output Method: the <code>undeclare-prefixes</code> Parameter</head>
+<p>The Data Model allows an element
+<termref def="dt-node">node</termref> that binds a non-empty prefix to
+have a child element <termref def="dt-node">node</termref> that does
+not bind that same prefix. In <emph>Namespaces in XML 1.1</emph> (<bibref
+ref="xml-names11"/>), this can be represented accurately by undeclaring
+prefixes.  For the undeclaring prefix of the child element node,  
+if the <code>undeclare-prefixes</code> parameter has the value
+<code>yes</code>, the output method is XML or XHTML, and the <code>version</code> 
+parameter value is greater than <code>1.0</code>,
+the <termref def="serializer">serializer</termref>
+<rfc2119>MUST</rfc2119> undeclare its namespace.  If the
+<code>undeclare-prefixes</code> parameter has the value <code>no</code> and the output method is XML or
+XHTML, then the undeclaration of prefixes <rfc2119>MUST NOT</rfc2119> occur.</p>
+
+<example>
+<p>Consider an element <code>x:foo</code> with four in-scope namespaces
+that associate prefixes with URIs as follows:
+</p>
+
+<ulist>
+<item><p><code>x</code> is associated with
+<code>http://example.org/x</code></p></item>
+<item><p><code>y</code> is associated with
+<code>http://example.org/y</code></p></item>
+<item><p><code>z</code> is associated with
+<code>http://example.org/z</code></p></item>
+<item><p><code>xml</code> is associated with
+<code>http://www.w3.org/XML/1998/namespace</code></p></item>
+</ulist>
+
+<p>Suppose that it has a child element <code>x:bar</code> with three in-scope namespaces:</p>
+
+<ulist>
+<item><p><code>x</code> is associated with
+<code>http://example.org/x</code></p></item>
+<item><p><code>y</code> is associated with
+<code>http://example.org/y</code></p></item>
+<item><p><code>xml</code> is associated with
+<code>http://www.w3.org/XML/1998/namespace</code></p></item>
+</ulist>
+
+<p>If namespace undeclaration is in effect, it will be serialized this way:</p>
+
+<eg xml:space="preserve">&lt;x:foo xmlns:x="http://example.org/x"
+       xmlns:y="http://example.org/y"
+       xmlns:z="http://example.org/z"&gt;
+       
+       &lt;x:bar xmlns:z=""&gt;...&lt;/x:bar&gt;
+       
+&lt;/x:foo&gt;</eg>
+</example>
+<p>In <emph>Namespaces in XML</emph> 1.0 (<bibref ref="REC-xml-names"/>), prefix undeclaration is not possible.
+If the output method is XML or XHTML, the value of the <code>undeclare-prefixes</code> parameter is <code>yes</code>,
+and the value of the <code>version</code> parameter is <code>1.0</code>,
+a <termref def="serial-err">serialization error</termref> <errorref code="0010" class="PM"/> results; the
+<termref def="serializer">serializer</termref> <rfc2119>MUST</rfc2119> signal the error.</p>
+
+</div3>
+<div3 id="XML_NORMALIZATION-FORM"><head>XML Output Method: the <code>normalization-form</code> Parameter</head>
+<p>The <code>normalization-form</code> parameter is applicable to the XML output method.
+The values <code>NFC</code> and <code>none</code> <rfc2119>MUST</rfc2119> be supported by the <termref def="serializer">serializer</termref>.
+A <termref def="serial-err">serialization error</termref> <errorref code="0011" class="SU"/> results if the value of the
+<code>normalization-form</code> parameter specifies a normalization form
+that is not supported by the
+<termref def="serializer">serializer</termref>; the
+<termref def="serializer">serializer</termref> <rfc2119>MUST</rfc2119> signal the error.</p>
+<p>The meanings associated with the possible values of
+the <code>normalization-form</code> parameter are as follows:
+<ulist>
+  <item>
+    <p><code>NFC</code> specifies the serialized result will be
+       in Normalization Form C, using the rules specified in <bibref ref="charmod-norm"/>.</p>
+  </item>
+  <item>
+    <p><code>NFD</code> specifies the serialized result will be
+       in Normalization Form D, as specified in <bibref ref="UNICODE-NORMALIZATION-FORM"/>.</p>
+  </item>
+  <item>
+    <p><code>NFKC</code> specifies the serialized result will be
+       in Normalization Form KC, as specified in <bibref ref="UNICODE-NORMALIZATION-FORM"/>.</p>
+  </item>
+  <item>
+    <p><code>NFKD</code> specifies the serialized result will be
+       in Normalization Form KD, as specified in <bibref ref="UNICODE-NORMALIZATION-FORM"/>.</p>
+  </item>
+  <item>
+    <p><code>fully-normalized</code> specifies the serialized result
+       will be in fully normalized text, as specified in <bibref ref="charmod-norm"/>.</p>
+  </item>
+  <item>
+    <p><code>none</code> specifies that no <termref def="unicode-normalization">Unicode Normalization</termref> will
+       be applied.</p>
+  </item>
+  <item>
+    <p>An <termref def="impdef">implementation-defined</termref> value
+       has an <termref def="impdef">implementation-defined</termref>
+       effect.</p>
+  <imp-def-feature>If the value of the <code>normalization-form</code> form parameter is not <code>NFC</code>, <code>NFD</code>,
+          <code>NFKC</code>, <code>NFKD</code>, <code>fully-normalized</code>,
+           or <code>none</code> then the meaning of the value and its effect is
+          <termref def="impdef">implementation-defined</termref>.</imp-def-feature></item>
+</ulist></p>
+<p>If the value of the parameter is <code>fully-normalized</code>, then no
+<emph>relevant construct</emph> of the parsed entity created by the <termref def="serializer">serializer</termref>
+may start with a composing character. The term <emph>relevant construct</emph>
+has the meaning defined in section 2.13 of <bibref ref="xml11"/>. If this condition is not
+satisfied, a <termref def="serial-err">serialization error</termref> <errorref code="0012" class="RE"/> <rfc2119>MUST</rfc2119> be signaled.</p>
+<note><p>Specifying <code>fully-normalized</code> as the value of this parameter
+does not guarantee that the XML document output by the <termref def="serializer">serializer</termref> will in fact
+be fully normalized as defined in <bibref ref="xml11"/>. This is because the <termref def="serializer">serializer</termref> does
+not check that the text is <code>include normalized</code>, which would involve
+checking all external entities that it refers to (such as an external DTD).
+Furthermore, the <termref def="serializer">serializer</termref> does not check whether any character escape
+generated using character maps represents a composing character.</p></note>
+</div3>
+<div3 id="XML_MEDIA-TYPE"><head>XML Output Method: the <code>media-type</code> Parameter</head><p>The <code>media-type</code> parameter is applicable to the
+XML output method. 
+See <specref ref="serparam"/> for more
+information.</p></div3>
+<div3 id="XML_USE-CHARACTER-MAPS"><head>XML Output Method: the <code>use-character-maps</code> Parameter</head>
+<p>The <code>use-character-maps</code> parameter is applicable to the XML output method.
+The result of serialization using the XML output method is not
+guaranteed to be well-formed XML if character maps have been specified.
+See <specref ref="character-maps"/> for more information.</p>
+</div3>
+<div3 id="XML_BYTE-ORDER-MARK"><head>XML Output Method: the <code>byte-order-mark</code> Parameter</head><p>The <code>byte-order-mark</code> parameter is
+applicable to the XML output method.  See
+<specref ref="serparam"/> for more information.</p>
+<note>
+<p>The byte order mark may be undesirable under certain circumstances; 
+for example, to concatenate resulting XML fragments without additional processing to remove the byte order mark. 
+Therefore this specification does not mandate the <code>byte-order-mark</code> parameter to have the value <code>yes</code> when the encoding is UTF-16, 
+even though the XML 1.0 and XML 1.1 specifications state that entities encoded in UTF-16 must begin with a byte order mark.  
+Consequently, this specification does not guarantee that the resulting XML fragment, 
+without a byte order mark, will not cause an error when processed by a conforming XML processor.</p>
+</note>
+</div3>
+<div3 id="XML_ESCAPE-URI-ATTRIBUTES"><head>XML Output Method: the <code>escape-uri-attributes</code> Parameter</head><p>The <code>escape-uri-attributes</code> parameter is
+not applicable to the XML output method.  It
+is the responsibility of the <termref def="host-language">host language</termref> to specify whether an error occurs if this parameter is specified in combination with the XML output method, or if the parameter is simply dropped.</p></div3>
+<div3 id="XML_INCLUDE-CONTENT-TYPE"><head>XML Output Method: the <code>include-content-type</code> Parameter</head><p>The <code>include-content-type</code> parameter is
+not applicable to the XML output method.  It
+is the responsibility of the <termref def="host-language">host language</termref> to specify whether an error occurs if this parameter is specified in combination with the XML output method, or if the parameter is simply dropped.</p></div3></div2>
+</div1>
+
+<div1 id="xhtml-output">
+<head>XHTML Output Method</head>
+
+<p>The XHTML output method serializes the instance of the
+data model as
+XML, using the HTML compatibility guidelines defined in the XHTML
+specification.</p>
+
+<p>It is entirely the responsibility of the
+person or process that creates the instance of
+the data model
+to ensure that the instance of the data model
+conforms to the <bibref ref="xhtml1"/> or
+<bibref ref="xhtml11"/> specification. It is not an error if the
+instance of the data model is invalid XHTML. Equally, it is entirely under the
+control of the
+person or process that creates the instance
+of the data model
+whether the output conforms to XHTML 1.0
+Strict, XHTML 1.0 Transitional, or any other specific definition of XHTML.</p>
+
+<p>The serialization of the instance of the data model follows the same rules as for
+the XML output method, with the <phrase diff="add">general</phrase> exceptions noted below<phrase diff="add"> and parameter-specific exceptions in <specref ref="XHTML_PARAMS"/></phrase>.
+These differences are based on the HTML compatibility guidelines
+published in Appendix C of <bibref ref="xhtml1"/>, which are designed
+to ensure that as far as possible, XHTML is rendered correctly on user
+agents designed originally to handle HTML.</p>
+
+<ulist>
+<item>
+<p><termdef term="EMPTY" id="XHTMLEMPTY">The following XHTML elements have an <term>EMPTY</term> content model: <code>area</code>, <code>base</code>, <code>br</code>, <code>col</code>, <code>hr</code>, <code>img</code>, <code>input</code>, <code>link</code>, <code>meta</code>, <code>basefont</code>, <code>frame</code>,  <code>isindex</code>, and <code>param</code>.</termdef>  Given an empty instance of an XHTML element whose
+content model is not <termref def="XHTMLEMPTY">EMPTY</termref> (for example, an empty title or paragraph)
+the <termref def="serializer">serializer</termref> 
+<rfc2119>MUST NOT</rfc2119> use the minimized form.
+That is, it 
+<rfc2119>MUST</rfc2119>
+output <code>&lt;p&gt;&lt;/p&gt;</code> and not
+<code>&lt;p /&gt;</code>. </p>
+</item>
+
+<item>
+<p>Given an XHTML element whose content model is <termref def="XHTMLEMPTY">EMPTY</termref>, the <termref def="serializer">serializer</termref>
+
+<rfc2119>MUST</rfc2119> use the minimized tag syntax,
+for example
+<code>&lt;br /&gt;</code>, as the alternative syntax
+<code>&lt;br&gt;&lt;/br&gt;</code> allowed by XML gives uncertain
+results in many existing user agents. The <termref def="serializer">serializer</termref>
+
+<rfc2119>MUST</rfc2119> include a
+space before the trailing <code>/&gt;</code>, e.g.
+<code>&lt;br /&gt;</code>, <code>&lt;hr /&gt;</code> and
+<code>&lt;img src="karen.jpg"  alt="Karen" /&gt;</code>.</p>
+</item>
+<item>
+<p>The <termref def="serializer">serializer</termref> 
+<rfc2119>MUST NOT</rfc2119> use the entity reference
+<code>&amp;apos;</code> which, although legal in XML and therefore in
+XHTML, is not defined in HTML and is not recognized by all HTML user
+agents.</p>
+</item>
+<item><p>The <termref def="serializer">serializer</termref> <rfc2119>SHOULD</rfc2119> output namespace declarations
+in a way that is consistent with the requirements of the XHTML DTD if this is
+possible. The XHTML 1.0 DTDs require the declaration
+<code>xmlns="http://www.w3.org/1999/xhtml"</code>
+to appear on the <code>html</code> element, and only on the <code>html</code> element.
+The <termref def="serializer">serializer</termref> <rfc2119>MUST</rfc2119> output namespace declarations that are consistent with
+the namespace <termref def="dt-node">nodes</termref> present in the <termref def="result-tree">result tree</termref>, but it <rfc2119>MUST</rfc2119> avoid outputting
+redundant namespace declarations on elements where the DTD would make them invalid.</p>
+
+<note><p>If the <code>html</code> element is generated by an XSLT literal result element of
+the form <code>&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt; ... &lt;/html&gt;</code>, or by an
+XQuery direct element constructor of the same form, then the <code>html</code> element in
+the result document will have a <termref def="dt-node">node</termref> name whose prefix is "", which will
+satisfy the requirements of the DTD. In other cases the prefix assigned to
+the element is implementation-dependent.</p></note>
+</item>
+</ulist>
+
+<note><p>Appendix C of <bibref ref="xhtml1"/> describes
+a number of compatibility guidelines for users of XHTML who wish to
+render their XHTML documents with HTML user agents.  In some cases, such
+as the guideline on the form empty elements should take, only the
+serialization process itself has the ability to follow the guideline.  In
+such cases, those guidelines are reflected in the requirements on the
+<termref def="serializer">serializer</termref>
+described above.</p>
+<p>In all other cases, the guidelines can be
+adhered to by the instance of the data model that is input to the serialization
+process.  The guideline on the use of whitespace characters in attribute
+values is one such example.  Another example is that <code>xml:lang="..."</code> does not serialize to both <code>xml:lang="..."</code> and <code>lang="..."</code> as required by some legacy user agents.  It is the responsibility of the person or
+process that creates the instance of the data model that is input to the
+serialization process to ensure it is created in a way that is consistent
+with the guidelines.  No <termref def="serial-err">serialization error</termref> results if the input instance
+of the data model does not adhere to the guidelines.</p></note>
+<div2 id="XHTML_PARAMS"><head>The Influence of Serialization Parameters upon the XHTML Output Method</head>
+<div3 id="XHTML_VERSION"><head>XHTML Output Method: the <code>version</code> Parameter</head><p>The behavior for <code>version</code> parameter for the XHTML output method is described in <specref ref="XML_VERSION"/>.</p></div3>
+<div3 id="XHTML_ENCODING"><head>XHTML Output Method: the <code>encoding</code> Parameter</head><p>The behavior for <code>encoding</code> parameter for the XHTML output method is described in <specref ref="XML_ENCODING"/>.</p></div3>
+<div3 id="XHTML_INDENT"><head>XHTML Output Method: the <code>indent</code> Parameter</head><p>If the <code>indent</code> parameter has the value <code>yes</code>, the serializer <rfc2119>MAY</rfc2119> add or 
+remove whitespace as it serializes the <termref def="result-tree">result tree</termref>, so long as it does not 
+change the way that a conforming HTML user agent would render the output.</p><note><p>This rule can be satisfied by observing the following constraints:</p><ulist><item><p>Whitespace <rfc2119>MUST NOT</rfc2119> be added other than before or after an element, or
+adjacent to an existing whitespace character.</p></item><item><p>Whitespace <rfc2119>MUST NOT</rfc2119> be added or removed adjacent to an inline
+element. The inline elements are those elements in the XHTML
+namespace in the %inline category of any of the XHTML 1.0 DTD's,
+in the %inline.class category of the XHTML 1.1 DTD, and elements
+in the XHTML namespace with local names <code>ins</code> and <code>del</code> if they are
+used as inline elements (i.e., if they do not contain element
+children).</p></item><item><p>Whitespace <rfc2119>MUST NOT</rfc2119> be added or removed inside a formatted
+element, the formatted elements being those in the XHTML
+namespace with local names <code>pre</code>, <code>script</code>, <code>style</code>, and
+    <code>textarea</code>.</p></item></ulist><p>The HTML definition of whitespace is different from the XML
+  definition: see section 9.1 of  <bibref ref="html401"/> 4.01 specification.</p></note></div3>
+<div3 id="XHTML_CDATA-SECTION-ELEMENTS"><head>XHTML Output Method: the <code>cdata-section-elements</code> Parameter</head><p>The behavior for <code>cdata-section-elements</code> parameter for the XHTML output method is described in <specref ref="XML_CDATA-SECTION-ELEMENTS"/>.</p></div3>
+<div3 id="XHTML_OMIT-XML-DECLARATION"><head>XHTML Output Method: the <code>omit-xml-declaration</code> and <code>standalone</code> Parameters</head><p>The behavior for <code>omit-xml-declaration</code> and  <code>standalone</code> parameters for the XHTML output method is described in <specref ref="XML_OMIT-XML-DECLARATION"/>.</p><note><p>As with the XML output method, the XHTML
+output method specifies that an XML declaration will be output unless it is suppressed using
+the <code>omit-xml-declaration</code> parameter. Appendix C.1 of 
+<bibref ref="xhtml1"/>
+provides advice on the consequences of including,
+or omitting, the XML declaration.</p></note></div3>
+<div3 id="XHTML_DOCTYPE"><head>XHTML Output Method: the <code>doctype-system</code> and <code>doctype-public</code> Parameters</head><p>The behavior for <code>doctype-system</code> and  <code>doctype-public</code> parameters for the XHTML output method is described in <specref ref="XML_DOCTYPE"/>.</p></div3>
+<div3 id="XHTML_UNDECLARE-PREFIXES"><head>XHTML Output Method: the <code>undeclare-prefixes</code> Parameter</head><p>The behavior for <code>undeclare-prefixes</code> parameter for the XHTML output method is described in <specref ref="xml-undeclare-NS"/>.</p></div3>
+<div3 id="XHTML_NORMALIZATION-FORM"><head>XHTML Output Method: the <code>normalization-form</code> Parameter</head><p>The behavior for <code>normalization-form</code> parameter for the XHTML output method is described in <specref ref="XML_NORMALIZATION-FORM"/>.</p></div3>
+<div3 id="XHTML_MEDIA-TYPE"><head>XHTML Output Method: the <code>media-type</code> Parameter</head><p>The behavior for <code>media-type</code> parameter for the XHTML output method is described in <specref ref="XML_MEDIA-TYPE"/>.</p></div3>
+<div3 id="XHTML_USE-CHARACTER-MAPS"><head>XHTML Output Method: the <code>use-character-maps</code> Parameter</head><p>The behavior for <code>use-character-maps</code> parameter for the XHTML output method is described in <specref ref="XML_USE-CHARACTER-MAPS"/>.</p></div3>
+<div3 id="XHTML_BYTE-ORDER-MARK"><head>XHTML Output Method: the <code>byte-order-mark</code> Parameter</head><p>The behavior for <code>byte-order-mark</code> parameter for the XHTML output method is described in <specref ref="XML_BYTE-ORDER-MARK"/>.</p></div3>
+<div3 id="XHTML_ESCAPE-URI-ATTRIBUTES"><head>XHTML Output Method: the <code>escape-uri-attributes</code> Parameter</head><p>
+
+If the <code>escape-uri-attributes</code> parameter has the value
+<code>yes</code>, the XHTML output method 
+<rfc2119>MUST</rfc2119> apply <termref def="uri-escaping">URI escaping</termref> to 
+<termref def="uri-attribute-values">URI attribute values</termref>, except that relative URIs <rfc2119>MUST NOT</rfc2119> be absolutized.</p>
+<note>
+<p>This escaping is deliberately confined to non-ASCII characters,
+because escaping of ASCII characters is not always appropriate, for
+example when URIs or URI fragments are interpreted locally by the HTML
+user agent. Even in the case of non-ASCII characters, escaping can
+sometimes cause problems. More precise control of <termref def="uri-escaping">URI escaping</termref> is
+therefore available by setting <code>escape-uri-attributes</code> to
+<code>no</code>, and controlling the escaping of URIs by using methods defined in
+<xspecref spec="FO" ref="func-encode-for-uri"/> and <xspecref spec="FO" ref="func-iri-to-uri"/>.</p>
+</note></div3>
+<div3 id="XHTML_INCLUDE-CONTENT-TYPE"><head>XHTML Output Method: the <code>include-content-type</code> Parameter</head>
+<p>If the instance of the data model includes a <code>head</code> element in
+the XHTML namespace,
+and the <code>include-content-type</code> parameter has the value
+<code>yes</code>,
+the XHTML output method
+<rfc2119>MUST</rfc2119>
+add a <code>meta</code> element as the first child element of the
+<code>head</code> element, specifying the character encoding actually
+used.</p>
+
+<example>
+<p>For example,</p>
+<eg xml:space="preserve">&lt;head&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=EUC-JP" /&gt;
+...</eg>
+</example>
+
+<p>The content type <rfc2119>SHOULD</rfc2119> be set to the value given for the
+<code>media-type</code> parameter.</p>
+
+<note><p>It is recommended that the <termref def="host-language">host language</termref> use as default
+value for this parameter one of the MIME types (<bibref ref="RFC2046"/>) registered for
+XHTML. Currently, these are <code>text/html</code> (registered by <bibref ref="RFC2854"/>)
+and <code>application/xhtml-xml</code> (registered by <bibref ref="RFC3236"/>). Note that
+some user agents fail to recognize the charset parameter if the
+content type is not <code>text/html</code>.</p></note><p>If a <code>meta</code> element has been added to the <code>head</code> element as described above,
+then any existing <code>meta</code> element child of the <code>head</code> element having an
+<code>http-equiv</code> attribute with the value "Content-Type",  making the comparison without consideration 
+of casing and leading/trailing spaces,  <rfc2119>MUST</rfc2119> be discarded. </p>
+<note>
+<p>This process removes possible parameters in the attribute value.  For example,</p>
+<eg><![CDATA[<meta http-equiv="Content-Type" content="text/html;version='3.0'" />]]></eg>
+<p>in the data model instance would be replaced by,</p>
+<eg><![CDATA[<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />]]></eg></note></div3></div2></div1>
+
+<div1 id="html-output">
+<head>HTML Output Method</head>
+
+<p>The HTML output method serializes the instance of the data model as
+HTML.</p>
+
+<example>
+<p>For example, the following XSL stylesheet generates html output,</p>
+<eg xml:space="preserve">&lt;xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+&lt;xsl:output method="html" version="4.0"/&gt;
+&lt;xsl:template match="/"&gt;
+  &lt;html&gt;
+    &lt;xsl:apply-templates/&gt;
+  &lt;/html&gt;
+&lt;/xsl:template&gt;
+...
+&lt;/xsl:stylesheet&gt;</eg>
+</example>
+<p>In the example, the <code>version</code> attribute of the <code>xsl:output</code> element indicates the version of the HTML Recommendation <bibref ref="html401"/> to which the serialized result is to conform.</p>
+<p>It is entirely the responsibility of the person or process that creates the instance of the data model to ensure that the instance of the data model conforms to the HTML Recommendation <bibref ref="html401"/>. It is not an error if the instance of the data model is invalid HTML. Equally, it is entirely under the control of the person or process that creates the instance of the data model whether the output conforms to HTML.</p>
+<div2 id="HTML_MARKUP"><head>Markup for Elements</head><p>The HTML output method
+<rfc2119>MUST NOT</rfc2119> output an element
+differently from the XML output method unless the
+expanded QName of the element has a <termref def="null-namespace-URI">null namespace URI</termref>. <termdef id="XML-ISLAND" term="XML Island">An element
+whose expanded QName has a <termref def="non-null-namespace-URI">non-null namespace URI</termref>
+
+<rfc2119>MUST</rfc2119> be output as
+XML.  This is known as an <term>XML Island</term>.</termdef> If the expanded QName of the element has a <termref def="null-namespace-URI">null namespace URI</termref>,
+but the local part of the expanded QName is not recognized as the name
+of an HTML element, the element 
+<rfc2119>MUST</rfc2119> be output in the same way as a
+non-empty, inline element such as <code>span</code>. In particular:</p>
+
+<olist>
+<item><p>If the <termref def="result-tree">result tree</termref> contains namespace <termref def="dt-node">nodes</termref> for namespaces other than the
+XML namespace, the HTML output method 
+<rfc2119>MUST</rfc2119> represent these namespaces using
+attributes named <code>xmlns</code> or <code>xmlns:</code><emph>prefix</emph>
+in the same way as the XML output method would represent them when the
+<code>version</code> parameter is set to <code>1.0</code>.</p>
+</item>
+
+<item><p>If the <termref def="result-tree">result tree</termref> contains elements or attributes whose names have a
+<termref def="non-null-namespace-URI">non-null namespace URI</termref>, the HTML output method
+
+<rfc2119>MUST</rfc2119> generate
+namespace-prefixed QNames for these <termref def="dt-node">nodes</termref> in the same way as the XML output
+method would do when the <code>version</code> parameter is set to <code>1.0</code>.</p></item>
+
+<item><p>Where special rules are defined later in this section for
+serializing specific HTML elements and attributes, these rules
+
+<rfc2119>MUST NOT</rfc2119> be 
+applied to an element or attribute whose name has a <termref def="non-null-namespace-URI">non-null
+namespace URI</termref>. However, the generic rules for the HTML output method
+that apply to all elements and attributes, for example the rules for
+escaping special characters in the text and the rules for indentation,
+<rfc2119>MUST</rfc2119> be used also for namespaced elements and attributes.</p>
+</item>
+
+<item><p>When serializing an element whose name is not defined in the
+HTML specification, but that is in the null namespace, the HTML output
+method
+
+<rfc2119>MUST</rfc2119>
+apply the same rules (for example, indentation rules) as
+when serializing a <code>span</code> element. The descendants of such
+an element 
+<rfc2119>MUST</rfc2119> be serialized as if they were descendants of a
+<code>span</code> element.</p>
+</item>
+
+<item><p>When serializing an element whose name is in a non-null
+namespace, the HTML output method 
+<rfc2119>MUST</rfc2119> apply the same rules (for
+example, indentation rules) as when serializing a <code>div</code>
+element. The descendants of such an element
+
+<rfc2119>MUST</rfc2119> be serialized as if
+they were descendants of a <code>div</code> element.</p>
+</item>
+</olist>
+
+<p>The HTML output method 
+<rfc2119>MUST NOT</rfc2119> output an end-tag
+for empty elements. For HTML 4.0, the empty elements are
+<code>area</code>, <code>base</code>, <code>basefont</code>,
+<code>br</code>, <code>col</code>, <code>frame</code>,
+<code>hr</code>, <code>img</code>, <code>input</code>,
+<code>isindex</code>, <code>link</code>, <code>meta</code> and
+<code>param</code>. For example, an element written as
+<code>&lt;br/&gt;</code> or <code>&lt;br&gt;&lt;/br&gt;</code> in an
+XSLT stylesheet 
+<rfc2119>MUST</rfc2119> be output as <code>&lt;br&gt;</code>.</p>
+
+<p>The HTML output method 
+<rfc2119>MUST</rfc2119> recognize the names of
+HTML elements regardless of case. For example, elements named
+<code>br</code>, <code>BR</code> or <code>Br</code> 
+<rfc2119>MUST</rfc2119> all be
+recognized as the HTML <code>br</code> element and output without an
+end-tag.</p>
+
+<p>The HTML output method 
+<rfc2119>MUST NOT</rfc2119> perform escaping for
+the content of the <code>script</code> and <code>style</code>
+elements.</p>
+
+<example>
+<p>For example, a <code>script</code> element
+created by an XQuery direct element constructor or an XSLT
+literal result element, such as:</p>
+<eg xml:space="preserve">&lt;script&gt;if (a &amp;lt; b) foo()&lt;/script&gt;</eg>
+<p>or</p>
+<eg xml:space="preserve">&lt;script&gt;&lt;![CDATA[if (a &lt; b) foo()]]&gt;&lt;/script&gt;</eg>
+<p>
+<rfc2119>MUST</rfc2119> be output as</p>
+<eg xml:space="preserve">&lt;script&gt;if (a &lt; b) foo()&lt;/script&gt;</eg>
+</example>
+
+<example>
+<p>A common requirement is to output a <code>script</code> element
+as shown in the example below:</p>
+
+<eg xml:space="preserve">&lt;script type="application/ecmascript"&gt;
+      document.write ("&lt;em&gt;This won't work&lt;/em&gt;")
+&lt;/script&gt;</eg>
+
+<p>This is illegal HTML, for the reasons explained in section B.3.2 of
+the <bibref ref="html401"/> 4.01 specification. Nevertheless, it is possible to output
+this fragment, using either of the following constructs:</p>
+
+<p>Firstly, by use of a <code>script</code> element
+created by an XQuery direct element constructor or an
+XSLT literal result element:</p>
+
+<eg xml:space="preserve">&lt;script type="application/ecmascript"&gt;
+      document.write ("&lt;em&gt;This won't work&lt;/em&gt;")
+&lt;/script&gt;</eg>
+
+<p>Secondly, by constructing the markup from ordinary text characters:</p>
+
+<eg xml:space="preserve">&lt;script type="application/ecmascript"&gt;
+      document.write ("&amp;lt;em&amp;gt;This won't work&amp;lt;/em&amp;gt;")
+&lt;/script&gt;</eg>
+
+<p>As the <bibref ref="html401"/> specification points out, the correct way to write this
+is to use the escape conventions for the specific scripting language.
+For JavaScript, it can be written as:</p>
+
+<eg xml:space="preserve">&lt;script type="application/ecmascript"&gt;
+      document.write ("&amp;lt;em&amp;gt;This will work&amp;lt;\/em&amp;gt;")
+&lt;/script&gt;</eg>
+
+<p>The <bibref ref="html401"/> 4.01 specification also shows examples of how to write
+this in various other scripting languages. The escaping <rfc2119>MUST</rfc2119> be done
+manually; it will not be done by the <termref def="serializer">serializer</termref>.</p>
+</example>
+
+</div2>
+<div2 id="HTML_ATTRIBS"><head>Writing Attributes</head><p>The HTML output method
+<rfc2119>MUST NOT</rfc2119> escape
+"<code>&lt;</code>" characters occurring in attribute values.</p>
+
+<p>The HTML output method
+<rfc2119>MUST</rfc2119> output boolean
+attributes (that is attributes with only a single allowed value that
+is equal to the name of the attribute) in minimized form.</p>
+
+<example>
+<p>For example, a start-tag created
+using the following XQuery direct element constructor or XSLT
+literal result element</p>
+<eg xml:space="preserve">&lt;OPTION selected="selected"&gt;</eg>
+<p><rfc2119>MUST</rfc2119> be output as</p>
+<eg xml:space="preserve">&lt;OPTION selected&gt;</eg>
+</example>
+
+<p>The HTML output method 
+<rfc2119>MUST NOT</rfc2119> escape a
+<code>&amp;</code> character occurring in an attribute value
+immediately followed by a <code>{</code> character (see <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/REC-html40/appendix/notes.html#h-B.7.1.1" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">Section
+B.7.1</loc> of the HTML Recommendation <bibref ref="html401"/>).</p>
+
+<example>
+<p>For example, a start-tag created
+using the following XQuery direct element constructor or XSLT
+literal result element</p>
+<eg xml:space="preserve">&lt;BODY bgcolor='&amp;amp;{{randomrbg}};'&gt;</eg>
+<p>
+<rfc2119>MUST</rfc2119> be output as</p>
+<eg xml:space="preserve">&lt;BODY bgcolor='&amp;{randomrbg};'&gt;</eg>
+</example>
+
+<p>See <specref ref="HTML_PARAMS"/> for additional directives on how attributes may be written.</p></div2>
+<div2 id="HTML_CHARDATA"><head>Writing Character Data</head>
+
+<p>The HTML output method <rfc2119>MAY</rfc2119> output a character using a
+character entity reference in preference to using a numeric character
+reference, if an entity is defined for the character in the version of
+HTML that the output method is using. Entity references and character
+references <rfc2119>SHOULD</rfc2119> be used only where the character is not present in
+the selected encoding, or where the visual representation of the
+character is unclear (as with <code>&amp;nbsp;</code>, for
+example).</p>
+
+<p>When outputting a sequence of whitespace characters in the
+instance of the data model, within an element where whitespace is treated normally
+(but not in elements such as <code>pre</code> and
+<code>textarea</code>), the HTML output method
+
+<rfc2119>MAY</rfc2119>
+represent it using any sequence of whitespace that will be treated
+in the same way by an HTML user agent. See section 3.5 of <bibref
+ref="xhtml-modularization"/> for some additional information on
+handling of whitespace by an HTML user agent.
+</p>
+<p>Certain characters, specifically the control characters #x7F-#x9F,
+are legal in XML but not in HTML. It is a
+<termref def="serial-err">serialization error</termref> <errorref code="0014" class="RE"/> to use the HTML
+output method when such characters appear in the instance of the data model. The
+<termref def="serializer">serializer</termref>
+<rfc2119>MUST</rfc2119> signal the error.</p>
+<p>The HTML output method 
+<rfc2119>MUST</rfc2119> terminate processing
+instructions with <code>&gt;</code> rather than
+<code>?&gt;</code>.  It is a <termref def="serial-err">serialization error</termref> <errorref code="0015" class="RE"/> to use the HTML output method when <code>&gt;</code> appears within a processing instruction in the data model instance being serialized.</p></div2>
+<div2 id="HTML_PARAMS"><head>The Influence of Serialization Parameters upon the HTML Output Method</head>
+<div3 id="HTML_VERSION"><head>HTML Output Method: the <code>version</code> Parameter</head>
+<p>The <code>version</code> attribute indicates the version of the HTML Recommendation <bibref ref="html401"/> to which the serialized result is to conform. If the <termref def="serializer">serializer</termref> does not support the version of HTML specified by this parameter, it <rfc2119>MUST</rfc2119> signal a <termref def="serial-err">serialization error</termref> <errorref code="0013" class="SU"/>.</p></div3>
+<div3 id="HTML_ENCODING"><head>HTML Output Method: the <code>encoding</code> Parameter</head>
+<p>The <code>encoding</code> parameter specifies the encoding to be used.
+<termref def="serializer">Serializers</termref> are
+<rfc2119>REQUIRED</rfc2119>  to support values of <code>UTF-8</code> and
+<code>UTF-16</code>. A <termref def="serial-err">serialization error</termref> <errorref code="0007" class="SU"/> occurs if an output
+encoding other than <code>UTF-8</code> or <code>UTF-16</code> is
+requested and the <termref def="serializer">serializer</termref>
+does not support that encoding. The <termref def="serializer">serializer</termref>
+<rfc2119>MUST</rfc2119> signal the error.
+</p>
+<p>It is possible that the instance of the data model will contain a character that
+cannot be represented in the encoding that the <termref def="serializer">serializer</termref>
+is using for
+output. In this case, if the character occurs in a context where HTML
+recognizes character references, then the character 
+<rfc2119>MUST</rfc2119> be output
+as a character entity reference or decimal numeric character
+reference; otherwise (for example, in a <code>script</code> or
+<code>style</code> element or in a comment), the <termref def="serializer">serializer</termref>
+<rfc2119>MUST</rfc2119>
+signal a <termref def="serial-err">serialization error</termref> <errorref code="0008" class="RE"/>.
+</p><p>See <specref ref="HTML_INCLUDE-CONTENT-TYPE"/> regarding how this parameter is used with the <code>include-content-type</code> parameter.</p></div3>
+<div3 id="HTML_INDENT"><head>HTML Output Method: the <code>indent</code> Parameter</head>
+<p>If the <code>indent</code> parameter has the value
+<code>yes</code>, then the HTML output method <rfc2119>MAY</rfc2119> add or
+remove whitespace as it serializes the <termref def="result-tree">result tree</termref>, so long as it does
+not change the way that a conforming HTML user agent would render the output.
+</p>
+
+<note><p>This rule can be satisfied by observing the
+following constraints:</p>
+
+<p>Whitespace <rfc2119>MUST NOT</rfc2119> be added other than before or after an element,
+or adjacent to an existing whitespace character.</p>
+<p>Whitespace <rfc2119>MUST NOT</rfc2119> be added or removed adjacent to an inline element.
+The inline elements are those included in the <code>%inline</code>
+category of any of the HTML 4.01
+DTD's,
+as well as the <code>ins</code> and
+<code>del</code> elements if they are used as inline elements
+(i.e., if they do not contain element children).</p>
+<p>Whitespace <rfc2119>MUST NOT</rfc2119> be added or removed inside a formatted element,
+the formatted elements being <code>pre</code>, <code>script</code>,
+<code>style</code>, and <code>textarea</code>.</p>
+
+<p>Note that the HTML definition of whitespace is different from the XML definition
+(see section 9.1 of the <bibref ref="html401"/> specification).</p>
+</note></div3>
+<div3 id="HTML_CDATA-SECTION-ELEMENTS"><head>HTML Output Method: the <code>cdata-section-elements</code> Parameter</head><p>The <code>cdata-section-elements</code> parameter is not applicable to the HTML output method, except in the case of <termref def="XML-ISLAND">XML Islands</termref>.</p></div3>
+<div3 id="HTML_OMIT-XML-DECLARATION"><head>HTML Output Method: the <code>omit-xml-declaration</code> and <code>standalone</code> Parameters</head><p>The <code>omit-xml-declaration</code> and <code>standalone</code> parameters are not applicable to the HTML output method.</p></div3>
+<div3 id="HTML_DOCTYPE"><head>HTML Output Method: the <code>doctype-system</code> and <code>doctype-public</code> Parameters</head><p>If the <code>doctype-public</code> or <code>doctype-system</code>
+parameters are specified, then the HTML output method <rfc2119>MUST</rfc2119>
+output a document type declaration immediately before the first
+element. The name following <code>&lt;!DOCTYPE</code>
+<rfc2119>MUST</rfc2119> be
+<code>HTML</code> or <code>html</code>. If the
+<code>doctype-public</code> parameter is specified, then the output
+method 
+<rfc2119>MUST</rfc2119> output <code>PUBLIC</code>
+followed by the specified
+public identifier; if the <code>doctype-system</code> parameter is
+also specified, it 
+<rfc2119>MUST</rfc2119> also output the specified
+system identifier
+following the public identifier. If the <code>doctype-system</code>
+parameter is specified but the <code>doctype-public</code> parameter
+is not specified, then the output method
+<rfc2119>MUST</rfc2119> output
+<code>SYSTEM</code> followed by the specified system identifier.</p>
+
+</div3>
+<div3 id="HTML_UNDECLARE-PREFIXES"><head>HTML Output Method: the <code>undeclare-prefixes</code> Parameter</head><p>The <code>undeclare-prefixes</code> parameter is not applicable to the HTML output method.</p></div3>
+<div3 id="HTML_NORMALIZATION-FORM"><head>HTML Output Method: the <code>normalization-form</code> Parameter</head><p>The
+<code>normalization-form</code>
+parameter is applicable to the
+HTML output method.
+The values <code>NFC</code> and
+<code>none</code> <rfc2119>MUST</rfc2119> be supported by the <termref def="serializer">serializer</termref>.
+A <termref def="serial-err">serialization error</termref> <errorref code="0011" class="SU"/> results if the value of the <code>normalization-form</code>
+parameter specifies a normalization form that is not supported by the
+<termref def="serializer">serializer</termref>;
+the <termref def="serializer">serializer</termref>
+<rfc2119>MUST</rfc2119> signal the error.</p></div3>
+<div3 id="HTML_MEDIA-TYPE"><head>HTML Output Method: the <code>media-type</code> Parameter</head><p>The <code>media-type</code> parameter is applicable to the
+HTML output method.
+See <specref ref="serparam"/> for more
+information.  See <specref ref="HTML_INCLUDE-CONTENT-TYPE"/> regarding how this parameter is used with the <code>include-content-type</code> parameter.</p></div3>
+<div3 id="HTML_USE-CHARACTER-MAPS"><head>HTML Output Method: the <code>use-character-maps</code> Parameter</head><p>The <code>use-character-maps</code> parameter is applicable to the
+HTML output method.  See <specref ref="character-maps"/> for more
+information.</p></div3>
+<div3 id="HTML_BYTE-ORDER-MARK"><head>HTML Output Method: the <code>byte-order-mark</code> Parameter</head><p>The <code>byte-order-mark</code> parameter is
+applicable to the HTML output method.  See
+<specref ref="serparam"/> for more information.</p></div3>
+<div3 id="HTML_ESCAPE-URI-ATTRIBUTES"><head>HTML Output Method: the <code>escape-uri-attributes</code> Parameter</head>
+<p>
+If the <code>escape-uri-attributes</code> parameter
+has the value <code>yes</code>,
+the HTML output method <rfc2119>MUST</rfc2119>
+apply <termref def="uri-escaping">URI escaping</termref> to 
+<termref def="uri-attribute-values">URI attribute values</termref>, except that relative URIs <rfc2119>MUST NOT</rfc2119> be absolutized.
+</p>
+<note>
+<p>This escaping is deliberately confined to non-ASCII characters,
+because escaping of ASCII characters is not always appropriate, for
+example when URIs or URI fragments are interpreted locally by the HTML
+user agent. Even in the case of non-ASCII characters, escaping can
+sometimes cause problems. More precise control of <termref def="uri-escaping">URI escaping</termref> is
+therefore available by setting <code>escape-uri-attributes</code> to
+<code>no</code>, and controlling the escaping of URIs by using methods defined in
+<xspecref spec="FO" ref="func-encode-for-uri"/> and <xspecref spec="FO" ref="func-iri-to-uri"/>.</p>
+</note>
+
+</div3>
+<div3 id="HTML_INCLUDE-CONTENT-TYPE"><head>HTML Output Method: the <code>include-content-type</code> Parameter</head>
+<p>If there is a <code>head</code> element,
+and the <code>include-content-type</code> parameter
+has the value <code>yes</code>,
+the HTML output method
+<rfc2119>MUST</rfc2119> add a <code>meta</code> element
+as the first child element
+of the <code>head</code> element specifying the character encoding
+actually used.</p>
+<example>
+<p>For example,</p>
+<eg xml:space="preserve">&lt;HEAD&gt;
+&lt;META http-equiv="Content-Type" content="text/html; charset=EUC-JP"&gt;
+...</eg>
+</example>
+<p>The content type <rfc2119>MUST</rfc2119>
+be set to the value given for the
+<code>media-type</code> parameter.</p>
+<p>If a <code>meta</code> element has been added to the <code>head</code> element as described above,
+then any existing <code>meta</code> element child of the <code>head</code> element having an
+<code>http-equiv</code> attribute with the value "Content-Type" <rfc2119>MUST</rfc2119> be discarded.</p><note><p>This process removes possible parameters in the
+attribute value.  For example,</p>
+<eg><![CDATA[<meta http-equiv="Content-Type" content="text/html;version='3.0'"/>]]></eg>
+<p>in the data model instance would be replaced by,</p>
+<eg><![CDATA[<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>]]></eg></note></div3></div2>
+</div1>
+
+<div1 id="text-output">
+<head>Text Output Method</head>
+<p>The Text output method serializes the instance of the data model by outputting the <termref def="dt-string-value">string value</termref> of the document <termref def="dt-node">node</termref> created by <termref def="sequence-normalization">sequence normalization</termref>,  without any escaping.</p><p>A newline character in the instance of the data model <rfc2119>MAY</rfc2119> be output using any
+character sequence that is conventionally used to represent a line
+ending in the chosen system environment.</p>
+<div2 id="TEXT_PARAMS"><head>The Influence of Serialization Parameters upon the Text Output Method</head>
+<div3 id="TEXT_VERSION"><head>Text Output Method: the <code>version</code> Parameter</head><p>The <code>version</code> parameter is not applicable to the Text output method.</p></div3>
+<div3 id="TEXT_ENCODING"><head>Text Output Method: the <code>encoding</code> Parameter</head>
+<p>The <code>encoding</code> parameter identifies the encoding that
+the Text output method
+<rfc2119>MUST</rfc2119> use to convert sequences of
+characters to sequences of bytes.
+<termref def="serializer">Serializers</termref>
+are <rfc2119>REQUIRED</rfc2119> to support values of <code>UTF-8</code> and
+<code>UTF-16</code>.
+A <termref def="serial-err">serialization error</termref> <errorref code="0007" class="SU"/>
+occurs if the <termref def="serializer">serializer</termref>
+does not support the encoding specified
+by the <code>encoding</code> parameter.
+The <termref def="serializer">serializer</termref>
+<rfc2119>MUST</rfc2119> signal the error.
+If the instance of the data model contains a
+character that cannot be represented in the encoding that the
+<termref def="serializer">serializer</termref> is using for output, the <termref def="serializer">serializer</termref>
+<rfc2119>MUST</rfc2119>
+signal a <termref def="serial-err">serialization error</termref> <errorref code="0008" class="RE"/>.</p></div3>
+<div3 id="TEXT_INDENT"><head>Text Output Method: the <code>indent</code> Parameter</head><p>The <code>indent</code> parameter is not applicable to the Text output method.</p></div3>
+<div3 id="TEXT_CDATA-SECTION-ELEMENTS"><head>Text Output Method: the <code>cdata-section-elements</code> Parameter</head><p>The <code>cdata-section-elements</code> parameter is not applicable to the Text output method.</p></div3>
+<div3 id="TEXT_OMIT-XML-DECLARATION"><head>Text Output Method: the <code>omit-xml-declaration</code> and <code>standalone</code> Parameters</head><p>The <code>omit-xml-declaration</code> and  <code>standalone</code> parameters are not applicable to the Text output method.</p></div3>
+<div3 id="TEXT_DOCTYPE"><head>Text Output Method: the <code>doctype-system</code> and <code>doctype-public</code> Parameters</head><p>The <code>doctype-system</code> and  <code>doctype-public</code> parameters are not applicable to the Text output method.</p></div3>
+<div3 id="TEXT_UNDECLARE-PREFIXES"><head>Text Output Method: the <code>undeclare-prefixes</code> Parameter</head><p>The <code>undeclare-prefixes</code> parameter is not applicable to the Text output method.</p></div3>
+<div3 id="TEXT_NORMALIZATION-FORM"><head>Text Output Method: the <code>normalization-form</code> Parameter</head>
+<p>The <code>normalization-form</code>
+parameter is applicable to the
+Text output method.
+The values <code>NFC</code>
+and <code>none</code> <rfc2119>MUST</rfc2119> be supported by the <termref def="serializer">serializer</termref>.
+A <termref def="serial-err">serialization error</termref> <errorref code="0011" class="SU"/> results if the value of the
+<code>normalization-form</code> parameter specifies a normalization form
+that is not supported by the <termref def="serializer">serializer</termref>; the
+<termref def="serializer">serializer</termref> <rfc2119>MUST</rfc2119> signal the
+error.</p></div3>
+<div3 id="TEXT_MEDIA-TYPE"><head>Text Output Method: the <code>media-type</code> Parameter</head><p>The <code>media-type</code> parameter is applicable to the
+Text output method.
+See <specref ref="serparam"/> for more
+information.</p></div3>
+<div3 id="TEXT_USE-CHARACTER-MAPS"><head>Text Output Method: the <code>use-character-maps</code> Parameter</head><p>The <code>use-character-maps</code> parameter is applicable to the
+Text output method.
+See <specref ref="character-maps"/> for more
+information.</p></div3>
+<div3 id="TEXT_BYTE-ORDER-MARK"><head>Text Output Method: the <code>byte-order-mark</code> Parameter</head>
+<p>The <code>byte-order-mark</code> parameter is
+applicable to the Text output method.  See
+<specref ref="serparam"/> for more information.</p></div3>
+<div3 id="TEXT_ESCAPE-URI-ATTRIBUTES"><head>Text Output Method: the <code>escape-uri-attributes</code> Parameter</head><p>The <code>escape-uri-attributes</code> parameter is not applicable to the Text output method.</p></div3>
+<div3 id="TEXT_INCLUDE-CONTENT-TYPE"><head>Text Output Method: the <code>include-content-type</code> Parameter</head><p>The <code>include-content-type</code> parameter is not applicable to the Text output method.</p></div3></div2></div1>
+<div1 id="character-maps">
+<head>Character Maps</head>
+<p>The <code>use-character-maps</code> parameter is a list of characters
+and corresponding string substitutions.</p>
+
+<p>Character maps allow a specific character appearing in a text or
+attribute <termref def="dt-node">node</termref> in the instance of the data model to be replaced with a specified
+string of characters during serialization. The string that is
+substituted is output "as is," and the <termref def="serializer">serializer</termref> performs no checks
+that the resulting document is well-formed. This mechanism can
+therefore be used to introduce arbitrary markup in the serialized
+output.
+See <xspecref spec="XT" ref="character-maps"/>
+of <bibref ref="xslt20"/> for examples of using character mapping in
+XSLT.</p>
+
+<p>Character mapping is applied to the characters that actually appear
+in a text or attribute <termref def="dt-node">node</termref> in the instance of the data model, before any other
+serialization operations such as escaping or <termref def="unicode-normalization">Unicode Normalization</termref> are
+applied. If a character is mapped, then it is not subjected to XML or
+HTML escaping, nor to Unicode Normalization. The string that is
+substituted for a character is not validated or processed in any way
+by the <termref def="serializer">serializer</termref>, except for translation into the target encoding. In
+particular, it is not subjected to XML or HTML escaping, it is not
+subjected to Unicode Normalization, and it is not subjected to further
+character mapping.  </p>
+
+<p>Character mapping is not applied to characters in text <termref def="dt-node">nodes</termref> whose
+parent elements are listed in the <code>cdata-section-elements</code>
+parameter,
+
+nor to characters for which output escaping has
+been disabled (disabling output escaping is an <bibref ref="xslt20"/>
+feature),
+
+nor to characters in attribute
+values that are subject to <termref def="uri-escaping">URI escaping</termref> defined for the HTML and
+XHTML output methods, unless <termref def="uri-escaping">URI escaping</termref> has been disabled using the
+<code>escape-uri-attributes</code> parameter in the output
+definition.</p>
+
+<p>On serialization, occurrences of a character specified in the
+<code>use-character-maps</code> in text <termref def="dt-node">nodes</termref> and attribute values
+are replaced by the corresponding string from the <code>use-character-maps</code>
+parameter.</p>
+
+<note><p>Using a character map can result in non-well-formed documents
+if the string contains XML-significant
+characters. For example, it is possible to create documents containing
+unmatched start and end tags, references to entities that are not
+declared, or attributes that contain tags or unescaped quotation
+marks.</p></note>
+
+<p>If a character is mapped, then it is not subjected to XML or HTML escaping.</p>
+<p>A <termref def="serial-err">serialization error</termref> <errorref code="0008" class="RE"/> occurs if character mapping causes the output
+of a string containing a character that cannot be represented in the
+encoding that the <termref def="serializer">serializer</termref>
+is using for output. The <termref def="serializer">serializer</termref>
+<rfc2119>MUST</rfc2119> signal the error.</p>
+</div1>
+<div1 id="conformance">
+<head>Conformance</head>
+
+<p><termdef term="host language" id="host-language">Serialization is intended primarily as a component
+of a <term>host language</term> such as <bibref ref="xslt20"/> or <bibref ref="xquery"/>.</termdef>  Therefore, this document
+relies on specifications that use it to specify conformance criteria
+for Serialization in their respective environments.
+Specifications that set conformance criteria for their use of
+Serialization <rfc2119>MUST NOT</rfc2119> change the semantic definitions of 
+Serialization as given in this specification, except by
+subsetting and/or compatible extensions.  It is the responsibility of the <termref def="host-language">host language</termref> to specify how <termref def="serial-err">serialization errors</termref> should be handled.</p>
+<p>Certain facilities in this specification are described as producing 
+<termref def="impdef">implementation-defined</termref> results. A
+claim that asserts conformance with this specification <rfc2119>MUST</rfc2119> be accompanied by documentation
+stating the effect of each implementation-defined feature. For convenience, a non-normative
+checklist of implementation-defined features is provided at 
+<specref ref="implementation-defined-features"/>.</p></div1>
+</body>
+
+<back>
+&bibl;
+&errors;
+<div1 id="list-of-uri-attributes">
+			<head>List of URI Attributes</head>
+
+			<p>The following list of attributes are declared as type <code>%URI</code> or 
+			<code>%UriList</code> for a given HTML or XHTML element, with the exception of the 
+			<code>name</code> attribute for element <code>A</code> which is not a URI type.  
+			The <code>name</code> attribute for element <code>A</code> should be escaped as is
+			recommended by the HTML Recommendation <bibref ref="html401"/> in Appendix B.2.1.</p>
+						
+			<table width="500" border="1" summary="Attributes of type URI">
+				<col width="200" span="1" />
+				<col width="300" span="1" />
+				<thead>
+					<tr>
+						<th align="left" rowspan="1" colspan="1">Attributes</th>
+						<th align="left" rowspan="1" colspan="1">Elements</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td rowspan="1" colspan="1">action</td>
+						<td rowspan="1" colspan="1">FORM</td>
+					</tr>
+					<tr>
+						<td rowspan="1" colspan="1">archive</td>
+						<td rowspan="1" colspan="1">OBJECT</td>
+					</tr>					
+					<tr>
+						<td rowspan="1" colspan="1">background</td>
+						<td rowspan="1" colspan="1">BODY</td>
+					</tr>
+					<tr>
+						<td rowspan="1" colspan="1">cite</td>
+						<td rowspan="1" colspan="1">BLOCKQUOTE, DEL, INS, Q</td>
+					</tr>
+					<tr>
+						<td rowspan="1" colspan="1">classid</td>
+						<td rowspan="1" colspan="1">OBJECT</td>
+					</tr>
+					<tr>
+						<td rowspan="1" colspan="1">codebase</td>
+						<td rowspan="1" colspan="1">APPLET, OBJECT</td>
+					</tr>
+					<tr>
+						<td rowspan="1" colspan="1">data</td>
+						<td rowspan="1" colspan="1">OBJECT</td>
+					</tr>																													
+					<tr>
+						<td rowspan="1" colspan="1">datasrc</td>
+						<td rowspan="1" colspan="1">BUTTON, DIV, INPUT, OBJECT, SELECT, SPAN, TABLE, TEXTAREA</td>
+					</tr>
+					<tr>
+						<td rowspan="1" colspan="1">for</td>
+						<td rowspan="1" colspan="1">SCRIPT</td>
+					</tr>					
+					<tr>
+						<td rowspan="1" colspan="1">href</td>
+						<td rowspan="1" colspan="1">A, AREA, BASE, LINK</td>
+					</tr>					
+					<tr>
+						<td rowspan="1" colspan="1">longdesc</td>
+						<td rowspan="1" colspan="1">FRAME, IFRAME, IMG</td>
+					</tr>
+					<tr>
+						<td rowspan="1" colspan="1">name</td>
+						<td rowspan="1" colspan="1">A</td>
+					</tr>					
+					<tr>
+						<td rowspan="1" colspan="1">profile</td>
+						<td rowspan="1" colspan="1">HEAD</td>
+					</tr>										
+					<tr>
+						<td rowspan="1" colspan="1">src</td>
+						<td rowspan="1" colspan="1">FRAME, IFRAME, IMG, INPUT, SCRIPT</td>
+					</tr>
+					<tr>
+						<td rowspan="1" colspan="1">usemap</td>
+						<td rowspan="1" colspan="1">IMG, INPUT, OBJECT</td>
+					</tr>											
+				</tbody>
+			</table>			
+</div1>
+<inform-div1 id="implementation-defined-features">
+			<head>Checklist of Implementation-Defined Features</head>
+			<p>This appendix provides a summary of Serialization features whose effect is
+explicitly <termref def="impdef">implementation-defined</termref>.
+The conformance rules (see <specref ref="conformance"/>) require vendors to provide documentation 
+that explains how these choices have been exercised.</p>
+
+			<?imp-def-feature?>			
+
+		</inform-div1>
+<inform-div1 id="revision-log">
+	<head>Revision Log</head>
+<p role="xpath">No substantive changes have been made to this document
+since the Proposed Recommendation Draft of 21 November 2006.</p>
+
+<!--*
+	<p>This log records changes made to this document since the publication of the Candidate Recommendation on June 8, 2006.</p>
+	<olist>
+		<item><p>bug 3541 - The 4th bullet in section 5 has been revised to indicate that in the presence of a DTD, non-CDATA attributes may lose whitespace characters as a result of attribute value normalization.</p></item>		
+		<item><p>bug 3441 - Two steps are added to section 4 Phases of Serialization. The first step is to add a meta element and the 4th step is to add indentation.</p></item>													
+	</olist>	
+	<p>This log records additional changes made to this document since the publication of the Candidate Recommendation on Nov. 3, 2005.</p>
+	<olist>
+		<item><p>bug 2459 - The character expansion phase described in section 4 has been rewritten so that the sequence of processes to be applied are unambiguous and should produce a reasonable result.</p></item>												
+		<item><p>bug 2470 - A paragraph has been added to Appendix B which states that the <code>err</code> prefix has the same namespace URI as the <code>err</code> namespace binding defined in XPath 2.0.</p></item>												
+		
+		<item><p>bug 2474 - Additional text has been added to the description of the normalization-form parameter for the XML output method in section 5.1.8 to clarify responsibilities of the serializer when fully-normalized is specified.</p></item>
+				
+		<item><p>bug 2519 - A non-normative note has been added to section 5.1.11 which explains why the combination of UTF-16 and XML output without a byte order mark is permissible even though the resulting XML fragment may cause an error when processed by an XML processor.</p></item>
+		<item><p>bug 2693 - The last note in section 5 has been clarified so that it clearly states only the NEL character in text and attribute nodes must always be escaped using character references.</p></item>
+		
+		<item><p>bug 2695 - The description of the undeclare-prefixes parameter for the HTML output method in section 7.4.7 has been modified so that it is no longer applicable to XML islands.</p></item>
+		<item><p>bug 2697 - The description of error SESU0013 has been modified to include the XML output method if the version value is not supported by the Serializer.</p></item>
+		
+		<item><p>bug 3051 - The description of the undeclare-prefixes parameter for the XML output method in section 5.1.7 has been modified.  It now includes a sentence that says if the undeclare-prefixes parameter has the value no and the output method is XML or XHTML, then the undeclaration of prefixes MUST NOT occur.</p></item>
+		<item><p>bugs 2694, 2696 - minor editorial changes</p></item>			
+	</olist>	
+	<p>This log records additional changes made to this document since the publication of the second Last Call Draft of Apr. 4, 2005.</p>
+	<olist>
+		<item><p>bug 1218 - Serialization error codes have been changed from 6 characters to 8 characters.  The additional 2 characters are based on a logical categorization of errors as described in the bugzilla report.</p></item>
+		<item><p>bug 1220 - Bullet f in the character expansion phase has been dropped.  This bullet describes delimiter fixup when an attribute value contains a quote (or apostrophe).  This detail is now left to the implementation.</p></item>
+		<item><p>bug 1222 - A paragraph has been added to section 3 to clarify the support of additional serialization parameters.  The names of such parameters must be namespace-qualified and the affect must not override the provisions of this specification.</p></item>
+		<item><p>bug 1258 - A definition of URI attribute values has been added.  Appendix List of URI Attributes has also been added to provide a complete list of attributes that are of type %URI or %UriList.</p></item>
+		<item><p>bug 1324 - Description of byte-order-mark in section 3 has been revised to clarify when the parameter is ignored.</p></item>
+		<item><p>bug 1327 - The reference to Section 5.4 of XLink in the description of URI escaping has been removed.  It now references the function fn:escape-html-uri defined in XQuery 1.0 and XPath 2.0 Functions and Operators.</p></item>
+		<item><p>bug 1829 - The definition of URI escaping has been modified to add a preceding step to normalize URI attribute values to NFC before applying fn:escape-html-uri.</p></item>			
+		<item><p>bug 1859 - The 3rd bullet in section 5.1.3 has been revised and relocated to follow the bulleted list. The constraint that existing whitespace must not be removed without a replacement has been lifted.</p></item>
+		<item><p>internal comment - A paragraph has been added to section 7, describing that it is the person or process responsibility to ensure that the instance of the data model conforms to the HTML Recommendation.</p></item>
+		<item><p>internal comment - The description of error SESU0006 in Appendix B has been modified to reflect the more accurate description of this error provided in section 5.1.1.</p></item>			
+		<item><p>bugs 1203, 1204, 1205, 1206, 1221, 1223, 1224, 1332, 1858 - minor editorial changes</p></item>														
+	</olist>
+
+*-->
+
+</inform-div1>	
+</back>	
+</spec>

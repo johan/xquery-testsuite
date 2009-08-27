@@ -1,0 +1,7 @@
+<paragraphs><p>
+The match option application order is subject to some constraints:
+<olist><item><p>The Language Option must be applied first</p></item><item><p>The Stemming Option must be applied before the Case Option and the
+Diacritics Option</p></item></olist>
+Aside from these constraints, the full order of the application of match
+options is <termref def="dt-implementation-defined">implementation-defined</termref>.
+</p></paragraphs>

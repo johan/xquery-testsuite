@@ -1,0 +1,7 @@
+<book>
+    <title>The Story of a Dog and a Cat</title>
+    <author>Melton Mowbray</author>
+    <date>1832</date>
+    <publisher>Example Books</publisher>
+    <price>100</price>
+  </book>

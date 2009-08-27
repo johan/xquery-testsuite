@@ -1,0 +1,27 @@
+<title shortTitle="Usability Basics">Usability 
+      Basics: How to Plan for and Conduct Usability Tests 
+      on Web Site Thereby Improving the Usability of Your 
+      Web Site</title>
+<chapter>
+      <title>Conducting Usability Tests</title> 
+      <p>Users can be tested at any computer 
+      workstation <footnote>They may be more 
+      comfortable at their own workstation than in 
+      a lab.</footnote> or in a lab.</p>
+      <p>Give the user the script, then assure them 
+      that you are testing the Web site, not them. 
+      Users are asked to verbalize their thoughts as 
+      they complete the tasks. The event is recorded 
+      or someone takes notes. It is often preferable 
+      to have two testers, <footnote>Usability 
+      testing can be done at great expense or on a 
+      shoe string, using <testingProcedure>in-house 
+      expertise</testingProcedure> or 
+      <testingProcedure>contracting with human 
+      computer interaction professionals
+      </testingProcedure>.</footnote> one to ask the 
+      questions, another to take notes. Testers should 
+      offer no guidance or comments to the user. Mouse 
+      movements, typing, expressions, and the user's 
+      words should be recorded.</p>
+</chapter>

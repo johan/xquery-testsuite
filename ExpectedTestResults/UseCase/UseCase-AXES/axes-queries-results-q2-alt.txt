@@ -1,0 +1,12 @@
+<title shortTitle="Improving Web Site Usability">Improving 
+the Usability of a Web Site Through Expert Reviews and 
+Usability Testing</title><title shortTitle="Usability Basics">Usability 
+Basics: How to Plan for and Conduct Usability Tests 
+on Web Site Thereby Improving the Usability of Your 
+Web Site</title>
+<step number="1">Clarify and 
+ articulate the goal of the usability testing.
+ </step> 
+<step number="2">Identify tasks which 
+ are critical for users to be able to complete 
+ successfully.</step>

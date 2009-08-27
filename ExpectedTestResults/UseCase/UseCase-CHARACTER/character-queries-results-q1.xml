@@ -1,0 +1,156 @@
+<book number="3">
+   <metadata>
+      <title shortTitle="Usabilityguy Manuscript Guide">John Wesley Usabilityguy: A Register of His 
+      Papers</title>
+      <author>Millicent Marigold</author>
+      <author>Morty Marigold</author>
+      <publicationInfo>  
+         <place>Washington, D.C.</place>    
+         <publisher>Ersatz Manuscript Library</publisher>
+         <dateIssued>1998</dateIssued>
+         <dateRevised>2002</dateRevised>
+      </publicationInfo>
+      <price>21.49</price>   
+      <subjects xml:lang="en">
+         <subject>Computers</subject>
+         <subject>Software evaluation</subject>
+         <subject>Usability testing</subject>
+         <subject>Manuscript collections</subject>
+      </subjects>
+      <subjects xml:lang="fr">
+         <subject>Ordinateurs</subject>
+         <subject>Évaluation de logiciels</subject>
+         <subject>Tests d'ergonomie</subject>
+         <subject>Collections de manuscrits</subject>
+      </subjects>
+      <subjects xml:lang="zh">
+         <subject>计算机</subject>
+         <subject>软件评价</subject>
+         <subject>可用性测试</subject>
+         <subject>手稿专藏</subject>
+      </subjects>
+   </metadata>
+   <content>
+      <introduction>
+         <p>The papers of John Wesley Usabilityguy span the 
+         years 1946-2001, with the bulk of the items 
+         concentrated in the period from 1985 to 2001. The 
+         papers feature his career as a developer of software 
+         applications and usability specialist. The collection 
+         consists of correspondence, memoranda, journals, 
+         speeches, article drafts, book drafts, notes, charts, 
+         graphs, family papers, clippings, printed matter, 
+         photographs, résumés and other materials.</p>
+      </introduction>
+      <part number="1"><container type="box">1-12</container>
+         <title>Subject File, <date normalize="1930/1974">
+         1930-1974</date></title>
+         <introduction>
+            <p>Correspondence, telegrams, memoranda, journals, 
+            logs, testimony, approved travel orders, invitations, 
+            charts, graphs, forms, biographical data, photographs, 
+            book drafts, clippings and other printed matter, 
+            résumés and miscellaneous material. Organized by 
+            name of person or organization, topic, or type of 
+            material.</p>
+         </introduction>
+         <component><container type="box">1</container>
+           <componentTitle>Computers</componentTitle>
+           <subComponent>
+              <componentTitle>Software, 
+              <componentDate normalize="1946/1947">1946-1947
+              </componentDate>
+              </componentTitle>
+           </subComponent>
+           <subComponent>
+              <componentTitle>Human Computer Interaction 
+              research, <componentDate normalize="1945/1952">
+              1945-1952</componentDate>
+              </componentTitle>
+              <subsubComponent>
+                 <componentTitle>Flow diagram, 
+                 <componentDate normalize="1950">1950
+                 </componentDate>
+                 </componentTitle>
+              </subsubComponent>
+              <subsubComponent>
+                 <componentTitle>General, 
+                 <componentDate normalize="1947/1951">1947-1951
+                 </componentDate>
+                 </componentTitle>
+              </subsubComponent>
+              <subsubComponent><container type="box">2</container>
+                 <componentTitle>Eye Movement research,
+                 <componentDate normalize="1949/1950">1949-1950
+                 </componentDate>
+                 </componentTitle>
+              </subsubComponent> 
+              <subsubComponent>
+                 <componentTitle>User profiling, 
+                 <componentDate normalize="1950/1959">1950s
+                 </componentDate>
+                 </componentTitle>
+              </subsubComponent>
+            </subComponent>
+         </component>
+         <component>
+           <componentTitle>Web User Appreciation Award, 
+           <componentDate normalize="1956">1956</componentDate>
+           </componentTitle>
+         </component>
+      </part>
+      <part number="2"><container type="box">3-5</container>
+         <title>Writings File, 
+         <date normalize="1985/1999">1985-1999</date>
+         </title>
+         <introduction>
+            <p>Correspondence, articles, book drafts, notes, 
+            contracts, clippings, and printed matter. Arranged 
+            alphabetically by type (articles, books, reports, 
+            and miscellaneous) and therein alphabetically by 
+            type of material, subject, or title.</p>
+         </introduction>
+         <component>
+            <componentTitle>Writings by Usabilityguy
+            </componentTitle>
+            <subComponent>
+               <componentTitle><componentDate normalize="1996">
+               1996</componentDate>
+               </componentTitle> 
+               <subsubComponent>
+                  <componentTitle>"How Many Users Are Enough 
+                  for User Testing?"</componentTitle>
+               </subsubComponent> 
+               <subsubComponent>
+                  <componentTitle>"How to Evaluate Results from 
+                  User Tests."</componentTitle>
+               </subsubComponent>
+               <subsubComponent>
+                  <container type="box">5</container>
+                  <componentTitle>"When Are You Done Testing?"
+                  </componentTitle>
+               </subsubComponent>
+               <subsubComponent>
+                  <componentTitle>"Do-It-Yourself User Testing"
+                  </componentTitle>
+               </subsubComponent> 
+            </subComponent>
+         </component>
+         <component>
+            <componentTitle>Charitable Contributions
+            </componentTitle> 
+            <subComponent>
+               <componentTitle>Diseases: AIDS, Hepatitis, 
+               Tuberculosis <componentDate normalize="1990/1999">1990-1999</componentDate>
+               </componentTitle>
+            </subComponent> 
+            <subComponent>
+               <componentTitle>Environmental Conservation: 
+               Rivers <componentDate normalize="1995">1995
+               </componentDate>
+               </componentTitle>
+            </subComponent>
+         </component>
+      </part>
+   </content>
+</book>

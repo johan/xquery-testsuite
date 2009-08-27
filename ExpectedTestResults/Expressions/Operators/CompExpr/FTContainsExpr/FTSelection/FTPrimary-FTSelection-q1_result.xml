@@ -1,0 +1,36 @@
+<paragraphs><p>Full-text match options modify the matching behaviour of 
+the <termref def="dt-ftprimary">primary full-text selection</termref> to which 
+they are applied. </p><p>
+Match options are propagated through the query via the static context.
+For each of the seven match option groups,
+the static context has a component
+that contains one option from that group.
+The seven settings are initialized by the implementation
+in accordance with the table in 
+Appendix <specref ref="id-xqft-static-context-components"/>,
+and are modified
+by any <nt xmlns:xlink="http://www.w3.org/1999/xlink" def="doc-xquery-FTOptionDecl" xlink:type="simple">FTOptionDecl</nt>s
+in the <nt xmlns:xlink="http://www.w3.org/1999/xlink" def="doc-xquery-Prolog" xlink:type="simple">Prolog</nt>.
+The resulting settings are then propagated unchanged
+to every <nt xmlns:xlink="http://www.w3.org/1999/xlink" def="doc-xquery-FTContainsExpr" xlink:type="simple">FTContainsExpr</nt> in the module
+(including those in <code>VarDecl</code>s and <code>FunctionDecl</code>s,
+and including any that happen to be nested within
+another <code>FTContainsExpr</code>).
+At any given <code>FTContainsExpr</code>,
+the settings from the static context
+are copied to the <code>FTContainsExpr</code>'s inner settings,
+which are then propagated down the syntax tree.
+At each <nt xmlns:xlink="http://www.w3.org/1999/xlink" def="doc-xquery-FTPrimaryWithOptions" xlink:type="simple">FTPrimaryWithOptions</nt>,
+the locally specified match options (if any)
+overwrite the corresponding inner setting(s).
+At each <nt xmlns:xlink="http://www.w3.org/1999/xlink" def="doc-xquery-FTWords" xlink:type="simple">FTWords</nt>,
+the inner settings are used
+as the effective match options
+for tokenizing the query strings
+and matching them against the tokens in the text.
+(These inner settings could be seen
+as a parallel set of components in the static context,
+but Section <specref ref="tq-semantics"/> models them
+as structures that get passed as parameters
+to various semantic functions.)
+</p></paragraphs>

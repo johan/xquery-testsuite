@@ -1,0 +1,21 @@
+<paragraphs><p>A cardinality selection limits the number of different
+matches of <nt xmlns:xlink="http://www.w3.org/1999/xlink" def="doc-xquery-FTWords" xlink:type="simple">FTWords</nt> within the
+specified range. The semantics of FTRange are described in 
+<specref ref="ftdistance"/>. </p><p>In the document fragment "very very big":</p><p>
+The <nt xmlns:xlink="http://www.w3.org/1999/xlink" def="doc-xquery-FTWords" xlink:type="simple">FTWords</nt> 
+                     <code>"very big"</code> has 1
+match consisting of the second "very" and "big".
+</p><p>
+The <nt xmlns:xlink="http://www.w3.org/1999/xlink" def="doc-xquery-FTWords" xlink:type="simple">FTWords</nt> 
+                     <code>{"very", "big"} all</code>
+has 2 matches; one consisting of the first "very" and "big", and
+the other containing the second "very" and "big".
+</p><p>
+The <nt xmlns:xlink="http://www.w3.org/1999/xlink" def="doc-xquery-FTWords" xlink:type="simple">FTWords</nt> 
+                     <code>{"very", "big"} any</code> 
+has 3 matches. 
+</p><p>The following expression returns the example <code>book</code> element's 
+number, because the <code>book</code> element contains 2 or more occurrences 
+of "usability":</p><p>The following expression returns the empty sequence, because there are 
+3 occurrences of <code>{"usability", "testing"} any</code> in the designated 
+<code>title</code>:</p></paragraphs>

@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
+<xs:import namespace="http://www.w3.org/XML/1998/namespace" 
+schemaLocation = "http://www.w3.org/2001/xml.xsd"/>
+   <xs:element name="books">
+      <xs:annotation>
+         <xs:documentation>A possible XML Schema for Sample Data 
+         in XQuery and XPath Full Text Use Cases
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence maxOccurs="unbounded">
+            <xs:element name="book">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="metadata" 
+                     type="metadataType"/>
+                     <xs:element name="content" 
+                     type="contentType"/>
+                  </xs:sequence>
+                  <xs:attribute name="number" type="xs:integer"/>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:complexType name="anyXMLTextType" mixed="true">
+      <xs:annotation>
+         <xs:documentation>free text, contains any well-formed 
+         XML</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:any processContents="skip" minOccurs="0" 
+         maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="metadataType">
+      <xs:sequence>
+         <xs:element name="title">
+            <xs:complexType>
+               <xs:simpleContent>
+                  <xs:extension base="xs:string">
+                     <xs:attribute name="shortTitle" 
+                     type="xs:string"/>
+                  </xs:extension>
+               </xs:simpleContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="author" type="xs:string" 
+         minOccurs="0" 
+         maxOccurs="unbounded"/>
+         <xs:element name="publicationInfo" 
+         type="publicationInfoType"/>
+         <xs:element name="price" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:float">
+                  <xs:minInclusive value="0"/>
+                  <xs:maxInclusive value="10000"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="subjects" 
+         maxOccurs="unbounded">
+            <xs:sequence>
+               <xs:element name="subject" type="xs:string" 
+               maxOccurs="unbounded"/>
+            </xs:sequence>
+               <xs:attribute ref="xml:lang"/>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="publicationInfoType">
+      <xs:sequence>
+         <xs:element name="place" type="xs:string" 
+         minOccurs="0"/>
+         <xs:element name="publisher" type="xs:string" 
+         maxOccurs="unbounded"/>
+         <xs:element name="dateIssued" type="xs:string"/>
+         <xs:element name="dateRevised" type="xs:string"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="contentType">
+      <xs:sequence>
+         <xs:element name="introduction" 
+         type="introductionType" 
+         minOccurs="0"/>
+         <xs:element name="part" type="partType" 
+         maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="introductionType">
+      <xs:sequence>
+         <xs:element name="author" type="xs:string" 
+         minOccurs="0"/>
+         <xs:element name="p" maxOccurs="unbounded">
+            <xs:complexType mixed="true">
+               <xs:choice minOccurs="0" 
+               maxOccurs="unbounded">
+                  <xs:element name="b"/>
+                  <xs:element name="emph"/>
+                  <xs:element name="i"/>
+               </xs:choice>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="partType">
+      <xs:sequence>
+         <xs:element name="container" type="xs:string" 
+         minOccurs="0">
+             <xs:complexType>
+               <xs:simpleContent>
+                  <xs:extension base="xs:string">
+                     <xs:attribute name="type" type="xs:string"/>
+                  </xs:extension>
+               </xs:simpleContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="title" type="titleType" 
+         minOccurs="0"/>
+         <xs:element name="introduction" 
+         type="introductionType" 
+         minOccurs="0"/>
+         <xs:element name="chapter" type="chapterType" 
+         minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="component" 
+         type="componentType" 
+         minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="number" type="xs:string"/>
+   </xs:complexType>
+   <xs:complexType name="chapterType">
+      <xs:sequence>
+         <xs:element name="title" type="xs:string"/>
+         <xs:element name="p" type="anyXMLTextType" 
+         maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="footnoteType" mixed="true">
+      <xs:sequence>
+         <xs:element name="citation" type="xs:string"
+         minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
+               <xs:simpleContent>
+                  <xs:extension base="xs:string">
+                     <xs:attribute name="url" type="xs:anyURI"/>
+                  </xs:extension>
+               </xs:simpleContent>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="componentType">
+      <xs:sequence>
+         <xs:element name="container" type="xs:string" 
+         minOccurs="0">
+            <xs:complexType>
+               <xs:simpleContent>
+                  <xs:extension base="xs:string">
+                     <xs:attribute name="type" type="xs:string"/>
+                  </xs:extension>
+               </xs:simpleContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="componentTitle" 
+         type="componentTitleType"/>
+         <xs:element name="subComponent" 
+         type="subComponentType" 
+         minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="titleType" mixed="true">
+      <xs:all minOccurs="0">
+         <xs:element name="date" type="xs:string">
+            <xs:complexType>
+               <xs:simpleContent>
+                  <xs:extension base="xs:string">
+                     <xs:attribute name="normalize" 
+                     type="xs:string"/>
+                  </xs:extension>
+               </xs:simpleContent>
+            </xs:complexType>
+         </xs:element>
+      </xs:all>
+   </xs:complexType>
+   <xs:complexType name="componentTitleType" 
+   mixed="true">
+      <xs:sequence>
+         <xs:element name="componentDate" 
+         type="xs:string" 
+        minOccurs="0">
+            <xs:complexType>
+               <xs:simpleContent>
+                  <xs:extension base="xs:string">
+                     <xs:attribute name="normalize" 
+                     type="xs:string"
+                      use="optional"/>
+                  </xs:extension>
+               </xs:simpleContent>
+            </xs:complexType> 
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="subComponentType">
+      <xs:sequence>
+         <xs:element name="container" type="xs:string" 
+         minOccurs="0">
+            <xs:complexType>
+               <xs:simpleContent>
+                  <xs:extension base="xs:string">
+                     <xs:attribute name="type" type="xs:string"/>
+                  </xs:extension>
+               </xs:simpleContent>
+            </xs:complexType> 
+        </xs:element>
+        <xs:element type="componentTitleType"/>
+        <xs:element name="subsubComponent" 
+        type="subSubComponentType" 
+        minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="subSubComponentType">
+      <xs:sequence>
+         <xs:element name="container" type="xs:string" 
+         minOccurs="0">
+           <xs:complexType>
+              <xs:simpleContent>
+                 <xs:extension base="xs:string">
+                    <xs:attribute name="type" type="xs:string"/>
+                 </xs:extension>
+              </xs:simpleContent>
+           </xs:complexType> 
+        </xs:element>
+        <xs:element name="componentTitle" 
+        type="componentTitleType"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

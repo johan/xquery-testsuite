@@ -1,0 +1,487 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>Guidelines for Running the XML Query Test Suite</title>
+  <style type="text/css">
+<!--
+.style1 {color: #FF0000}
+-->
+  </style>
+</head>
+<body>
+<p><img alt="W3C" src="http://www.w3.org/Icons/WWW/w3c_home.gif"></p>
+<h1 style="text-align: center;">Guidelines for Running the XPath and XQuery Full Text 1.0 Test Suite<br>
+</h1>
+<p>This document provides information to
+implementers who wish to run the XPath and XQuery Full Text 1.0 Test Suite on their
+implementation. It includes guidelines how test cases can be
+customized in order to run on an implementation, and describes the
+process of evaluating the results. The documentation of the XPath and XQuery Full Text 1.0 Test Suite, which defines the structure of the test cases and the
+catalog, can be found in [1]. Guidelines for submitting results to
+the XML Query Working Group can be found in [3].</p>
+<h2>Obtaining a Test Harness</h2>
+Implementers are expected to write their own test harness
+that implements the following tasks:
+<ul style="margin-top: 0in;" type="disc">
+  <li>Read test cases from the catalog,
+apply customization if applicable (see below)</li>
+  <li>Execute tests, using source files
+specified in the catalog</li>
+  <li>Use appropriate comparator to match
+result</li>
+  <li>Produce categorization of test result
+(pass, fail etc., see below)</li>
+</ul>
+<p>Ideally, the test harness produces an XML file
+containing
+all test results in the format shown below, that can be sent to the
+working group.<br>
+</p>
+<h2>Test Suite Customization</h2>
+<p>In order to run the test suite on an XPath and XQuery Full Text
+1.0 implementation, implementers may customize the test suite and make
+a number of well-defined changes to the test cases. All changes
+made to the original test suite must be documented in free-text
+form as part of the result submission. Changes beyond the ones
+listed below must be highlighted.</p>
+<h3>Setting the Default Context Item</h3>
+<p>XQuery, with or without Full-Text expressions, supports a number of different ways to
+refer to source data as query context. Among these are implicit
+context, external variables, the <span class="SpellE">fn<span
+ class="GramE">:doc</span></span>() function, the
+default collection function, implementation-defined functions, or
+parameter passing through host-language binding.</p>
+<p>Test cases that do not refer to any input
+document (<em>i.e.</em>, the catalog does not contain any
+&#8220;input-file&#8221; for the &#8220;test-case&#8221;) or test a
+specific context setting (i.e., a &#8220;context&#8221; attribute
+in the &#8220;input-file&#8221; element defines a specific context
+setting) may not be customized this way.</p>
+<p>The following example is a customizable test
+case (because the input-file element does not define a context
+attribute)
+</p>
+<table style="text-align: left;" border="2"
+ cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">
+      <span
+ style="font-size: 10pt; font-family: Courier; color: black;">(: insert-start :)<br>
+declare variable $input-context external;<br>
+(: insert-end :)<br>
+<br>
+for $b in $input-context/books/book<br>
+where $b/title ftcontains ("dog" with stemming) ftand "cat" <br>
+return $b/author</span></td>
+    </tr>
+  </tbody>
+</table>
+<p>and the corresponding catalog entry:<br>
+</p>
+<table style="text-align: left; width: 800px; height: 157px;" border="2"
+ cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">
+<span style="font-size: 10pt; font-family: Courier; color: black;">&lt;test-case is-XPath2="false" name="examples-222-q1"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FilePath="Examples/2.2.2-Examples/" scenario="standard" Creator="Full-Text Task Force"><br>
+&nbsp;&nbsp;&lt;description>Find the author of each book with a title containing a token<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with the same root as dog and the token cat.&lt;/description><br>
+&nbsp;&nbsp;&lt;spec-citation spec="XQueryFullText" section-number="2.2.2"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;section-title="Examples" section-pointer="section-ftcontainsexpr-examples"/><br>
+&nbsp;&nbsp;&lt;query name="examples-222-q1" date="2008-06-26"/><br>
+&nbsp;&nbsp;&lt;input-file role="principal-data" variable="input-context">ftbookexample&lt;/input-file><br>
+&nbsp;&nbsp;&lt;output-file role="principal" compare="XML">ft-222-examples-results-q1.txt&lt;/output-file><br>
+&lt;/test-case></span></td>
+    </tr>
+  </tbody>
+</table>
+<p>The context setting for this test case may be
+customized in
+one of the following six ways. Note that option 3 and 5 (default) are
+only
+applicable for one source document.</p>
+<ol style="margin-top: 0in;" start="1" type="1">
+  <li>Unchanged: use external variables as
+indicated in the original query</li>
+  <li>Implicit variable declaration: Remove
+variable declarations between insert-start and insert-end comments. The
+implementation binds the input context to the variable $input-context.<br></li>
+</ol>
+<table style="text-align: left; " border="2"
+ cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">
+      <span
+ style="font-size: 10pt; font-family: Courier; color: black;">for $b in $input-context/books/book<br>
+where $b/title ftcontains ("dog" with stemming) ftand "cat" <br>
+return $b/author</span></td>
+    </tr>
+  </tbody>
+</table>
+<p> </p>
+<ol style="margin-top: 0in;" start="3" type="1">
+  <li>Implicit context: Remove variable
+declarations between insert-start and insert-end comments, and the
+variable references, and refer to the implicit context (.).</li>
+</ol>
+<table style="text-align: left;" border="2"
+ cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">
+      <span
+ style="font-size: 10pt; font-family: Courier; color: black;">for $b in ./books/book<br>
+where $b/title ftcontains ("dog" with stemming) ftand "cat" <br>
+return $b/author</span></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<ol style="margin-top: 0in;" start="4" type="1">
+  <li>Use the <span class="SpellE">fn:doc</span>
+function: Remove variable declarations between insert-start and
+insert-end comments, and replace variable references with the <span
+ class="SpellE">fn:doc</span>() function, including the input file
+specified in the catalog as argument<br>
+  </li>
+</ol>
+<table style="text-align: left; width: 490px; height: 47px;" border="2"
+ cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">
+      <span
+ style="font-size: 10pt; font-family: Courier; color: black;">for $b in fn:doc(ftbookexample.xml)/books/book<br>
+where $b/title ftcontains ("dog" with stemming) ftand "cat" <br>
+return $b/author</span></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<ol style="margin-top: 0in;" start="5" type="1">
+  <li>Use the (default) collection: Remove
+variable declarations between insert-start and insert-end comments, and
+replace variable references with the <span class="SpellE">fn<span
+ class="GramE">:collection</span></span>() function (including optional
+URI). <br>
+  </li>
+</ol>
+<table style="text-align: left;" border="2"
+ cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">
+      <span
+ style="font-size: 10pt; font-family: Courier; color: black;">for $b in fn:collection()/books/book<br>
+where $b/title ftcontains ("dog" with stemming) ftand "cat" <br>
+return $b/author</span></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<ol style="margin-top: 0in;" start="6" type="1">
+  <li>Implementation-defined function:
+Remove variable declarations between insert-start and insert-end
+comments, and replace variable references with an
+implementation-defined function resolving to the input context.<br>
+  </li>
+</ol>
+<table style="text-align: left; width: 490px; height: 47px;" border="2"
+ cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">
+      <span
+ style="font-size: 10pt; font-family: Courier; color: black;">for $b in impl-ns:impl-func("ftbookexample")/books/book<br>
+where $b/title ftcontains ("dog" with stemming) ftand "cat" <br>
+return $b/author</span></td>
+    </tr>
+  </tbody>
+</table>
+<h3>Customizing Namespaces</h3>
+<p>Test cases can refer to validated documents
+(which requires namespace declaration) or imported schemas. Such
+test cases contain schema import declarations located within the
+same comments as the context item described above.</p>
+<table style="text-align: left; width: 490px; height: 47px;" border="2"
+ cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">
+        <p><span
+ style="font-size: 10pt; font-family: Courier; color: black;">(:
+input-start :)<br>
+import schema namespace example="http://www.example.com";<br>
+(: input-end :)<br>
+        </span></p>        </td>
+    </tr>
+  </tbody>
+</table>
+<p>This declaration must refer to a source schema
+document defined in the test suite catalog having the same name and
+URI.</p>
+<table style="text-align: left; width: 718px; height: 47px;" border="2"
+ cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">
+        <p><span
+ style="font-size: 10pt; font-family: Courier; color: black;">schema
+ID="example" type="schema" <span class="SpellE">uri</span>="http://www.example.com"
+      <br>
+&nbsp;&nbsp; FileName="example.xsd"/&gt;<br>
+        </span></p>        </td>
+    </tr>
+  </tbody>
+</table>
+<p>This declaration can be customized in one of
+the following three ways:</p>
+<ol style="margin-top: 0in;" start="1" type="1">
+  <li>Unchanged: use schema import as
+indicated in the original query</li>
+  <li>Remove the schema import declaration
+from the query, and add namespace declaration using same name and URI
+to statically
+known namespaces before the query is executed.</li>
+  <li>Replace schema import with namespace
+declaration using same name and URI.</li>
+</ol>
+<table style="text-align: left; width: 490px; height: 34px;" border="2"
+ cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;"><span
+ style="font-size: 10pt; font-family: Courier; color: black;">declare
+namespace example="http://www.example.com";</span> </td>
+    </tr>
+  </tbody>
+</table>
+<h3>Host Language Binding</h3>
+<p>Test cases can be embedded in a host language,
+for example using the <span class="SpellE">xmlquery</span> function
+in SQL. This may require escaping certain characters like
+quotes.<br>
+</p>
+<table style="text-align: left; width: 490px; height: 47px;" border="2"
+ cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">
+        <p><span
+ style="font-size: 10pt; font-family: Courier; color: black;">select
+xmlquery('$input-context/child'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+passing xmlcol as "input-context")<br>
+from TreeCompass<br>
+        </span></p>        </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+<h3>Special Sources: Stop Word List, Thesaurus, and Stemming Dictionary<br>
+</h3>
+The stopwords, thesaurus, and stemming-dictionary sources are not intended to
+be used directly in the form in which they are given, but to provide
+information to those running the test suite about the expectations a particular
+test has about various implementation-specific aspects of the execution
+context. Implementations are expected to provide equivalent information to the
+query, but in whatever form is appropriate in their context.
+A stopwords source is a plain text file containing list of stop words, one per
+line.  When a query references this stop word list, the implementation is
+expected to provide that list of stop words to the query. A thesaurus source is
+an XML document defined against the thesaurus.xsd XML Schema.  When a query
+references this thesaurus, the implementation is expected to provide equivalent
+thesaurus information to the query. The stemming-dictionary is a plain text
+file containing lines of whitespace-separated tokens. Each token on the line
+should stem to the first token on the line. When the catalog entry for a query
+references a stemming dictionary, the implementation is expected to provide
+stemming equivalent to the rules given in the stemming dictionary.
+<h3>Sentences and Paragraphs</h3>
+<p>The subject of sentences and paragraphs requires some consideration for implementations
+planning to run the test suite. 
+<p>In Section 1, Introduction, the Full Text specification defines the words &quot;sentence&quot; and &quot;paragraph&quot; as follows:</p>
+<p>[Definition: A <strong>sentence</strong> is an ordered sequence of any number of tokens. Beyond that, sentences are implementation-defined. 
+A tokenizer is not required to support sentences.]</p>
+<p>[Definition: A <strong>paragraph</strong> is an ordered sequence of any number of tokens. Beyond that, paragraphs are implementation-defined. 
+A tokenizer is not required to support paragraphs.]</p>
+<p>However, the next paragraph states that "Some formatting markup serves well as token boundaries,
+for example, paragraphs are most commonly delimited by formatting markup." and
+Section 3, Full-Text Selections, says "This sample tokenization uses white space, punctuation and
+XML tags as word-breakers and &lt;p> for paragraph boundaries.".</p>
+<p>Section 5.2.3, FTUnit and FTBigUnit, says &quot;Support for the "sentences" alternative of FTUnit
+and the "sentence" alternative of FTBigUnit is optional. Similarly, support for the "paragraphs"
+alternative of FTUnit and the "paragraph" alternative of FTBigUnit is optional.&quot;</p>
+<p>After considerable discussion, this topic has been resolved as follows: In the data used to test
+queries in the Full Text Test Suite, sentences are separated by a period (a/k/a "full stop") followed
+immediately by white space, and paragraphs are encoded within a &lt;p>...&lt;/p> element. 
+Implementations that are configured to use a different mechanism for identifying sentence
+and/or paragraph boundaries may, provided this is clearly stated in plain text in their
+implementation reports, revise relevant test data so that the sentence and paragraph
+boundaries defined in this paragraph are replaced by corresponding boundaries required
+for that implementation. </p>
+<h3>Customizing XQueryX Tests</h3>
+Customizing XQueryX tests must follow the same rules provided above.
+However, the XQueryX test cases do not include the
+insert-start/insert-end comments surrounding external variable
+declaration and schema import. Therefore, a test harness must find the
+items to be customized in the XQueryX document using the information
+found in the catalog. The external variable declaration and variable
+references in the XQueryX document typically looks as follows:<br>
+<br>
+<table style="text-align: left; width: 490px; height: 47px;" border="2"
+ cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">
+        <p><span
+ style="font-size: 10pt; font-family: Courier; color: black;">&lt;xqx:varDecl&gt;<br>
+&nbsp; &lt;xqx:varName&gt;input-context&lt;/xqx:varName&gt;<br>
+&nbsp; &lt;xqx:external&gt;<br>
+&nbsp; &lt;/xqx:external&gt;<br>
+&lt;/xqx:varDecl&gt;<br>
+      <br>
+&lt;xqx:varRef&gt;<br>
+&nbsp; &lt;xqx:name&gt;input-context&lt;/xqx:name&gt;<br>
+&lt;/xqx:varRef&gt;<br>
+        </span></p>        </td>
+    </tr>
+  </tbody>
+</table>
+<h2>Comparing Results</h2>
+<p>In order to check correctness of running a
+test case, the result of the implementation must be compared to the
+result provided in the test suite. The implementations result of the
+test case must be serialized and compared to the expected file(s)
+provided in the test suite.
+Serialization should be performed as described in
+XSLT 2.0 and XQuery 1.0 Serialization [4] with method="xml".
+The catalog defines for each
+test case, which of the following five comparators has to be
+applied:</p>
+<ul style="margin-top: 0in;" type="disc">
+  <li>XML: The test harness must <span
+ class="SpellE">canonicalize</span> both, the actual result
+and the expected result according to the &#8220;Canonical
+XML&#8221; recommendation [2], which refers to a number of
+open-source implementations. Byte-comparison can then be applied to
+the resulting XML documents. If the test harness does this process
+in a different manner, it must be documented.</li>
+  <li>XML fragment: For XML fragments, the
+same root node must be created for both, implementation result and
+test suite result. The resulting XML can be compared using XML
+comparison.</li>
+  <li>Text: Same comparison as "XML
+fragment".  </li>
+  <li>Ignore: no comparison needs to be
+applied; the result is always true if the implementation
+successfully executes the test case.</li>
+  <li>Inspect: A human is required to make
+the call about correctness of the result according to the
+description in the test case.</li>
+  <li>Error: The expected result of the
+test case is and error, identified as an eight-character error code
+(e.g., XPST0003). The result of a test is true, if the
+implementation raises an error. However, raising an error because
+an implementation does not support the feature is not considered a
+correct result.</li>
+</ul>
+It is possible that a test case provides multiple expected results. In
+this case, successfully comparing the actual result to one of the
+provided expected results is a "pass".<br>
+The expected files provided in the test suite are serialized forms as
+specified by XSLT 2.0 and XQuery 1.0 Serialization, with the following parameter
+values:<br>
+<br>
+<span style="font-family: courier new;">byte-order-mark&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+no </span><br style="font-family: courier new;">
+<span style="font-family: courier new;">cdata-section-elements&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+empty </span><br style="font-family: courier new;">
+<span style="font-family: courier new;">doctype-public&nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; (none) </span><br
+ style="font-family: courier new;">
+<span style="font-family: courier new;">doctype-system&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(none) </span><br style="font-family: courier new;">
+<span style="font-family: courier new;">encoding&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"utf-8" </span><br style="font-family: courier new;">
+<span style="font-family: courier new;">escape-uri-attributes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(not applicable when method = xml) </span><br
+ style="font-family: courier new;">
+<span style="font-family: courier new;">include-content-type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(not applicable when method = xml) </span><br
+ style="font-family: courier new;">
+<span style="font-family: courier new;">indent&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+no </span><br style="font-family: courier new;">
+<span style="font-family: courier new;">media-type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+not applicable </span><br style="font-family: courier new;">
+<span style="font-family: courier new;">method&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+xml </span><br style="font-family: courier new;">
+<span style="font-family: courier new;">normalization-form &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; implementation-defined </span><br
+ style="font-family: courier new;">
+<span style="font-family: courier new;">omit-xml-declaration&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+yes </span><br style="font-family: courier new;">
+<span style="font-family: courier new;">standalone&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+omit </span><br style="font-family: courier new;">
+<span style="font-family: courier new;">undeclare-prefixes&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; no </span><br
+ style="font-family: courier new;">
+<span style="font-family: courier new;">use-character-maps&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; empty </span><br
+ style="font-family: courier new;">
+<span style="font-family: courier new;">version&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+implementation-defined</span> <br>
+<br>
+For implementations using different parameters, the test harness must
+convert the result using the parameters above in order to perform
+byte-comparison with the provided expected results.<br>
+<h2>References</h2>
+<p>[1]<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a href="XQFTTSCatalog.html">XQuery and XPath Full Text 1.0 Test
+Suite Documentation</a> <br>
+</p>
+[2]<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+Canonical XML
+Version 1.0, W3C Recommendation 15 March 2001<br>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+(<a href="http://www.w3.org/TR/xml-c14n">http://www.w3.org/TR/xml-c14n</a>)<br>
+<p>[3]<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a href="GuidelinesForSubmittingXQFTTSTestResults.html">Guidelines
+for
+Submitting XQFTTS Results<br>
+</a></p>
+<p>[4]<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a href="http://www.w3.org/TR/xslt-xquery-serialization/">XSLT 2.0 and
+XQuery 1.0 Serialization</a></p>
+<hr>
+<address> <a href="http://www.w3.org/Help/Webmaster">Webmaster</a>
+&middot; Last modified: $Date: 2009/07/09 23:20:11 $ by
+$Author: jmelton $ </address>
+<p><a rel="Copyright"
+ href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>
+&copy; 1994-2009 <a href="http://www.w3.org/"><acronym
+ title="World Wide Web Consortium">W3C</acronym></a><sup>&reg;</sup> (<a
+ href="http://www.csail.mit.edu/"><acronym
+ title="Massachusetts Institute of Technology">MIT</acronym></a>, <a
+ href="http://www.ercim.org/"><acronym
+ title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>,
+<a href="http://www.keio.ac.jp/">Keio</a>), All Rights Reserved. W3C <a
+ href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
+<a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a>,
+<a rel="Copyright"
+ href="http://www.w3.org/Consortium/Legal/copyright-documents">document
+use</a> and <a rel="Copyright"
+ href="http://www.w3.org/Consortium/Legal/copyright-software">software
+licensing</a> rules apply. Your interactions with this site are in
+accordance with our <a
+ href="http://www.w3.org/Consortium/Legal/privacy-statement#Public">public</a>
+and <a
+ href="http://www.w3.org/Consortium/Legal/privacy-statement#Members">Member</a>
+privacy statements.</p>
+</body>
+</html>

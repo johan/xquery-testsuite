@@ -1,0 +1,18 @@
+<project name="Create the XQuery Full Text Test Catalog description HTML document" default="all">
+   
+   <description>
+   Build HTML version of the catalog
+   </description>
+   
+   <target name="all">
+      <style
+         in="XQFTTSCatalog.xml"
+         basedir="."
+         style="XQFTTSCatalog.xsl"
+         out="XQFTTSCatalog.html"
+         force="yes">
+      </style>   
+   </target>
+   
+   
+</project>

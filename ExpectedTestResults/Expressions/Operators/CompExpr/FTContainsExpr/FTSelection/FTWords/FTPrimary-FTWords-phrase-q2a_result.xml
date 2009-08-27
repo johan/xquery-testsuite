@@ -1,0 +1,5 @@
+<paragraphs><p>FTWords consists of two parts: a mandatory <nt xmlns:xlink="http://www.w3.org/1999/xlink" def="doc-xquery-FTWordsValue" xlink:type="simple">
+FTWordsValue</nt> part and an optional <nt xmlns:xlink="http://www.w3.org/1999/xlink" def="doc-xquery-FTAnyallOption" xlink:type="simple">
+FTAnyallOption</nt> part. <nt xmlns:xlink="http://www.w3.org/1999/xlink" def="doc-xquery-FTWordsValue" xlink:type="simple">FTWordsValue</nt> specifies the tokens and phrases
+that must be contained in the matches. <nt xmlns:xlink="http://www.w3.org/1999/xlink" def="doc-xquery-FTAnyallOption" xlink:type="simple">FTAnyallOption</nt> specifies how 
+containment is checked. </p></paragraphs>

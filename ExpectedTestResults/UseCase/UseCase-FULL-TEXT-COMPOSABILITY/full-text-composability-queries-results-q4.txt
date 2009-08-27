@@ -1,0 +1,70 @@
+<book number="2">
+   <title shortTitle="Usability Basics">Usability 
+   Basics: How to Plan for and Conduct Usability Tests 
+   on Web Site Thereby Improving the Usability of Your 
+   Web Site</title>
+   <content>
+      <introduction>
+         <p>This is a basic handbook for planning and 
+         conducting usability tests on Web sites. Usability 
+         testing should be used in conjunction with other 
+         expert review methods.</p>
+         <p>This book has not been approved by the Web Site 
+         Users Association.</p>
+      </introduction>
+      <part number="1">
+         <chapter>
+            <title>Planning then Conducting Usability 
+            Tests</title> 
+            <p>Take the following steps to plan usability 
+            testing. <step number="1">Clarify and 
+            articulate the goal of the usability testing.
+            </step> <step number="2">Identify tasks which 
+            are critical for users to be able to complete 
+            successfully.</step> <step number="3">Compile 
+            a script of questions or instructions which 
+            will prompt the user to attempt those 
+            tasks.</step> <step number="4">Identify your 
+            users and begin recruiting them.</step> <step number="5">Conduct a pretest on a few users.
+            </step> <step number="6">Edit the script based 
+            on insights gleaned from the pretest.</step> 
+            <step number="7">Resume testing.</step></p>
+         </chapter>
+      </part>
+      <part number="2">
+         <chapter>
+            <title>Conducting Usability Tests</title> 
+         <p>Users can be tested at any computer 
+            workstation <footnote>They may be more 
+            comfortable at their own workstation than in 
+            a lab.</footnote> or in a lab.</p>
+            <p>Give the user the script, then assure them 
+            that you are testing the Web site, not them. 
+            Users are asked to verbalize their thoughts as 
+            they complete the tasks. The event is recorded 
+            or someone takes notes. It is often preferable 
+            to have two testers, <footnote>Usability 
+            testing can be done at great expense or on a 
+            shoe string, using <testingProcedure>in-house 
+            expertise</testingProcedure> or 
+            <testingProcedure>contracting with human 
+            computer interaction professionals
+            </testingProcedure>.</footnote> one to ask the 
+            questions, another to take notes. Testers should 
+            offer no guidance or comments to the user. Mouse 
+            movements, typing, expressions, and the user's 
+            words should be recorded.</p>
+         </chapter>
+         <chapter>
+            <title>Evaluating and Implementing Results</title> 
+            <p>Compile the results and review collectively. 
+            Make changes to the site to alleviate the problems 
+            found in Web site components which were propagating 
+            the largest number of or the most devastating errors. 
+            Begin new iterations of testing and changes, until 
+            users are successful in the accomplishing the 
+            tasks.</p>
+         </chapter>
+      </part>
+   </content>
+</book>

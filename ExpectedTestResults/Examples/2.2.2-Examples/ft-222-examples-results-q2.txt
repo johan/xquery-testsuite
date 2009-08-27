@@ -1,0 +1,7 @@
+<book>
+    <title>Angelic Intervention For Those Who Train Cats</title>
+    <author>John Dee</author>
+    <date>1607</date>
+    <publisher>Example Books</publisher>
+    <price>41</price>
+  </book>

@@ -1,0 +1,8 @@
+<paragraphs><p>
+               <termdef id="dt-cardinality-selection" term="cardinality selection">A
+<term>cardinality selection</term> consist of an 
+<nt xmlns:xlink="http://www.w3.org/1999/xlink" def="doc-xquery-FTWords" xlink:type="simple">FTWords</nt> followed
+by the <nt xmlns:xlink="http://www.w3.org/1999/xlink" def="doc-xquery-FTTimes" xlink:type="simple">FTTimes</nt> postfix operator.</termdef>
+A cardinality selection selects matches for which the operand 
+<nt xmlns:xlink="http://www.w3.org/1999/xlink" def="doc-xquery-FTWords" xlink:type="simple">FTWords</nt> is matched a specified number of
+times. </p></paragraphs>
