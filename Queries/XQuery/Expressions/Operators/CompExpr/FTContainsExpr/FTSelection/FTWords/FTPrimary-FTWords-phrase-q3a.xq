@@ -16,7 +16,7 @@ declare variable $input-context external;
 
 <paragraphs>
 { for $p in $input-context//div2[@id="ftwords"]/p
-where $p ftcontains { "FTAnyallOption specifies", "how containment" } phrase
+where $p contains text { "FTAnyallOption specifies", "how containment" } phrase
 return $p }
 </paragraphs>(: Stylus Studio meta-information - (c) 2004-2008. Progress Software Corporation. All rights reserved.
 

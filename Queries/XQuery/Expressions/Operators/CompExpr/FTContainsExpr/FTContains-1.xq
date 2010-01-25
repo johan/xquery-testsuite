@@ -4,5 +4,5 @@
 declare variable $input-context external;
 (: insert-end :)
 
-$input-context//metadata/title ftcontains "Usability"
+$input-context//metadata/title contains text "Usability"
 

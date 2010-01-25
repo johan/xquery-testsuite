@@ -1,7 +1,7 @@
 (: insert-start :)
 declare variable $input-context external;
-(: nsert-end :)
+(: insert-end :)
 
 
-$input-context/books/book[content ftcontains "planning then 
-conducting" without stop words]
+$input-context/books/book[content contains text "planning then 
+conducting" using no stop words]

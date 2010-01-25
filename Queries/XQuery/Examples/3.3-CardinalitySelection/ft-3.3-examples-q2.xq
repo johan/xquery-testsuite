@@ -3,5 +3,5 @@
 (: insert-start :)
 (: insert-end :)
 
-//book[@number="1" and title ftcontains {"usability", 
+//book[@number="1" and title contains text {"usability", 
 "testing"} any occurs at most 2 times]

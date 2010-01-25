@@ -2,4 +2,4 @@
 declare variable $input-context external;
 (: insert-end :)
 
-$input-context//book[. ftcontains "usability" ftand "testing" same paragraph] 
+$input-context//book[. contains text "usability" ftand "testing" same paragraph] 

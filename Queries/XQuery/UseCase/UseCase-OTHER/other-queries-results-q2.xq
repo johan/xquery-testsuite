@@ -6,7 +6,7 @@ declare variable $input-context external;
 for $book in $input-context/books/book
 let $stitle := $book/metadata/title/@shortTitle    
 let $ctitle := $book//componentTitle  
-where $stitle ftcontains "manuscript guides"
-   with stemming and $ctitle ftcontains "user profiling" 
-   with stemming
+where $stitle contains text "manuscript guides"
+   using stemming and $ctitle contains text "user profiling" 
+   using stemming
 return data($stitle)

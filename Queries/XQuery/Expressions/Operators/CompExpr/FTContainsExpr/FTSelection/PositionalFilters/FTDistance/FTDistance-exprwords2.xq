@@ -3,4 +3,4 @@ declare variable $input-context external;
 (: insert-end :)
 
 let $x := 1 return
-$input-context/books/book[para ftcontains ("physical" ftand "swift") distance exactly $x words]/title
+$input-context/books/book[para contains text ("physical" ftand "swift") distance exactly $x words]/title

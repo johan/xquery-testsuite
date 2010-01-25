@@ -4,5 +4,5 @@ declare variable $input-context external;
 
 for $book in $input-context/books/book
 let $cont := $book//content
-where $cont ftcontains "association" case sensitive
+where $cont contains text "association" using case sensitive
 return $book

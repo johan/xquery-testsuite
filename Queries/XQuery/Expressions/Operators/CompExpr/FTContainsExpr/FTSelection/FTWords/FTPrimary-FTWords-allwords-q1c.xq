@@ -17,6 +17,6 @@ declare variable $input-context external;
 declare variable $search-token := "FTAnyallOption";
 <paragraphs>
 { for $p in $input-context//p
-where $p ftcontains { $search-token } all words
+where $p contains text { $search-token } all words
 return $p }
 </paragraphs>

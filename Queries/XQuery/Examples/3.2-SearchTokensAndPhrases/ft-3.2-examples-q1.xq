@@ -3,4 +3,4 @@
 (: insert-start :)
 (: insert-end :)
 
-//book[./title ftcontains "Expert"]
+//book[./title contains text "Expert"]

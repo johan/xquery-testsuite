@@ -6,11 +6,11 @@ declare variable $input-context external;
 let $books := $input-context/books/book
 let $bookSubject := 
    $books/metadata[./title/@shortTitle 
-   ftcontains "Usability Basics"]/subjects/subject
+   contains text "Usability Basics"]/subjects/subject
 for $book in $books   
 where $book/metadata/publicationInfo/
 (dateIssued|dateRevised) > 2001 and 
-$book/metadata/subjects/subject ftcontains 
+$book/metadata/subjects/subject contains text 
      {$bookSubject} any
 return
         <book number="{$book/@number}">

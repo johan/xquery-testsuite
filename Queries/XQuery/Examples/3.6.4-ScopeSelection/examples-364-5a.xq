@@ -7,4 +7,4 @@ declare variable $input-context external;
 achieving specified goals. ... Expert reviews and usability testing are methods of
 identifying problems in layout, terminology, and navigation. ...
 </introduction>
-ftcontains ("usability" ftand "reviews") same sentence
+contains text ("usability" ftand "reviews") same sentence

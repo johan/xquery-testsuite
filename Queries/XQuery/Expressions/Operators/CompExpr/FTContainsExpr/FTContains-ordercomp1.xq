@@ -1,10 +1,10 @@
-(: FTContains-ordercomp1: ftcontains in an order by clause with a comparison operator :)
+(: FTContains-ordercomp1: contains text in an order by clause with a comparison operator :)
 
 (: insert-start :)
 declare variable $input-context external;
 (: insert-end :)
 
 for $t in $input-context//metadata/title
-order by $t ftcontains "Usability" eq fn:true()
+order by $t contains text "Usability" eq fn:true()
 return $t
 

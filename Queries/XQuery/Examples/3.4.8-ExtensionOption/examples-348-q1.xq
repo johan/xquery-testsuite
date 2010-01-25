@@ -4,7 +4,7 @@
 
 declare namespace exq = "http://example.org/XQueryImplementation";
 
-declare ft-option option exq:diacritics "short-vowel insensitive";
+declare ft-option using option exq:diacritics "short-vowel insensitive";
 
 (: insert-start :)
 declare variable $input-context external;

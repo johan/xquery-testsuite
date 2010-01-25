@@ -5,7 +5,7 @@ declare variable $input-context external;
 
 for $result at $i in
      for $book score $s in 
-        $input-context/books/book[. ftcontains "usability"]
+        $input-context/books/book[. contains text "usability"]
       order by $s ascending
       return $book
    where $i <= 2

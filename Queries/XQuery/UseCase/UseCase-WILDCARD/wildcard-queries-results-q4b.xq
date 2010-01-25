@@ -1,7 +1,7 @@
 (: insert-start :)
 declare variable $input-context external;
-(: nsert-end :)
+(: insert-end :)
 
 
-$input-context/books/book[content ftcontains "us.+ testing"
-with wildcards]/concat(@number, ", ", metadata/title)
+$input-context/books/book[content contains text "us.+ testing"
+using wildcards]/concat(@number, ", ", metadata/title)

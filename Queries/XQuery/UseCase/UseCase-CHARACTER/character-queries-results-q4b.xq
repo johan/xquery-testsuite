@@ -1,7 +1,6 @@
 (: insert-start :)
 declare variable $input-context external;
-(: nsert-end :)
+(: insert-end :)
 
-
-$input-context/books/book[. ftcontains "AIDS" case 
+$input-context/books/book[. contains text "AIDS" using case 
 insensitive]

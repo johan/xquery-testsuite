@@ -4,4 +4,4 @@
 declare variable $input-context external;
 (: insert-end :)
 
-$input-context/books/book[para ftcontains ("persuasion" ftand ftnot "ninja") not in "ninja coder"]/title
+$input-context/books/book[para contains text ("persuasion" ftand ftnot "ninja") not in "ninja coder"]/title

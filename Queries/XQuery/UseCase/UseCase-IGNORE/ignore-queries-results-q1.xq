@@ -4,7 +4,6 @@ declare variable $input-context external;
 
 
 for $book in $input-context/books/book
-let $p := $book//p 
-where $p ftcontains "testing" ftand "guidance" ftor 
-   "correct" distance at most 60 words without content *
+where $book//p[. contains text "testing" ftand "guidance" ftor 
+   "correct" distance at most 60 words without content *]
 return $book

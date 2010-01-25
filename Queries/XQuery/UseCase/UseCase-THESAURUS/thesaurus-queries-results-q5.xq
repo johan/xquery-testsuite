@@ -1,10 +1,10 @@
 (: insert-start :)
 declare variable $input-context external;
-(: nsert-end :)
+(: insert-end :)
 
 
-for $book in $input-context/books/book[. ftcontains "sucessfull" 
-   with thesaurus at 
+for $book in $input-context/books/book[. contains text "sucessfull" 
+   using thesaurus at 
    "http://bstore1.example.com/spellcheck.xml" 
    relationship "misspelling of"]
 return $book

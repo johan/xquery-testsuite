@@ -3,7 +3,7 @@ declare variable $input-context external;
 (: insert-end :)
 
 
-for $book in $input-context/books/book[metadata/title ftcontains "usability"]
+for $book in $input-context/books/book[metadata/title contains text "usability"]
 return <book number="{$book/@number}">
            {$book/metadata/title,  
              if ($book/metadata/price > 25)

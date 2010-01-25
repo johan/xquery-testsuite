@@ -4,6 +4,6 @@ declare variable $input-context external;
 
 
 $input-context/books/book[(some $s1 in ./metadata/subjects/subject satisfies 
-$s1 ftcontains "web site") 
+$s1 contains text "web site") 
 and (some $s2  in ./metadata/subjects/subject satisfies 
-$s2 ftcontains "usability")]
+$s2 contains text "usability")]

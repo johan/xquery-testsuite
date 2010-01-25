@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="XQFTTSCatalog.xsl" ?><test-suite xmlns="http://www.w3.org/2005/02/query-test-full-text"
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             CatalogDesignDate="2008-02-18"
-            version="0.8.0 dev"
+            version="1.0.0"
             SourceOffsetPath="./"
             ResultOffsetPath="ExpectedTestResults/"
             XQueryQueryOffsetPath="Queries/XQuery/"

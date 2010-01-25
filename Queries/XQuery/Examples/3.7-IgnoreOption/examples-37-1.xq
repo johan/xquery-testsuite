@@ -8,5 +8,5 @@ let $x := <book>
        editor on Web Usability</annotation> Usability
    </editor>
  </book>
- return $x//*[. ftcontains "Web Usability" without content $x//annotation]
+ return $x//*[. contains text "Web Usability" without content $x//annotation]
 }</results>

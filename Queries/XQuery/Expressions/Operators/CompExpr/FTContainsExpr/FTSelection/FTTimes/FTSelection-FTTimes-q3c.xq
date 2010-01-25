@@ -11,6 +11,6 @@ declare variable $occurrences := 1;
 
 <paragraphs>
 { for $p in $input-context//div2[@id="fttimes"]//p
-where $p ftcontains "cardinality" occurs at most $occurrences times
+where $p contains text "cardinality" occurs at most $occurrences times
 return $p }
 </paragraphs>

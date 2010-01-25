@@ -1,8 +1,8 @@
-(: FTContains-comp1: ftcontains higher precedence than other comparison operators :)
+(: FTContains-comp1: contains text higher precedence than other comparison operators :)
 
 (: insert-start :)
 declare variable $input-context external;
 (: insert-end :)
 
-$input-context//metadata/title ftcontains "Usability" eq fn:false()
+$input-context//metadata/title contains text "Usability" eq fn:false()
 

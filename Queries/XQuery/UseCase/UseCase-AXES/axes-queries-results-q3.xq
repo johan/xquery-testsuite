@@ -8,7 +8,7 @@ let $comp := $book/content/part/component/
    (subComponent|subComponent/subsubComponent)/
    componentTitle
 let $parentComp := $comp[ancestor::node()]
-where $comp ftcontains "flow diagram.?" 
-   with wildcards and $parentComp 
-   ftcontains "human computer interaction"
+where $comp contains text "flow diagram.?" 
+   using wildcards and $parentComp 
+   contains text "human computer interaction"
 return ($book/metadata/title, $book/content)

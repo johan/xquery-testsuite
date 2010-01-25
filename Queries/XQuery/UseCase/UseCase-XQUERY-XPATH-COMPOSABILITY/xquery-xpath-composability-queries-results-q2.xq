@@ -5,8 +5,8 @@ declare variable $input-context external;
 
 for $book in $input-context/books/book
 let $ct := $book/content/part/chapter/title
-where $ct ftcontains "usability" ftand "test" 
-   with stemming
+where $ct contains text "usability" ftand "test" 
+   using stemming
 return <book number="{$book/@number}"> 
           {$book/metadata/title,
           for $title in $ct

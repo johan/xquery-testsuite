@@ -5,6 +5,6 @@ declare variable $input-context external;
 
 for $book in $input-context/books/book
 let $cont := $book/content
-where $cont ftcontains "efficient" ftand "task" ftand 
+where $cont contains text "efficient" ftand "task" ftand 
    "completion" ordered distance at most 10 words
 return $book

@@ -34,7 +34,10 @@
 <!--                                                                         -->
 <!--   2008-03-14    Adjusted to work with XQuery Update Test Suite.         -->
 <!--                                                                         -->
-<!--   2008-06-26    Adjsuted to work with XQuery Full Text Test Suite.      -->
+<!--   2008-06-26    Adjusted to work with XQuery Full Text Test Suite.      -->
+<!--                                                                         -->
+<!--   2009-08-24    Fixed some inappropriate namespaces to ident FT         -->
+
 
 
 

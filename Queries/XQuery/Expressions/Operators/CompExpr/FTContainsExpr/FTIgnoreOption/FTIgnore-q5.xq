@@ -3,6 +3,6 @@ declare variable $input-context external;
 (: insert-end :)
 
 <results>{
-$input-context/books/book[. ftcontains "software" without content .]/title
+$input-context/books/book[. contains text "software" without content .]/title
 }</results>
 

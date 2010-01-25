@@ -4,6 +4,6 @@
 declare variable $input-context external;
 (: insert-end :)
 
-for $p score $s in $input-context//book[title ftcontains "software"]/para[. ftcontains "usability"]
+for $p score $s in $input-context//book[title contains text "software"]/para[. contains text "usability"]
      order by $s descending
   return $p

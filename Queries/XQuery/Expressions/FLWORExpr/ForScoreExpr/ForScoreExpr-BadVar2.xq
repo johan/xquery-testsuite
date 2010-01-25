@@ -7,5 +7,5 @@ declare variable $input-context external;
 (: insert-end :)
 
 for $t at $i score $i 
-in $input-context//metadata/title[. ftcontains "Usability"]
+in $input-context//metadata/title[. contains text "Usability"]
 return $t

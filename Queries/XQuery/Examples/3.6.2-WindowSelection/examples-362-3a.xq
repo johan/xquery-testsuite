@@ -2,5 +2,5 @@
 declare variable $input-context external;
 (: insert-end :)
 
-$input-context/books/book//title ftcontains "web site" ftand
+$input-context/books/book//title contains text "web site" ftand
 "usability" window 5 words

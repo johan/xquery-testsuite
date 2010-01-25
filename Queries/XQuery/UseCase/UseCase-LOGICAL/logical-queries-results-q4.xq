@@ -1,10 +1,10 @@
 (: insert-start :)
 declare variable $input-context external;
-(: nsert-end :)
+(: insert-end :)
 
 
 for $book in $input-context/books/book 
-where $book ftcontains ftnot "us.* testing" with 
+where $book contains text ftnot "us.* testing" using 
    wildcards
 return $book
 

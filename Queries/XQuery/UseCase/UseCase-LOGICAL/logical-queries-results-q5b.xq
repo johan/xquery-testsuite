@@ -1,9 +1,9 @@
 (: insert-start :)
 declare variable $input-context external;
-(: nsert-end :)
+(: insert-end :)
 
 
-$input-context/books/book[./metadata ftcontains "usability" 
+$input-context/books/book[./metadata contains text "usability" 
 ftand ftnot "plan"]
 
 

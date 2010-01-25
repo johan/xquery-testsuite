@@ -3,4 +3,4 @@
 (: insert-start :)
 (: insert-end :)
 
-//book//p ftcontains "Web Site Usability"
+//book//p contains text "Web Site Usability"

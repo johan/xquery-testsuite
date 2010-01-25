@@ -4,6 +4,6 @@
 declare variable $input-context external;
 (: insert-end :)
 
-for $t score $s in $input-context//metadata/title[. ftcontains "Usability"]
+for $t score $s in $input-context//metadata/title[. contains text "Usability"]
 let $s := "test" 
 return $s

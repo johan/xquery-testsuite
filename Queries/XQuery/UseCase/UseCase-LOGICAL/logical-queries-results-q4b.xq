@@ -1,10 +1,10 @@
 (: insert-start :)
 declare variable $input-context external;
-(: nsert-end :)
+(: insert-end :)
 
 
-$input-context/books/book[. ftcontains ftnot "us.* testing" 
-with wildcards]
+$input-context/books/book[. contains text ftnot "us.* testing" 
+using wildcards]
 
 
 

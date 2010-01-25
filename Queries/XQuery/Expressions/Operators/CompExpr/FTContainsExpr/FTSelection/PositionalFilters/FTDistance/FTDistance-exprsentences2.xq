@@ -5,5 +5,5 @@ declare variable $input-context external;
 let $n := 0 
 let $m := 1 
 return
-$input-context/books/book[content ftcontains ("heuristic" ftand "review") 
+$input-context/books/book[content contains text ("heuristic" ftand "review") 
 distance from $n to $m sentences]/metadata/title

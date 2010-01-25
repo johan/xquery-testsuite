@@ -10,6 +10,6 @@ declare variable $input-context external;
 
 <paragraphs>
 { for $p in $input-context//div2[head = "Match Options"]/p
-where $p ftcontains (# exq:classifier with class 'Antonyms' #) { "single" }
+where $p contains text (# exq:classifier with class 'Antonyms' #) { "single" }
 return $p }
 </paragraphs>

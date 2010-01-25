@@ -27,6 +27,6 @@ declare variable $input-context external;
 
 <paragraphs>
 { for $p in $input-context//div2[@id="ftwords"]/p
-where $p ftcontains "FTAnyallOption literal"
+where $p contains text "FTAnyallOption literal"
 return $p }
 </paragraphs>

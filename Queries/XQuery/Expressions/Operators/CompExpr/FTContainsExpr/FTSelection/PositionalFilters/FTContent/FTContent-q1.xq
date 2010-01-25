@@ -2,4 +2,4 @@
 declare variable $input-context external;
 (: insert-end :)
 
-$input-context/books/book[para ftcontains "The secret of the blues" at start]/title
+$input-context/books/book[para contains text "The secret of the blues" at start]/title

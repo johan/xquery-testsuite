@@ -11,6 +11,6 @@ declare variable $occurrences := 2;
 
 <paragraphs>
 { for $p in $input-context//div2[@id="fttimes"]//p
-where $p ftcontains "cardinality" occurs from $occurrences to 3 times
+where $p contains text "cardinality" occurs from $occurrences to 3 times
 return $p }
 </paragraphs>

@@ -8,4 +8,4 @@
 <part><name>Part 2</name>
 <p>This example is simple, not complex.</p>
 </part>
-</example>//part[. ftcontains ("simple" ftand "complex") same sentence]/name
+</example>//part[. contains text ("simple" ftand "complex") same sentence]/name

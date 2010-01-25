@@ -3,5 +3,5 @@ declare variable $input-context external;
 (: insert-end :)
 
 $input-context/books/book[
-    .//content ftcontains "program" without thesaurus
+    .//content contains text "program" using no thesaurus
 ]

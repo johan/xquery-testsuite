@@ -1,6 +1,5 @@
 <para>Usability is highly overrated.  My advice is similar to that
       Heinlein gave prospective authors: you must write, you must finish what
       you write, you must publish what you write.  Ship software, pay the bills.
-</para>
-<para>Sometimes usability is the most important thing. Sometimes usability is
+</para><para>Sometimes usability is the most important thing. Sometimes usability is
       the only thing. Sometimes usability is nothing.</para>

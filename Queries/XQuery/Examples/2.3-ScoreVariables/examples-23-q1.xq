@@ -5,6 +5,6 @@ declare variable $input-context external;
 (: insert-end :)
 
 for $b score $s 
-    in $input-context/books/book[content ftcontains "web site" ftand "usability" 
-                   and .//chapter/title ftcontains "testing"]
+    in $input-context/books/book[content contains text "web site" ftand "usability" 
+                   and .//chapter/title contains text "testing"]
 return $s

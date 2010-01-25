@@ -10,6 +10,6 @@ declare variable $input-context external;
 
 <paragraphs>
 { for $p in $input-context//div2[@id="fttimes"]//p
-where $p ftcontains "cardinality" occurs from 1+1 to 3 times
+where $p contains text "cardinality" occurs from 1+1 to 3 times
 return $p }
 </paragraphs>

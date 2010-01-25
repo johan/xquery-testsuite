@@ -3,5 +3,5 @@ declare variable $input-context external;
 (: insert-end :)
 
 $input-context/books/book[
-  .//metadata ftcontains "ersatz" lowercase
+  .//metadata contains text "ersatz" using lowercase
 ]

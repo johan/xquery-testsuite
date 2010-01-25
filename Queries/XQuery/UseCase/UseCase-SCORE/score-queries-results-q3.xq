@@ -4,6 +4,6 @@ declare variable $input-context external;
 
 
 for $book score $s in 
-   $input-context/books/book[. ftcontains "usability"]
+   $input-context/books/book[. contains text "usability"]
 where $s > 0.1
 return $book/metadata/title

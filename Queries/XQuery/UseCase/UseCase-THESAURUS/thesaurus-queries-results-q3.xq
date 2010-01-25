@@ -1,12 +1,12 @@
 (: insert-start :)
 declare variable $input-context external;
-(: nsert-end :)
+(: insert-end :)
 
 
 for $book in $input-context/books/book
 let $cont := $book/content 
-where $cont ftcontains ("letters" ftor "holiday cards") 
-   with thesaurus at 
+where $cont contains text ("letters" ftor "holiday cards") 
+   using thesaurus at 
    "http://bstore1.example.com/UsabilityThesaurus.xml" 
    relationship "BT" exactly 1 levels
 return $book

@@ -5,7 +5,7 @@ declare variable $input-context external;
 
 for $book in $input-context/books/book
 let $chapters := $book//chapter
-where $chapters[./p ftcontains "usability 
-   testing" and ./p/following-sibling::p ftcontains 
+where $chapters[./p contains text "usability 
+   testing" and ./p/following-sibling::p contains text 
    "information architecture"]
 return ($book/metadata/title, $chapters)

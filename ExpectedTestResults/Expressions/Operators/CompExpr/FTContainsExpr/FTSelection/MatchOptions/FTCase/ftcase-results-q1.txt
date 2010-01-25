@@ -120,8 +120,7 @@
          </chapter>
       </part> 
    </content>
-</book>
-<book number="2">
+</book><book number="2">
    <metadata>
       <title shortTitle="Usability Basics">Usability 
       Basics: How to Plan for and Conduct Usability Tests 

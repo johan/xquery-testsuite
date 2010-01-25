@@ -4,7 +4,7 @@
 declare variable $input-context external;
 (: insert-end :)
 
-for $b in $input-context/books/book[.//chapter/title ftcontains "testing"]
-let score $s := $b/content ftcontains "web site" ftand "usability" 
+for $b in $input-context/books/book[.//chapter/title contains text "testing"]
+let score $s := $b/content contains text "web site" ftand "usability" 
 order by $s descending
 return <result score="{$s}">{$b}</result>

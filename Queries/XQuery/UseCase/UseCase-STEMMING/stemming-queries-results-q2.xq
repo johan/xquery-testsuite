@@ -1,10 +1,10 @@
 (: insert-start :)
 declare variable $input-context external;
-(: nsert-end :)
+(: insert-end :)
 
 
 for $book in $input-context/books/book
 let $cont := $book/content 
-where $cont ftcontains ("usability" with stemming ftand "testing" 
-   phrase) ftor ("users" with stemming ftand "testing" phrase)
+where $cont contains text ("usability" using stemming ftand "testing" 
+   phrase) ftor ("users" using stemming ftand "testing" phrase)
 return $book

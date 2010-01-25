@@ -1,2 +1,1 @@
-<title>Software For Fun and Profit, 2nd edition</title>
-<title>No Bad Software</title>
+<title>Software For Fun and Profit, 2nd edition</title><title>No Bad Software</title>

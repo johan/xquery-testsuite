@@ -1,8 +1,8 @@
 (: insert-start :)
 declare variable $input-context external;
-(: nsert-end :)
+(: insert-end :)
 
 
 for $book in $input-context/books/book
-where $book ftcontains "AIDS" case insensitive
+where $book contains text "AIDS" using case insensitive
 return $book

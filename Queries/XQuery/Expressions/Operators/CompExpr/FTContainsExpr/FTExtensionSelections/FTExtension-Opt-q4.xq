@@ -4,4 +4,4 @@ declare namespace oraxqft = "http://www.oracle.com/technology/tech/xml/xmldb/ind
 (: insert-start :)
 declare variable $input-context external;
 (: insert-end :)
-$input-context/books/book/author[name ftcontains (# oraxqft:user-index #){'Berner-lee'}]
+$input-context/books/book/author[name contains text (# oraxqft:user-index #){'Berner-lee'}]

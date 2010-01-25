@@ -4,6 +4,6 @@ declare variable $input-context external;
 
 for $book in $input-context/books/book
 let $title := $book/metadata/title 
-where $title ftcontains "improving" ftand "usability" 
+where $title contains text "improving" ftand "usability" 
    ordered distance at most 2 words at start
 return $title

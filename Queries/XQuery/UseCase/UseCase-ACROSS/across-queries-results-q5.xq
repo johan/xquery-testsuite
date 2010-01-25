@@ -5,6 +5,6 @@ declare variable $input-context external;
 
 for $book in $input-context/books/book
 let $intro := $book/content/(introduction|part/introduction)   
-where $intro [./p ftcontains "identif.*" with wildcards]
+where $intro [./p contains text "identif.*" using wildcards]
 return $book
 

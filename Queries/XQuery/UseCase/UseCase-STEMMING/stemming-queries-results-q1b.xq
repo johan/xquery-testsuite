@@ -1,7 +1,7 @@
 (: insert-start :)
 declare variable $input-context external;
-(: nsert-end :)
+(: insert-end :)
 
 
-$input-context/books/book[content ftcontains "test" 
-with stemming]
+$input-context/books/book[content contains text "test" 
+using stemming]

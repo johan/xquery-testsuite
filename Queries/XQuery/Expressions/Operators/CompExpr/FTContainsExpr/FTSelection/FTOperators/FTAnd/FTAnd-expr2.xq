@@ -5,4 +5,4 @@ declare variable $input-context external;
 (: insert-end :)
 
 let $string1 := $input-context/books/book[1]/title
-return $input-context/books/book[. ftcontains {$string1} ftand "Rain"]/author
+return $input-context/books/book[. contains text {$string1} ftand "Rain"]/author

@@ -16,6 +16,6 @@ declare variable $input-context external;
 
 <paragraphs>
 { for $p in $input-context//p
-where $p ftcontains "FTAnyallOption" any word
+where $p contains text "FTAnyallOption" any word
 return $p }
 </paragraphs>

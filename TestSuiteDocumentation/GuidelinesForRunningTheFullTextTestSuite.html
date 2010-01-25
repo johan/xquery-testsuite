@@ -123,7 +123,7 @@ return $b/author</span></td>
     </tr>
   </tbody>
 </table>
-</p>
+<p> </p>
 <ol style="margin-top: 0in;" start="3" type="1">
   <li>Implicit context: Remove variable
 declarations between insert-start and insert-end comments, and the
@@ -302,6 +302,12 @@ file containing lines of whitespace-separated tokens. Each token on the line
 should stem to the first token on the line. When the catalog entry for a query
 references a stemming dictionary, the implementation is expected to provide
 stemming equivalent to the rules given in the stemming dictionary.
+<p>The special uri <code>##default</code> is used to indicate that the stop
+word list in question is the default stop word list, and that the thesaurus in
+question is the default thesaurus.  As with stop word lists and thesauri in
+general, the referenced file is used to provide guidance as to the expected
+contribution from those resources.
+</p>
 <h3>Sentences and Paragraphs</h3>
 <p>The subject of sentences and paragraphs requires some consideration for implementations
 planning to run the test suite. 
@@ -460,8 +466,8 @@ Submitting XQFTTS Results<br>
 XQuery 1.0 Serialization</a></p>
 <hr>
 <address> <a href="http://www.w3.org/Help/Webmaster">Webmaster</a>
-&middot; Last modified: $Date: 2009/07/09 21:23:49 $ by
-$Author: jmelton $ </address>
+&middot; Last modified: $Date: 2009/10/05 16:30:16 $ by
+$Author: mholstege $ </address>
 <p><a rel="Copyright"
  href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>
 &copy; 1994-2009 <a href="http://www.w3.org/"><acronym

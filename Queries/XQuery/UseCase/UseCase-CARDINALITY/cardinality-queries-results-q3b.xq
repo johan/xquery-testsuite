@@ -4,4 +4,4 @@ declare variable $input-context external;
 
 
 $input-context/books/book[every $pub in .//publisher 
-satisfies $pub ftcontains "ersatz" ftand "publications"]
+satisfies $pub contains text "ersatz" ftand "publications"]

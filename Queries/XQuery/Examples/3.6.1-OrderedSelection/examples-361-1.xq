@@ -2,4 +2,4 @@
 declare variable $input-context external;
 (: insert-end :)
 
-$input-context//book/title ftcontains ("web site" ftand "usability") ordered
+$input-context//book/title contains text ("web site" ftand "usability") ordered

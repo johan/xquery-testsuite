@@ -2,4 +2,4 @@
 declare variable $input-context external;
 (: insert-end :)
 
-$input-context//book[@number="1"]/title ftcontains ("usability" ftand "testing")
+$input-context//book[@number="1"]/title contains text ("usability" ftand "testing")

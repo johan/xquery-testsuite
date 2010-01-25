@@ -6,7 +6,7 @@ declare variable $input-context external;
 
 <paragraphs>
 { for $p score $sc in $input-context//div2[@id="id-minimal-conformance"]//p
-where $p ftcontains "everything" weight "abcd"
+where $p contains text "everything" weight {"abcd"}
 order by $sc
 return $p }
 </paragraphs>

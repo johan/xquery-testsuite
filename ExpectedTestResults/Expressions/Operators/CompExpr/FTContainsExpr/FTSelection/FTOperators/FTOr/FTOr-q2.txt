@@ -1,10 +1,1 @@
-<title>Dogs and Cats</title>
-<title>The Story of a Dog and a Cat</title>
-<title>Animals With Fewer Than Five Feet, Such as Cats</title>
-<title>Animal Training</title>
-<title>Angelic Intervention For Those Who Train Cats</title>
-<title>Software For Fun and Profit</title>
-<title>Software For Fun and Profit, 2nd edition</title>
-<title>The Blues</title>
-<title>No Bad Software</title>
-<title>Ninja Coder</title>
+<title>Dogs and Cats</title><title>The Story of a Dog and a Cat</title><title>Animals With Fewer Than Five Feet, Such as Cats</title><title>Animal Training</title><title>Angelic Intervention For Those Who Train Cats</title><title>Software For Fun and Profit</title><title>Software For Fun and Profit, 2nd edition</title><title>The Blues</title><title>No Bad Software</title><title>Ninja Coder</title>

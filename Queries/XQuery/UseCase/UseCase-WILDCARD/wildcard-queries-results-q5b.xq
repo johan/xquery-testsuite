@@ -1,7 +1,7 @@
 (: insert-start :)
 declare variable $input-context external;
-(: nsert-end :)
+(: insert-end :)
 
 
-$input-context/books/book[content ftcontains "test.{3,4}"
-with wildcards]
+$input-context/books/book[content contains text "test.{3,4}"
+using wildcards]

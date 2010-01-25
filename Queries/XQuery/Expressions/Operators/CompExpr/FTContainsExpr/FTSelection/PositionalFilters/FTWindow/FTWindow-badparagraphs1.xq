@@ -5,4 +5,4 @@
 declare variable $input-context external;
 (: insert-end :)
 
-$input-context/books/book[content ftcontains ("heuristic" ftand "experience") window 0 paragraph]/metadata/title
+$input-context/books/book[content contains text ("heuristic" ftand "experience") window 0 paragraph]/metadata/title

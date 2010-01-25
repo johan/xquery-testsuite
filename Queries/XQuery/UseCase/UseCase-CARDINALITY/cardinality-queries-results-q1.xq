@@ -5,5 +5,5 @@ declare variable $input-context external;
 
 for $book in $input-context/books/book
 let $subj := $book/metadata/subjects/subject
-where $subj ftcontains "web site" ftand "usability"
+where $subj contains text "web site" ftand "usability"
 return $book

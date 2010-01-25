@@ -1,12 +1,12 @@
 (: insert-start :)
 declare variable $input-context external;
-(: nsert-end :)
+(: insert-end :)
 
 
 for $book in $input-context/books/book
 let $cont := $book/content
-where $cont ftcontains "resume.?" with wildcards 
-   diacritics insensitive
+where $cont contains text "resume.?" using wildcards 
+   using diacritics insensitive
 return $book
 
 

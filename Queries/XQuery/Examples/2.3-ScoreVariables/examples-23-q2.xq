@@ -5,7 +5,7 @@ declare variable $input-context external;
 (: insert-end :)
 
 for $b score $s 
-    in $input-context/books/book[content ftcontains "web site" ftand "usability"]
+    in $input-context/books/book[content contains text "web site" ftand "usability"]
 where $s > 0.5
 order by $s descending
 return <result>  

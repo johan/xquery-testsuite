@@ -26,6 +26,6 @@ declare variable $input-context external;
 
 <paragraphs>
 { for $p in $input-context//div2[@id="ftwords"]/p
-where $p ftcontains { "voting weekend", "miserable scuba diver" } any
+where $p contains text { "voting weekend", "miserable scuba diver" } any
 return $p }
 </paragraphs>

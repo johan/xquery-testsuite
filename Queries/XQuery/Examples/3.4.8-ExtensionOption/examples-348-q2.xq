@@ -8,7 +8,7 @@ declare namespace exq = "http://example.org/XQueryImplementation";
 declare variable $input-context external;
 (: insert-end :)
 
-$input-context//para[. ftcontains
+$input-context//para[. contains text
          ("Kinder" ftand "Platz" distance exactly 1 words)
-         with stemming
-         option exq:compounds "distance=1" ]
+         using stemming
+         using option exq:compounds "distance=1" ]

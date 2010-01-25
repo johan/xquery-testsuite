@@ -4,4 +4,4 @@
 declare variable $input-context external;
 (: insert-end :)
 
-$input-context/books/book[para ftcontains {(1,2)} ftor "ninja"]/title
+$input-context/books/book[para contains text {(1,2)} ftor "ninja"]/title

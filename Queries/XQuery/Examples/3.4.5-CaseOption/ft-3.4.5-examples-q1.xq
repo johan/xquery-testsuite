@@ -2,4 +2,4 @@
 declare variable $input-context external;
 (: insert-end :)
 
-$input-context/books/book/title ftcontains "usability" lowercase
+$input-context/books/book/title contains text "usability" using lowercase

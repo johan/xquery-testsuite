@@ -4,4 +4,4 @@
 declare variable $input-context external;
 (: insert-end :)
 
-fn:count($input-context/books/book[para ftcontains "dingbat" ftand "numbskull"]/title)
+fn:count($input-context/books/book[para contains text "dingbat" ftand "numbskull"]/title)

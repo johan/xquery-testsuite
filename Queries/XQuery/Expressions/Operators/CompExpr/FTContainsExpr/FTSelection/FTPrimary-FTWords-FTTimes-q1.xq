@@ -8,6 +8,6 @@ declare variable $input-context external;
 
 <paragraphs>
 { for $p in $input-context//div2[head = "Match Options"]/p
-where $p ftcontains "option" occurs at least 4 times
+where $p contains text "option" occurs at least 4 times
 return $p }
 </paragraphs>

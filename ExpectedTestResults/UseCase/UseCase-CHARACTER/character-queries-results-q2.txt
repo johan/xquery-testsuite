@@ -92,8 +92,7 @@
          </chapter>
       </part>
    </content>
-</book>
-<book number="3">
+</book><book number="3">
    <metadata>
       <title shortTitle="Usabilityguy Manuscript Guide">John Wesley Usabilityguy: A Register of His 
       Papers</title>

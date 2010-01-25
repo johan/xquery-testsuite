@@ -8,6 +8,6 @@ declare variable $input-context external;
 
 <paragraphs>
 { for $p in $input-context//div2[head = "Match Options"]/p
-where $p ftcontains "example"
+where $p contains text "example"
 return $p }
 </paragraphs>

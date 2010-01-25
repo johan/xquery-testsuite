@@ -5,7 +5,7 @@ declare variable $input-context external;
 (: insert-end :)
 
 "one two three four"
-ftcontains
+contains text
    ("one" ftand "three" window 3 words)
    ftand
    ("two" ftand "four" window 3 words)
