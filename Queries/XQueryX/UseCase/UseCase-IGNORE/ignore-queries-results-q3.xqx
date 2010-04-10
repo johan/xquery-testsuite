@@ -82,7 +82,9 @@
               <xqx:pathExpr>
                 <xqx:stepExpr>
                   <xqx:filterExpr>
-                    <xqx:contextItemExpr/>
+                    <xqx:varRef>
+                      <xqx:name>chapter</xqx:name>
+                    </xqx:varRef>
                   </xqx:filterExpr>
                 </xqx:stepExpr>
                 <xqx:stepExpr>
@@ -112,7 +114,7 @@
                                   <xqxft:ftWordsValue>
                                     <xqxft:ftWordsExpression>
                                       <xqx:stringConstantExpr>
-                                        <xqx:value>workstation.</xqx:value>
+                                        <xqx:value>workstation.*</xqx:value>
                                       </xqx:stringConstantExpr>
                                     </xqxft:ftWordsExpression>
                                   </xqxft:ftWordsValue>

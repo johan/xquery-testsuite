@@ -104,7 +104,7 @@ workstation or in a lab</xqx:value>
                                     <xqxft:ftWordsValue>
                                       <xqxft:ftWordsExpression>
                                         <xqx:stringConstantExpr>
-                                          <xqx:value>workstation.</xqx:value>
+                                          <xqx:value>workstation.*</xqx:value>
                                         </xqx:stringConstantExpr>
                                       </xqxft:ftWordsExpression>
                                     </xqxft:ftWordsValue>
