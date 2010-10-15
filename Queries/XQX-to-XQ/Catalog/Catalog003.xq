@@ -1,0 +1,2 @@
+declare variable $input-context external ;
+<error-no-expected-error>{doc("../../../XQFTTSCatalog.xml")/descendant-or-self::node()/child::*:test-case[((attribute::scenario = "runtime-error") or (attribute::scenario = "parse-error"))][((fn:count(child::*:expected-error) = 0) and (fn:count(child::*:output-file[(attribute::compare = "Inspect")]) = 0))]/attribute::name/string()}</error-no-expected-error>

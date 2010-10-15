@@ -1,0 +1,4 @@
+declare variable $input-context external ;
+$input-context/descendant-or-self::node()/child::metadata/child::title contains text  { "Usability" } using option unknown:option "bad" 
+    
+      

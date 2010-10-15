@@ -5,7 +5,7 @@
    </head>
    <body>
       <h1>XPath/XQuery/XQueryX Full Text Interoperability Test Suite</h1>
-      <h6>[Version: 1.0.2 Catalog Design Date: 2008-02-18]</h6>
+      <h6>[Version: 1.0.3 Catalog Design Date: 2008-02-18]</h6>
       <h2>Introduction</h2>
       <P>
          The following document is an XSLT transform of the XQuery and XPath Full Text 1.0 test catalog. The test 
@@ -11632,6 +11632,104 @@
                <A href="#XML">XML</A></td>
             <td><A href="ExpectedTestResults/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/FTWords/FTPrimary-FTWords-phrase-q4c_result.xml">
                   Results/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/FTWords/FTPrimary-FTWords-phrase-q4c_result.xml</A></td>
+         </tr>
+      </table>
+      <p></p>
+      <table width="80%" bgcolor="tan"><a name="FTWordsValue-IntegerLiteral"></a><tr>
+            <td><b>FTWordsValue-IntegerLiteral</b></td>
+            <td>
+               Scenario:
+               <A href="#parse-error">parse-error</A></td>
+            <td>
+               Creator:
+               Michael Dyck
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Description:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3">Attempts to use an IntegerLiteral as an FTWordsValue</td>
+         </tr>
+         <tr>
+            <td colspan="3"></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Spec Citations:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="#ftwords">#ftwords</A></td>
+         </tr>
+         <tr>
+            <td colspan="2"><B>Query:</B></td>
+            <td>
+               (XPath 2.0)
+               
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/FTWords/FTWordsValue-IntegerLiteral.xq">Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/FTWords/FTWordsValue-IntegerLiteral.xq</A></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Inputs:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Outputs:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRXPST0003">
+                  err:XPST0003</A></td>
+         </tr>
+      </table>
+      <p></p>
+      <table width="80%" bgcolor="tan"><a name="FTWordsValue-DecimalLiteral"></a><tr>
+            <td><b>FTWordsValue-DecimalLiteral</b></td>
+            <td>
+               Scenario:
+               <A href="#parse-error">parse-error</A></td>
+            <td>
+               Creator:
+               Michael Dyck
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Description:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3">Attempts to use a DecimalLiteral as an FTWordsValue</td>
+         </tr>
+         <tr>
+            <td colspan="3"></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Spec Citations:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="#ftwords">#ftwords</A></td>
+         </tr>
+         <tr>
+            <td colspan="2"><B>Query:</B></td>
+            <td>
+               (XPath 2.0)
+               
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/FTWords/FTWordsValue-DecimalLiteral.xq">Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/FTWords/FTWordsValue-DecimalLiteral.xq</A></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Inputs:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Outputs:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRXPST0003">
+                  err:XPST0003</A></td>
          </tr>
       </table>
       <p></p><A name="FTTimes"></A><h3>1.2.2.1.1.1.2Full-Text Cardinality Selection</h3>
@@ -24486,6 +24584,1011 @@
                Error:
                <A href="http://www.w3.org/TR/xquery/#ERRFTST0003">
                   err:FTST0003</A></td>
+         </tr>
+      </table>
+      <p></p>
+      <table width="80%" bgcolor="tan"><a name="different-sentence-01"></a><tr>
+            <td><b>different-sentence-01</b></td>
+            <td>
+               Scenario:
+               <A href="#standard">standard</A></td>
+            <td>
+               Creator:
+               Michael Dyck
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Description:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Filter a match consisting of one single-sentence StringInclude.
+               Yields false because there's only one StringInclude.
+               
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Spec Citations:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="#ftscope">#ftscope</A></td>
+         </tr>
+         <tr>
+            <td colspan="2"><B>Query:</B></td>
+            <td>
+               (XPath 2.0)
+               
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-01.xq">Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-01.xq</A></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Inputs:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Outputs:</B></td>
+         </tr>
+         <tr>
+            <td>
+               Role:
+               <A href="#principal">principal</A></td>
+            <td>
+               Comparator:
+               <A href="#Text">Text</A></td>
+            <td><A href="ExpectedTestResults/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-01.txt">
+                  Results/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-01.txt</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0003">
+                  err:FTST0003</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0004">
+                  err:FTST0004</A></td>
+         </tr>
+      </table>
+      <p></p>
+      <table width="80%" bgcolor="tan"><a name="different-sentence-02"></a><tr>
+            <td><b>different-sentence-02</b></td>
+            <td>
+               Scenario:
+               <A href="#standard">standard</A></td>
+            <td>
+               Creator:
+               Michael Dyck
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Description:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Filter a match consisting of two single-sentence StringIncludes.
+               Clearly yields false.
+               
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Spec Citations:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="#ftscope">#ftscope</A></td>
+         </tr>
+         <tr>
+            <td colspan="2"><B>Query:</B></td>
+            <td>
+               (XPath 2.0)
+               
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-02.xq">Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-02.xq</A></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Inputs:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Outputs:</B></td>
+         </tr>
+         <tr>
+            <td>
+               Role:
+               <A href="#principal">principal</A></td>
+            <td>
+               Comparator:
+               <A href="#Text">Text</A></td>
+            <td><A href="ExpectedTestResults/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-02.txt">
+                  Results/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-02.txt</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0003">
+                  err:FTST0003</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0004">
+                  err:FTST0004</A></td>
+         </tr>
+      </table>
+      <p></p>
+      <table width="80%" bgcolor="tan"><a name="different-sentence-03"></a><tr>
+            <td><b>different-sentence-03</b></td>
+            <td>
+               Scenario:
+               <A href="#standard">standard</A></td>
+            <td>
+               Creator:
+               Michael Dyck
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Description:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Filter a match consisting of two single-sentence StringIncludes.
+               Clearly yields true.
+               
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Spec Citations:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="#ftscope">#ftscope</A></td>
+         </tr>
+         <tr>
+            <td colspan="2"><B>Query:</B></td>
+            <td>
+               (XPath 2.0)
+               
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-03.xq">Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-03.xq</A></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Inputs:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Outputs:</B></td>
+         </tr>
+         <tr>
+            <td>
+               Role:
+               <A href="#principal">principal</A></td>
+            <td>
+               Comparator:
+               <A href="#Text">Text</A></td>
+            <td><A href="ExpectedTestResults/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-03.txt">
+                  Results/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-03.txt</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0003">
+                  err:FTST0003</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0004">
+                  err:FTST0004</A></td>
+         </tr>
+      </table>
+      <p></p>
+      <table width="80%" bgcolor="tan"><a name="different-sentence-04"></a><tr>
+            <td><b>different-sentence-04</b></td>
+            <td>
+               Scenario:
+               <A href="#standard">standard</A></td>
+            <td>
+               Creator:
+               Michael Dyck
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Description:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Filter a match consisting of two single-sentence StringIncludes.
+               Although each "one" is in the same sentence as a "two",
+               you can still find a "one" and a "two" in different sentences.
+               
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Spec Citations:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="#ftscope">#ftscope</A></td>
+         </tr>
+         <tr>
+            <td colspan="2"><B>Query:</B></td>
+            <td>
+               (XPath 2.0)
+               
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-04.xq">Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-04.xq</A></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Inputs:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Outputs:</B></td>
+         </tr>
+         <tr>
+            <td>
+               Role:
+               <A href="#principal">principal</A></td>
+            <td>
+               Comparator:
+               <A href="#Text">Text</A></td>
+            <td><A href="ExpectedTestResults/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-04.txt">
+                  Results/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-04.txt</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0003">
+                  err:FTST0003</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0004">
+                  err:FTST0004</A></td>
+         </tr>
+      </table>
+      <p></p>
+      <table width="80%" bgcolor="tan"><a name="different-sentence-05"></a><tr>
+            <td><b>different-sentence-05</b></td>
+            <td>
+               Scenario:
+               <A href="#standard">standard</A></td>
+            <td>
+               Creator:
+               Michael Dyck
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Description:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Filter a match consisting of three single-sentence StringIncludes.
+               Clearly yields true.
+               
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Spec Citations:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="#ftscope">#ftscope</A></td>
+         </tr>
+         <tr>
+            <td colspan="2"><B>Query:</B></td>
+            <td>
+               (XPath 2.0)
+               
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-05.xq">Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-05.xq</A></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Inputs:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Outputs:</B></td>
+         </tr>
+         <tr>
+            <td>
+               Role:
+               <A href="#principal">principal</A></td>
+            <td>
+               Comparator:
+               <A href="#Text">Text</A></td>
+            <td><A href="ExpectedTestResults/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-05.txt">
+                  Results/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-05.txt</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0003">
+                  err:FTST0003</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0004">
+                  err:FTST0004</A></td>
+         </tr>
+      </table>
+      <p></p>
+      <table width="80%" bgcolor="tan"><a name="different-sentence-06"></a><tr>
+            <td><b>different-sentence-06</b></td>
+            <td>
+               Scenario:
+               <A href="#standard">standard</A></td>
+            <td>
+               Creator:
+               Michael Dyck
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Description:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Filter a match consisting of three single-sentence StringIncludes.
+               Yields false because "one" and "two" are both in the first sentence.
+               
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Spec Citations:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="#ftscope">#ftscope</A></td>
+         </tr>
+         <tr>
+            <td colspan="2"><B>Query:</B></td>
+            <td>
+               (XPath 2.0)
+               
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-06.xq">Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-06.xq</A></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Inputs:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Outputs:</B></td>
+         </tr>
+         <tr>
+            <td>
+               Role:
+               <A href="#principal">principal</A></td>
+            <td>
+               Comparator:
+               <A href="#Text">Text</A></td>
+            <td><A href="ExpectedTestResults/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-06.txt">
+                  Results/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-06.txt</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0003">
+                  err:FTST0003</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0004">
+                  err:FTST0004</A></td>
+         </tr>
+      </table>
+      <p></p>
+      <table width="80%" bgcolor="tan"><a name="different-sentence-07"></a><tr>
+            <td><b>different-sentence-07</b></td>
+            <td>
+               Scenario:
+               <A href="#standard">standard</A></td>
+            <td>
+               Creator:
+               Michael Dyck
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Description:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Filter a match consisting of one multi-sentence StringInclude.
+               Yields false because there's only one StringInclude
+               (despite the fact that it straddles two sentences).
+               
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Spec Citations:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="#ftscope">#ftscope</A></td>
+         </tr>
+         <tr>
+            <td colspan="2"><B>Query:</B></td>
+            <td>
+               (XPath 2.0)
+               
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-07.xq">Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-07.xq</A></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Inputs:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Outputs:</B></td>
+         </tr>
+         <tr>
+            <td>
+               Role:
+               <A href="#principal">principal</A></td>
+            <td>
+               Comparator:
+               <A href="#Text">Text</A></td>
+            <td><A href="ExpectedTestResults/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-07.txt">
+                  Results/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-07.txt</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0003">
+                  err:FTST0003</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0004">
+                  err:FTST0004</A></td>
+         </tr>
+      </table>
+      <p></p>
+      <table width="80%" bgcolor="tan"><a name="different-sentence-08"></a><tr>
+            <td><b>different-sentence-08</b></td>
+            <td>
+               Scenario:
+               <A href="#standard">standard</A></td>
+            <td>
+               Creator:
+               Michael Dyck
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Description:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3">Filter a match consisting of two StringIncludes, one of them multi-sentence.</td>
+         </tr>
+         <tr>
+            <td colspan="3"></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Spec Citations:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="#ftscope">#ftscope</A></td>
+         </tr>
+         <tr>
+            <td colspan="2"><B>Query:</B></td>
+            <td>
+               (XPath 2.0)
+               
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-08.xq">Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-08.xq</A></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Inputs:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Outputs:</B></td>
+         </tr>
+         <tr>
+            <td>
+               Role:
+               <A href="#principal">principal</A></td>
+            <td>
+               Comparator:
+               <A href="#Text">Text</A></td>
+            <td><A href="ExpectedTestResults/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-08.txt">
+                  Results/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-08.txt</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0003">
+                  err:FTST0003</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0004">
+                  err:FTST0004</A></td>
+         </tr>
+      </table>
+      <p></p>
+      <table width="80%" bgcolor="tan"><a name="different-sentence-09"></a><tr>
+            <td><b>different-sentence-09</b></td>
+            <td>
+               Scenario:
+               <A href="#standard">standard</A></td>
+            <td>
+               Creator:
+               Michael Dyck
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Description:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3">Filter a match consisting of two StringIncludes, one of them multi-sentence.</td>
+         </tr>
+         <tr>
+            <td colspan="3"></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Spec Citations:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="#ftscope">#ftscope</A></td>
+         </tr>
+         <tr>
+            <td colspan="2"><B>Query:</B></td>
+            <td>
+               (XPath 2.0)
+               
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-09.xq">Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-09.xq</A></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Inputs:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Outputs:</B></td>
+         </tr>
+         <tr>
+            <td>
+               Role:
+               <A href="#principal">principal</A></td>
+            <td>
+               Comparator:
+               <A href="#Text">Text</A></td>
+            <td><A href="ExpectedTestResults/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-09.txt">
+                  Results/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-09.txt</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0003">
+                  err:FTST0003</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0004">
+                  err:FTST0004</A></td>
+         </tr>
+      </table>
+      <p></p>
+      <table width="80%" bgcolor="tan"><a name="different-sentence-10"></a><tr>
+            <td><b>different-sentence-10</b></td>
+            <td>
+               Scenario:
+               <A href="#standard">standard</A></td>
+            <td>
+               Creator:
+               Michael Dyck
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Description:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3">Filter a match consisting of two StringIncludes, both of them multi-sentence.</td>
+         </tr>
+         <tr>
+            <td colspan="3"></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Spec Citations:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="#ftscope">#ftscope</A></td>
+         </tr>
+         <tr>
+            <td colspan="2"><B>Query:</B></td>
+            <td>
+               (XPath 2.0)
+               
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-10.xq">Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-10.xq</A></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Inputs:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Outputs:</B></td>
+         </tr>
+         <tr>
+            <td>
+               Role:
+               <A href="#principal">principal</A></td>
+            <td>
+               Comparator:
+               <A href="#Text">Text</A></td>
+            <td><A href="ExpectedTestResults/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-10.txt">
+                  Results/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-10.txt</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0003">
+                  err:FTST0003</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0004">
+                  err:FTST0004</A></td>
+         </tr>
+      </table>
+      <p></p>
+      <table width="80%" bgcolor="tan"><a name="different-sentence-11"></a><tr>
+            <td><b>different-sentence-11</b></td>
+            <td>
+               Scenario:
+               <A href="#standard">standard</A></td>
+            <td>
+               Creator:
+               Michael Dyck
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Description:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3">Filter a match consisting of two StringIncludes, both of them multi-sentence.</td>
+         </tr>
+         <tr>
+            <td colspan="3"></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Spec Citations:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="#ftscope">#ftscope</A></td>
+         </tr>
+         <tr>
+            <td colspan="2"><B>Query:</B></td>
+            <td>
+               (XPath 2.0)
+               
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-11.xq">Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-11.xq</A></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Inputs:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Outputs:</B></td>
+         </tr>
+         <tr>
+            <td>
+               Role:
+               <A href="#principal">principal</A></td>
+            <td>
+               Comparator:
+               <A href="#Text">Text</A></td>
+            <td><A href="ExpectedTestResults/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-11.txt">
+                  Results/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-11.txt</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0003">
+                  err:FTST0003</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0004">
+                  err:FTST0004</A></td>
+         </tr>
+      </table>
+      <p></p>
+      <table width="80%" bgcolor="tan"><a name="different-sentence-12"></a><tr>
+            <td><b>different-sentence-12</b></td>
+            <td>
+               Scenario:
+               <A href="#standard">standard</A></td>
+            <td>
+               Creator:
+               Michael Dyck
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Description:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3">Filter a match consisting of two StringIncludes, both of them multi-sentence.</td>
+         </tr>
+         <tr>
+            <td colspan="3"></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Spec Citations:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="#ftscope">#ftscope</A></td>
+         </tr>
+         <tr>
+            <td colspan="2"><B>Query:</B></td>
+            <td>
+               (XPath 2.0)
+               
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-12.xq">Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-12.xq</A></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Inputs:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Outputs:</B></td>
+         </tr>
+         <tr>
+            <td>
+               Role:
+               <A href="#principal">principal</A></td>
+            <td>
+               Comparator:
+               <A href="#Text">Text</A></td>
+            <td><A href="ExpectedTestResults/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-12.txt">
+                  Results/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-12.txt</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0003">
+                  err:FTST0003</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0004">
+                  err:FTST0004</A></td>
+         </tr>
+      </table>
+      <p></p>
+      <table width="80%" bgcolor="tan"><a name="different-sentence-13"></a><tr>
+            <td><b>different-sentence-13</b></td>
+            <td>
+               Scenario:
+               <A href="#standard">standard</A></td>
+            <td>
+               Creator:
+               Michael Dyck
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Description:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3">Filter a match consisting of three StringIncludes, one of them multi-sentence.</td>
+         </tr>
+         <tr>
+            <td colspan="3"></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Spec Citations:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="#ftscope">#ftscope</A></td>
+         </tr>
+         <tr>
+            <td colspan="2"><B>Query:</B></td>
+            <td>
+               (XPath 2.0)
+               
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-13.xq">Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-13.xq</A></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Inputs:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Outputs:</B></td>
+         </tr>
+         <tr>
+            <td>
+               Role:
+               <A href="#principal">principal</A></td>
+            <td>
+               Comparator:
+               <A href="#Text">Text</A></td>
+            <td><A href="ExpectedTestResults/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-13.txt">
+                  Results/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-13.txt</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0003">
+                  err:FTST0003</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0004">
+                  err:FTST0004</A></td>
+         </tr>
+      </table>
+      <p></p>
+      <table width="80%" bgcolor="tan"><a name="different-sentence-14"></a><tr>
+            <td><b>different-sentence-14</b></td>
+            <td>
+               Scenario:
+               <A href="#standard">standard</A></td>
+            <td>
+               Creator:
+               Michael Dyck
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Description:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3">Filter a match consisting of three StringIncludes, one of them multi-sentence.</td>
+         </tr>
+         <tr>
+            <td colspan="3"></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Spec Citations:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="#ftscope">#ftscope</A></td>
+         </tr>
+         <tr>
+            <td colspan="2"><B>Query:</B></td>
+            <td>
+               (XPath 2.0)
+               
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-14.xq">Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-14.xq</A></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Inputs:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Outputs:</B></td>
+         </tr>
+         <tr>
+            <td>
+               Role:
+               <A href="#principal">principal</A></td>
+            <td>
+               Comparator:
+               <A href="#Text">Text</A></td>
+            <td><A href="ExpectedTestResults/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-14.txt">
+                  Results/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-14.txt</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0003">
+                  err:FTST0003</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0004">
+                  err:FTST0004</A></td>
+         </tr>
+      </table>
+      <p></p>
+      <table width="80%" bgcolor="tan"><a name="different-sentence-15"></a><tr>
+            <td><b>different-sentence-15</b></td>
+            <td>
+               Scenario:
+               <A href="#standard">standard</A></td>
+            <td>
+               Creator:
+               Michael Dyck
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Description:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3">Filter a match consisting of three StringIncludes, one of them multi-sentence.</td>
+         </tr>
+         <tr>
+            <td colspan="3"></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Spec Citations:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="#ftscope">#ftscope</A></td>
+         </tr>
+         <tr>
+            <td colspan="2"><B>Query:</B></td>
+            <td>
+               (XPath 2.0)
+               
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-15.xq">Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-15.xq</A></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Inputs:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Outputs:</B></td>
+         </tr>
+         <tr>
+            <td>
+               Role:
+               <A href="#principal">principal</A></td>
+            <td>
+               Comparator:
+               <A href="#Text">Text</A></td>
+            <td><A href="ExpectedTestResults/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-15.txt">
+                  Results/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/different-sentence-15.txt</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0003">
+                  err:FTST0003</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0004">
+                  err:FTST0004</A></td>
          </tr>
       </table>
       <p></p><A name="FTContent"></A><h3>1.2.2.1.1.1.4.5Anchoring Selection</h3>
@@ -44285,14 +45388,6 @@
                </td>
                <td valign="top">Tokenization, including the definition of the term "tokens", SHOULD be implementation-defined. Implementations SHOULD expose
                   the rules and sample results of tokenization as much as possible to enable users to predict and interpret the results of tokenization.
-                  Tokenization is defined more formally in 4.1 Tokenization.
-               </td>
-            </tr>
-            <tr>
-               <td valign="top">[XQueryFullText]<br>token
-               </td>
-               <td valign="top">A token is a non-empty sequence of characters returned by a tokenizer as a basic unit to be searched. Beyond that, tokens
-                  are implementation-defined.
                </td>
             </tr>
             <tr>
@@ -44303,80 +45398,135 @@
             <tr>
                <td valign="top">[XQueryFullText]<br>sentence
                </td>
-               <td valign="top">A sentence is an ordered sequence of any number of tokens. Beyond that, sentences are implementation-defined. A tokenizer
+               <td valign="top">A sentence is an ordered sequence of any number of tokens. Beyond that, sentences are implementation-defined. An implementation
                   is not required to support sentences.
                </td>
             </tr>
             <tr>
                <td valign="top">[XQueryFullText]<br>paragraph
                </td>
-               <td valign="top">A paragraph is an ordered sequence of any number of tokens. Beyond that, paragraphs are implementation-defined. A tokenizer
+               <td valign="top">A paragraph is an ordered sequence of any number of tokens. Beyond that, paragraphs are implementation-defined. An implementation
                   is not required to support paragraphs.
+               </td>
+            </tr>
+            <tr>
+               <td valign="top">[XQueryFullText]<br>Markup Effect Token Boundaries
+               </td>
+               <td valign="top">Implementations are free to provide implementation-defined ways to differentiate between markup's effect on token boundaries
+                  during tokenization.
                </td>
             </tr>
             <tr>
                <td valign="top">[XQueryFullText]<br>Scoring Expressions
                </td>
-               <td valign="top">The set of expressions supported by the scoring algorithm is implementation-defined. If an expression not supported by the
-                  scoring algorithm is passed to the scoring algorithm, the result is implementation-defined.
+               <td valign="top">The set of expressions (of form ExprSingle) that can be assigned to a score variable in a let-clause is implementation-defined.
+                  The result of passing an expression to the scoring algorithm that it does not support is implementation-defined.
                </td>
             </tr>
             <tr>
                <td valign="top">[XQueryFullText]<br>Matching
                </td>
-               <td valign="top">Matching of the tokens in a query phrase to tokens in XDM is implementation-defined.</td>
+               <td valign="top">When a sequence of query tokens is considered as a phrase, it matches a sequence of tokens in the tokenized form of the text
+                  being searched only if the two sequences correspond in an implementation-defined way.
+               </td>
             </tr>
             <tr>
                <td valign="top">[XQueryFullText]<br>Match Option Order
                </td>
-               <td valign="top">The full order of the application of match options is implementation-defined.</td>
+               <td valign="top">The match option application order, subject to the stated constraints, is implementation-defined.</td>
             </tr>
             <tr>
-               <td valign="top">[XQueryFullText]<br>Language Option
+               <td valign="top">[XQueryFullText]<br>Language Option Tokenization
                </td>
-               <td valign="top">The "language" option influences tokenization, stemming, and stop words in an implementation-defined way. The "language" option
-                  MAY influence the behavior of other match options in an implementation-defined way. The set of valid language identifiers
-                  among the standardized set is implementation-defined. It is implementation-defined what additional language identifiers, if
-                  any, are valid. If an invalid language identifier is specified, then the behavior is implementation-defined. When an XQuery
-                  and XPath Full Text processor evaluates text in a document that is governed by an xml:lang attribute and the portion of the
-                  full-text query doing that evaluation contains an FTLanguageOption that specifies a different language from the language specified
-                  by the governing xml:lang attribute, the language-related behavior of that full-text query is implementation-defined.
+               <td valign="top">The "language" option influences tokenization, stemming, and stop words in an implementation-defined way. It MAY influence
+                  the behavior of other match options in an implementation-defined way.
+               </td>
+            </tr>
+            <tr>
+               <td valign="top">[XQueryFullText]<br>Language Option Valid ID
+               </td>
+               <td valign="top">The set of valid language identifiers is implementation-defined.</td>
+            </tr>
+            <tr>
+               <td valign="top">[XQueryFullText]<br>Language Option Undefined
+               </td>
+               <td valign="top">If an invalid language identifier is specified, then the behavior is implementation-defined.</td>
+            </tr>
+            <tr>
+               <td valign="top">[XQueryFullText]<br>Mismatched Languages
+               </td>
+               <td valign="top">When a processor evaluates text in a document that is governed by an xml:lang attribute and the portion of the full-text query
+                  doing that evaluation contains an FTLanguageOption that specifies a different language from the language specified by the
+                  governing xml:lang attribute, the language-related behavior of that full-text query is implementation-defined.
                </td>
             </tr>
             <tr>
                <td valign="top">[XQueryFullText]<br>Thesaurus Option
                </td>
-               <td valign="top">The set of relationships supported by an implementation is implementation-defined. If a query specifies thesaurus relationships
-                  or levels not supported by the thesaurus, the behavior is implementation-defined.
+               <td valign="top">It is implementation-defined which thesaurus relationships an implementation supports.</td>
+            </tr>
+            <tr>
+               <td valign="top">[XQueryFullText]<br>Thesaurus Relationships
+               </td>
+               <td valign="top">If a query specifies thesaurus relationships or levels not supported by the thesaurus, or does not specify a relationship,
+                  the behavior is implementation-defined.
                </td>
             </tr>
             <tr>
                <td valign="top">[XQueryFullText]<br>Stemming Option
                </td>
-               <td valign="top">It is implementation-defined what a stem of a token is. It is implementation-defined whether the stemming is based on an algorithm,
-                  dictionary, or mixed approach.
+               <td valign="top">It is implementation-defined what a stem of a token is and whether stemming will based on an algorithm, dictionary, or mixed
+                  approach.
                </td>
             </tr>
             <tr>
-               <td valign="top">[XQueryFullText]<br>StopWord Option
+               <td valign="top">[XQueryFullText]<br>Query Token In Stopword List
                </td>
-               <td valign="top">Normally a stop word matches exactly one token, but there may be implementation-defined conditions, under which a stop word
-                  may match a different number of tokens.  The "using default stop words" option specifies that an implementation-defined collection
-                  of stop words is used.
+               <td valign="top">An implementation-defined comparison is used to determine whether a query token appears in the collection of stop words defined
+                  by the applicable stop word option.
                </td>
+            </tr>
+            <tr>
+               <td valign="top">[XQueryFullText]<br>StopWord Option Match Number
+               </td>
+               <td valign="top">Normally a stop word matches exactly one token, but there may be implementation-defined  conditions, under which a stop word
+                  may match a different number of tokens.
+               </td>
+            </tr>
+            <tr>
+               <td valign="top">[XQueryFullText]<br>StopWord Option Default
+               </td>
+               <td valign="top">The "stop words default" option specifies that an implementation-defined  collection of stop words is used.</td>
             </tr>
             <tr>
                <td valign="top">[XQueryFullText]<br>Extension Option
                </td>
-               <td valign="top">An extension option is a match option that acts in an implementation-defined way. Each implementation recognizes an implementation-defined
-                  set of namespace URIs used to denote extension options.
+               <td valign="top">An implementation recognizes an implementation-defined  set of namespace URIs used to denote extension options. The effect
+                  of each, including its error behavior, is implementation-defined.
                </td>
             </tr>
             <tr>
                <td valign="top">[XQueryFullText]<br>Extension Selection
                </td>
-               <td valign="top">An extension selection is a full-text selection whose semantics are implementation-defined.  Each implementation recognizes
-                  an implementation-defined set of namespace URIs used to denote pragmas.
+               <td valign="top">An implementation recognizes an implementation-defined  set of namespace URIs used to denote extension selection pragmas.
+                  The effect of each, including its error behavior, is implementation-defined.
+               </td>
+            </tr>
+            <tr>
+               <td valign="top">[XQueryFullText]<br>Equal Items Different Tokens
+               </td>
+               <td valign="top">The conditions under which tokenization of two equal items produces different tokens is implementation-defined.</td>
+            </tr>
+            <tr>
+               <td valign="top">[XQueryFullText]<br>FTIgnoreOption
+               </td>
+               <td valign="top">An implementation may impose an implementation-defined  restriction on the operand of FTIgnoreOption.</td>
+            </tr>
+            <tr>
+               <td valign="top">[XQueryFullText]<br>Static Context Items
+               </td>
+               <td valign="top">For certain full-text components of the static context (see C Static Context Components), the default initial value of the
+                  component can be overwritten or augmented with an implementation-defined value or values.
                </td>
             </tr>
          </table>

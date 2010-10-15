@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="XQFTTSCatalog.xsl" ?>
-<test-suite xmlns="http://www.w3.org/2005/02/query-test-full-text" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" CatalogDesignDate="2008-02-18" version="1.0.2" SourceOffsetPath="./" ResultOffsetPath="ExpectedTestResults/"
-            XQueryQueryOffsetPath="Queries/XQuery/" XQueryXQueryOffsetPath="Queries/XQueryX/" XQueryFileExtension=".xq" XQueryXFileExtension=".xqx"
-            xsi:schemaLocation="http://www.w3.org/2005/02/query-test-full-text http://dev.w3.org/2007/xpath-full-text-10-test-suite/TestSuiteStagingArea/XQFTTSCatalog.xsd">
+<test-suite xmlns="http://www.w3.org/2005/02/query-test-full-text"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            CatalogDesignDate="2008-02-18"
+            version="1.0.3"
+            SourceOffsetPath="./"
+            ResultOffsetPath="ExpectedTestResults/"
+            XQueryQueryOffsetPath="Queries/XQuery/"
+            XQueryXQueryOffsetPath="Queries/XQueryX/"
+            XQueryFileExtension=".xq"
+            XQueryXFileExtension=".xqx"
+            xsi:schemaLocation="http://www.w3.org/2005/02/query-test-full-text
+                                http://dev.w3.org/2007/xpath-full-text-10-test-suite/TestSuiteStagingArea/XQFTTSCatalog.xsd">
 
   <test-suite-info>
-    <title>XQuery and XPath Full Text 1.0 Test Suite 1.0.2</title>
+    <title>XQuery and XPath Full Text 1.0 Test Suite v1.0.3</title>
     <description>Test Suite for XQuery and XPath Full-Text 1.0. 
       See http://dev.w3.org/2007/xpath-full-text-10-test-suite/.</description>
   </test-suite-info>
@@ -601,47 +610,75 @@
     </implementation-defined-item>
 
     <implementation-defined-item name="Tokenization" spec="XQueryFullText">
-      <description last-mod="2008-02-18">Tokenization, including the definition of the term "tokens", SHOULD be implementation-defined. Implementations SHOULD expose the rules and sample results of tokenization as much as possible to enable users to predict and interpret the results of tokenization. Tokenization is defined more formally in 4.1 Tokenization.</description>
-    </implementation-defined-item>
-    <implementation-defined-item name="token" spec="XQueryFullText">
-      <description last-mod="2008-02-18">A token is a non-empty sequence of characters returned by a tokenizer as a basic unit to be searched. Beyond that, tokens are implementation-defined.</description>
+      <description last-mod="2010-09-17">Tokenization, including the definition of the term "tokens", SHOULD be implementation-defined. Implementations SHOULD expose the rules and sample results of tokenization as much as possible to enable users to predict and interpret the results of tokenization.</description>
     </implementation-defined-item>
     <implementation-defined-item name="phrase" spec="XQueryFullText">
       <description last-mod="2008-02-18">A phrase is an ordered sequence of any number of tokens. Beyond that, phrases are implementation-defined.</description>
     </implementation-defined-item>
     <implementation-defined-item name="sentence" spec="XQueryFullText">
-      <description last-mod="2008-02-18">A sentence is an ordered sequence of any number of tokens. Beyond that, sentences are implementation-defined. A tokenizer is not required to support sentences.</description>
+      <description last-mod="2010-09-16">A sentence is an ordered sequence of any number of tokens. Beyond that, sentences are implementation-defined. An implementation is not required to support sentences.</description>
     </implementation-defined-item>
     <implementation-defined-item name="paragraph" spec="XQueryFullText">
-      <description last-mod="2008-02-18">A paragraph is an ordered sequence of any number of tokens. Beyond that, paragraphs are implementation-defined. A tokenizer is not required to support paragraphs.</description>
+      <description last-mod="2010-09-16">A paragraph is an ordered sequence of any number of tokens. Beyond that, paragraphs are implementation-defined. An implementation is not required to support paragraphs.</description>
+    </implementation-defined-item>
+    <implementation-defined-item name="Markup Effect Token Boundaries" spec="XQueryFullText">
+      <description last-mod="2010-09-16">Implementations are free to provide implementation-defined ways to differentiate between markup's effect on token boundaries during tokenization.</description>
     </implementation-defined-item>
     <implementation-defined-item name="Scoring Expressions" spec="XQueryFullText">
-      <description last-mod="2008-02-18">The set of expressions supported by the scoring algorithm is implementation-defined. If an expression not supported by the scoring algorithm is passed to the scoring algorithm, the result is implementation-defined.</description>
+      <description last-mod="2010-09-16">The set of expressions (of form ExprSingle) that can be assigned to a score variable in a let-clause is implementation-defined. The result of passing an expression to the scoring algorithm that it does not support is implementation-defined.</description>
     </implementation-defined-item>
     <implementation-defined-item name="Matching" spec="XQueryFullText">
-      <description last-mod="2008-02-18">Matching of the tokens in a query phrase to tokens in XDM is implementation-defined.</description>
+      <description last-mod="2010-09-17">When a sequence of query tokens is considered as a phrase, it matches a sequence of tokens in the tokenized form of the text being searched only if the two sequences correspond in an implementation-defined way.</description>
     </implementation-defined-item>
     <implementation-defined-item name="Match Option Order" spec="XQueryFullText">
-      <description last-mod="2008-02-18">The full order of the application of match options is implementation-defined.</description>
+      <description last-mod="2010-09-16">The match option application order, subject to the stated constraints, is implementation-defined.</description>
     </implementation-defined-item>
-    <implementation-defined-item name="Language Option" spec="XQueryFullText">
-      <description last-mod="2008-02-18">The "language" option influences tokenization, stemming, and stop words in an implementation-defined way. The "language" option MAY influence the behavior of other match options in an implementation-defined way. The set of valid language identifiers among the standardized set is implementation-defined. It is implementation-defined what additional language identifiers, if any, are valid. If an invalid language identifier is specified, then the behavior is implementation-defined. When an XQuery and XPath Full Text processor evaluates text in a document that is governed by an xml:lang attribute and the portion of the full-text query doing that evaluation contains an FTLanguageOption that specifies a different language from the language specified by the governing xml:lang attribute, the language-related behavior of that full-text query is implementation-defined.</description>
+    <implementation-defined-item name="Language Option Tokenization" spec="XQueryFullText">
+      <description last-mod="2010-09-16">The "language" option influences tokenization, stemming, and stop words in an implementation-defined way. It MAY influence the behavior of other match options in an implementation-defined way.</description>
+    </implementation-defined-item>
+    <implementation-defined-item name="Language Option Valid ID" spec="XQueryFullText">
+      <description last-mod="2010-09-16">The set of valid language identifiers is implementation-defined.</description>
+    </implementation-defined-item>
+    <implementation-defined-item name="Language Option Undefined" spec="XQueryFullText">
+      <description last-mod="2010-09-17">If an invalid language identifier is specified, then the behavior is implementation-defined.</description>
+    </implementation-defined-item>
+    <implementation-defined-item name="Mismatched Languages" spec="XQueryFullText">
+      <description last-mod="2010-09-17">When a processor evaluates text in a document that is governed by an xml:lang attribute and the portion of the full-text query doing that evaluation contains an FTLanguageOption that specifies a different language from the language specified by the governing xml:lang attribute, the language-related behavior of that full-text query is implementation-defined.</description>
     </implementation-defined-item>
     <implementation-defined-item name="Thesaurus Option" spec="XQueryFullText">
-      <description last-mod="2008-02-18">The set of relationships supported by an implementation is implementation-defined. If a query specifies thesaurus relationships or levels not supported by the thesaurus, the behavior is implementation-defined.</description>
+      <description last-mod="2010-09-16">It is implementation-defined which thesaurus relationships an implementation supports.</description>
+    </implementation-defined-item>
+    <implementation-defined-item name="Thesaurus Relationships" spec="XQueryFullText">
+      <description last-mod="2010-09-17">If a query specifies thesaurus relationships or levels not supported by the thesaurus, or does not specify a relationship, the behavior is implementation-defined.</description>
     </implementation-defined-item>
     <implementation-defined-item name="Stemming Option" spec="XQueryFullText">
-      <description last-mod="2008-02-18">It is implementation-defined what a stem of a token is. It is implementation-defined whether the stemming is based on an algorithm, dictionary, or mixed approach.</description>
+      <description last-mod="2010-09-16">It is implementation-defined what a stem of a token is and whether stemming will based on an algorithm, dictionary, or mixed approach.</description>
     </implementation-defined-item>
-    <implementation-defined-item name="StopWord Option" spec="XQueryFullText">
-      <description last-mod="2008-02-18">Normally a stop word matches exactly one token, but there may be implementation-defined conditions, under which a stop word may match a different number of tokens.  The "using default stop words" option specifies that an implementation-defined collection of stop words is used.</description>
+    <implementation-defined-item name="Query Token In Stopword List" spec="XQueryFullText">
+      <description last-mod="2010-09-16">An implementation-defined comparison is used to determine whether a query token appears in the collection of stop words defined by the applicable stop word option.</description>
+    </implementation-defined-item>
+    <implementation-defined-item name="StopWord Option Match Number" spec="XQueryFullText">
+      <description last-mod="2010-09-17">Normally a stop word matches exactly one token, but there may be implementation-defined  conditions, under which a stop word may match a different number of tokens.</description>
+    </implementation-defined-item>
+    <implementation-defined-item name="StopWord Option Default" spec="XQueryFullText">
+      <description last-mod="2010-09-17">The "stop words default" option specifies that an implementation-defined  collection of stop words is used.</description>
     </implementation-defined-item>
     <implementation-defined-item name="Extension Option" spec="XQueryFullText">
-      <description last-mod="2008-02-18">An extension option is a match option that acts in an implementation-defined way. Each implementation recognizes an implementation-defined set of namespace URIs used to denote extension options.</description>
+      <description last-mod="2010-09-17">An implementation recognizes an implementation-defined  set of namespace URIs used to denote extension options. The effect of each, including its error behavior, is implementation-defined.</description>
     </implementation-defined-item>
     <implementation-defined-item name="Extension Selection" spec="XQueryFullText">
-      <description last-mod="2008-02-18">An extension selection is a full-text selection whose semantics are implementation-defined.  Each implementation recognizes an implementation-defined set of namespace URIs used to denote pragmas.</description>
+      <description last-mod="2010-09-17">An implementation recognizes an implementation-defined  set of namespace URIs used to denote extension selection pragmas. The effect of each, including its error behavior, is implementation-defined.</description>
     </implementation-defined-item>
+    <implementation-defined-item name="Equal Items Different Tokens" spec="XQueryFullText">
+      <description last-mod="2010-09-16">The conditions under which tokenization of two equal items produces different tokens is implementation-defined.</description>
+    </implementation-defined-item>
+    <implementation-defined-item name="FTIgnoreOption" spec="XQueryFullText">
+      <description last-mod="2010-09-17">An implementation may impose an implementation-defined  restriction on the operand of FTIgnoreOption.</description>
+    </implementation-defined-item>
+    <implementation-defined-item name="Static Context Items" spec="XQueryFullText">
+      <description last-mod="2010-09-17">For certain full-text components of the static context (see C Static Context Components), the default initial value of the component can be overwritten or augmented with an implementation-defined value or values.</description>
+    </implementation-defined-item>
+
     <!-- More to be added as the need is recognized
     <implementation-defined-item name="" spec="XQueryFullText">
       <description last-mod="2008-02-18"></description>
@@ -2248,6 +2285,18 @@
                   <query name="FTPrimary-FTWords-phrase-q4c" date="2008-12-23"/>
                   <input-file role="principal-data" variable="input-context">ftspec</input-file>
                   <output-file role="principal" compare="XML">FTPrimary-FTWords-phrase-q4c_result.xml</output-file>
+                </test-case>
+                <test-case is-XPath2="true" name="FTWordsValue-IntegerLiteral" FilePath="Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/FTWords/" scenario="parse-error" Creator="Michael Dyck">
+                  <description>Attempts to use an IntegerLiteral as an FTWordsValue</description>
+                  <spec-citation spec="XQueryFullText" section-number="3.2" section-title="Search Tokens and Phrases" section-pointer="ftwords"/>
+                  <query name="FTWordsValue-IntegerLiteral" date="2010-09-23"/>
+                  <expected-error>XPST0003</expected-error>
+                </test-case>
+                <test-case is-XPath2="true" name="FTWordsValue-DecimalLiteral" FilePath="Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/FTWords/" scenario="parse-error" Creator="Michael Dyck">
+                  <description>Attempts to use a DecimalLiteral as an FTWordsValue</description>
+                  <spec-citation spec="XQueryFullText" section-number="3.2" section-title="Search Tokens and Phrases" section-pointer="ftwords"/>
+                  <query name="FTWordsValue-DecimalLiteral" date="2010-09-23"/>
+                  <expected-error>XPST0003</expected-error>
                 </test-case>
               </test-group>
 
@@ -3923,6 +3972,149 @@
                     <!-- unsupported feature -->
                     <expected-error>FTST0003</expected-error>
                     <!-- unsupported units -->
+                  </test-case>
+                  <test-case is-XPath2="true" name="different-sentence-01" FilePath="Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/" scenario="standard" Creator="Michael Dyck">
+                    <description>
+                      Filter a match consisting of one single-sentence StringInclude.
+                      Yields false because there's only one StringInclude.
+                    </description>
+                    <spec-citation spec="XQueryFullText" section-number="3.6.4" section-title="Scope Selection" section-pointer="ftscope"/>
+                    <query name="different-sentence-01" date="2010-09-26"/>
+                    <output-file role="principal" compare="Text">different-sentence-01.txt</output-file>
+                    <expected-error>FTST0003</expected-error>
+                    <expected-error>FTST0004</expected-error>
+                  </test-case>
+                  <test-case is-XPath2="true" name="different-sentence-02" FilePath="Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/" scenario="standard" Creator="Michael Dyck">
+                    <description>
+                      Filter a match consisting of two single-sentence StringIncludes.
+                      Clearly yields false.
+                    </description>
+                    <spec-citation spec="XQueryFullText" section-number="3.6.4" section-title="Scope Selection" section-pointer="ftscope"/>
+                    <query name="different-sentence-02" date="2010-09-26"/>
+                    <output-file role="principal" compare="Text">different-sentence-02.txt</output-file>
+                    <expected-error>FTST0003</expected-error>
+                    <expected-error>FTST0004</expected-error>
+                  </test-case>
+                  <test-case is-XPath2="true" name="different-sentence-03" FilePath="Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/" scenario="standard" Creator="Michael Dyck">
+                    <description>
+                      Filter a match consisting of two single-sentence StringIncludes.
+                      Clearly yields true.
+                    </description>
+                    <spec-citation spec="XQueryFullText" section-number="3.6.4" section-title="Scope Selection" section-pointer="ftscope"/>
+                    <query name="different-sentence-03" date="2010-09-26"/>
+                    <output-file role="principal" compare="Text">different-sentence-03.txt</output-file>
+                    <expected-error>FTST0003</expected-error>
+                    <expected-error>FTST0004</expected-error>
+                  </test-case>
+                  <test-case is-XPath2="true" name="different-sentence-04" FilePath="Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/" scenario="standard" Creator="Michael Dyck">
+                    <description>
+                      Filter a match consisting of two single-sentence StringIncludes.
+                      Although each "one" is in the same sentence as a "two",
+                      you can still find a "one" and a "two" in different sentences.
+                    </description>
+                    <spec-citation spec="XQueryFullText" section-number="3.6.4" section-title="Scope Selection" section-pointer="ftscope"/>
+                    <query name="different-sentence-04" date="2010-09-26"/>
+                    <output-file role="principal" compare="Text">different-sentence-04.txt</output-file>
+                    <expected-error>FTST0003</expected-error>
+                    <expected-error>FTST0004</expected-error>
+                  </test-case>
+                  <test-case is-XPath2="true" name="different-sentence-05" FilePath="Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/" scenario="standard" Creator="Michael Dyck">
+                    <description>
+                      Filter a match consisting of three single-sentence StringIncludes.
+                      Clearly yields true.
+                    </description>
+                    <spec-citation spec="XQueryFullText" section-number="3.6.4" section-title="Scope Selection" section-pointer="ftscope"/>
+                    <query name="different-sentence-05" date="2010-09-26"/>
+                    <output-file role="principal" compare="Text">different-sentence-05.txt</output-file>
+                    <expected-error>FTST0003</expected-error>
+                    <expected-error>FTST0004</expected-error>
+                  </test-case>
+                  <test-case is-XPath2="true" name="different-sentence-06" FilePath="Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/" scenario="standard" Creator="Michael Dyck">
+                    <description>
+                      Filter a match consisting of three single-sentence StringIncludes.
+                      Yields false because "one" and "two" are both in the first sentence.
+                    </description>
+                    <spec-citation spec="XQueryFullText" section-number="3.6.4" section-title="Scope Selection" section-pointer="ftscope"/>
+                    <query name="different-sentence-06" date="2010-09-26"/>
+                    <output-file role="principal" compare="Text">different-sentence-06.txt</output-file>
+                    <expected-error>FTST0003</expected-error>
+                    <expected-error>FTST0004</expected-error>
+                  </test-case>
+                  <test-case is-XPath2="true" name="different-sentence-07" FilePath="Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/" scenario="standard" Creator="Michael Dyck">
+                    <description>
+                      Filter a match consisting of one multi-sentence StringInclude.
+                      Yields false because there's only one StringInclude
+                      (despite the fact that it straddles two sentences).
+                    </description>
+                    <spec-citation spec="XQueryFullText" section-number="3.6.4" section-title="Scope Selection" section-pointer="ftscope"/>
+                    <query name="different-sentence-07" date="2010-09-26"/>
+                    <output-file role="principal" compare="Text">different-sentence-07.txt</output-file>
+                    <expected-error>FTST0003</expected-error>
+                    <expected-error>FTST0004</expected-error>
+                  </test-case>
+                  <test-case is-XPath2="true" name="different-sentence-08" FilePath="Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/" scenario="standard" Creator="Michael Dyck">
+                    <description>Filter a match consisting of two StringIncludes, one of them multi-sentence.</description>
+                    <spec-citation spec="XQueryFullText" section-number="3.6.4" section-title="Scope Selection" section-pointer="ftscope"/>
+                    <query name="different-sentence-08" date="2010-09-26"/>
+                    <output-file role="principal" compare="Text">different-sentence-08.txt</output-file>
+                    <expected-error>FTST0003</expected-error>
+                    <expected-error>FTST0004</expected-error>
+                  </test-case>
+                  <test-case is-XPath2="true" name="different-sentence-09" FilePath="Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/" scenario="standard" Creator="Michael Dyck">
+                    <description>Filter a match consisting of two StringIncludes, one of them multi-sentence.</description>
+                    <spec-citation spec="XQueryFullText" section-number="3.6.4" section-title="Scope Selection" section-pointer="ftscope"/>
+                    <query name="different-sentence-09" date="2010-09-26"/>
+                    <output-file role="principal" compare="Text">different-sentence-09.txt</output-file>
+                    <expected-error>FTST0003</expected-error>
+                    <expected-error>FTST0004</expected-error>
+                  </test-case>
+                  <test-case is-XPath2="true" name="different-sentence-10" FilePath="Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/" scenario="standard" Creator="Michael Dyck">
+                    <description>Filter a match consisting of two StringIncludes, both of them multi-sentence.</description>
+                    <spec-citation spec="XQueryFullText" section-number="3.6.4" section-title="Scope Selection" section-pointer="ftscope"/>
+                    <query name="different-sentence-10" date="2010-09-26"/>
+                    <output-file role="principal" compare="Text">different-sentence-10.txt</output-file>
+                    <expected-error>FTST0003</expected-error>
+                    <expected-error>FTST0004</expected-error>
+                  </test-case>
+                  <test-case is-XPath2="true" name="different-sentence-11" FilePath="Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/" scenario="standard" Creator="Michael Dyck">
+                    <description>Filter a match consisting of two StringIncludes, both of them multi-sentence.</description>
+                    <spec-citation spec="XQueryFullText" section-number="3.6.4" section-title="Scope Selection" section-pointer="ftscope"/>
+                    <query name="different-sentence-11" date="2010-09-26"/>
+                    <output-file role="principal" compare="Text">different-sentence-11.txt</output-file>
+                    <expected-error>FTST0003</expected-error>
+                    <expected-error>FTST0004</expected-error>
+                  </test-case>
+                  <test-case is-XPath2="true" name="different-sentence-12" FilePath="Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/" scenario="standard" Creator="Michael Dyck">
+                    <description>Filter a match consisting of two StringIncludes, both of them multi-sentence.</description>
+                    <spec-citation spec="XQueryFullText" section-number="3.6.4" section-title="Scope Selection" section-pointer="ftscope"/>
+                    <query name="different-sentence-12" date="2010-09-26"/>
+                    <output-file role="principal" compare="Text">different-sentence-12.txt</output-file>
+                    <expected-error>FTST0003</expected-error>
+                    <expected-error>FTST0004</expected-error>
+                  </test-case>
+                  <test-case is-XPath2="true" name="different-sentence-13" FilePath="Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/" scenario="standard" Creator="Michael Dyck">
+                    <description>Filter a match consisting of three StringIncludes, one of them multi-sentence.</description>
+                    <spec-citation spec="XQueryFullText" section-number="3.6.4" section-title="Scope Selection" section-pointer="ftscope"/>
+                    <query name="different-sentence-13" date="2010-09-26"/>
+                    <output-file role="principal" compare="Text">different-sentence-13.txt</output-file>
+                    <expected-error>FTST0003</expected-error>
+                    <expected-error>FTST0004</expected-error>
+                  </test-case>
+                  <test-case is-XPath2="true" name="different-sentence-14" FilePath="Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/" scenario="standard" Creator="Michael Dyck">
+                    <description>Filter a match consisting of three StringIncludes, one of them multi-sentence.</description>
+                    <spec-citation spec="XQueryFullText" section-number="3.6.4" section-title="Scope Selection" section-pointer="ftscope"/>
+                    <query name="different-sentence-14" date="2010-09-26"/>
+                    <output-file role="principal" compare="Text">different-sentence-14.txt</output-file>
+                    <expected-error>FTST0003</expected-error>
+                    <expected-error>FTST0004</expected-error>
+                  </test-case>
+                  <test-case is-XPath2="true" name="different-sentence-15" FilePath="Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTScope/" scenario="standard" Creator="Michael Dyck">
+                    <description>Filter a match consisting of three StringIncludes, one of them multi-sentence.</description>
+                    <spec-citation spec="XQueryFullText" section-number="3.6.4" section-title="Scope Selection" section-pointer="ftscope"/>
+                    <query name="different-sentence-15" date="2010-09-26"/>
+                    <output-file role="principal" compare="Text">different-sentence-15.txt</output-file>
+                    <expected-error>FTST0003</expected-error>
+                    <expected-error>FTST0004</expected-error>
                   </test-case>
                 </test-group>
                 <test-group name="FTContent">
