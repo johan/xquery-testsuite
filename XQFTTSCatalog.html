@@ -5,7 +5,7 @@
    </head>
    <body>
       <h1>XPath/XQuery/XQueryX Full Text Interoperability Test Suite</h1>
-      <h6>[Version: 1.0.3 Catalog Design Date: 2008-02-18]</h6>
+      <h6>[Version: 1.0.4 Catalog Design Date: 2008-02-18]</h6>
       <h2>Introduction</h2>
       <P>
          The following document is an XSLT transform of the XQuery and XPath Full Text 1.0 test catalog. The test 
@@ -14775,8 +14775,8 @@
             <td>
                Comparator:
                <A href="#Fragment">Fragment</A></td>
-            <td><A href="ExpectedTestResults/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/FTOperators/FTUnaryNot/FTNot-q2.xml">
-                  Results/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/FTOperators/FTUnaryNot/FTNot-q2.xml</A></td>
+            <td><A href="ExpectedTestResults/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/FTOperators/FTUnaryNot/FTNot-q2.txt">
+                  Results/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/FTOperators/FTUnaryNot/FTNot-q2.txt</A></td>
          </tr>
       </table>
       <p></p>
@@ -20187,7 +20187,7 @@
             <td colspan="3"><B>Description:</B></td>
          </tr>
          <tr>
-            <td colspan="3">Processing order for multiple positional filters</td>
+            <td colspan="3">Processing order for multiple positional filters, with "ordered" applied first</td>
          </tr>
          <tr>
             <td colspan="3"></td>
@@ -20232,6 +20232,68 @@
                <A href="#Text">Text</A></td>
             <td><A href="ExpectedTestResults/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTPosFilter-q2.txt">
                   Results/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTPosFilter-q2.txt</A></td>
+         </tr>
+      </table>
+      <p></p>
+      <table width="80%" bgcolor="tan"><a name="FTPosFilter-q2a"></a><tr>
+            <td><b>FTPosFilter-q2a</b></td>
+            <td>
+               Scenario:
+               <A href="#standard">standard</A></td>
+            <td>
+               Creator:
+               Full-Text Task Force
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Description:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3">Processing order for multiple positional filters</td>
+         </tr>
+         <tr>
+            <td colspan="3"></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Spec Citations:</B></td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="#ftposfilter">#ftposfilter</A></td>
+         </tr>
+         <tr>
+            <td colspan="2"><B>Query:</B></td>
+            <td>
+               (XPath 2.0)
+               
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3"><A href="Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTPosFilter-q2a.xq">Queries/XQuery/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTPosFilter-q2a.xq</A></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Inputs:</B></td>
+         </tr>
+         <tr>
+            <td>
+               Role:
+               <A href="#principal-data">principal-data</A></td>
+            <td>
+               Source ID:
+               <A href="#emptydoc">emptydoc</A></td>
+            <td></td>
+         </tr>
+         <tr>
+            <td colspan="3"><B>Outputs:</B></td>
+         </tr>
+         <tr>
+            <td>
+               Role:
+               <A href="#principal">principal</A></td>
+            <td>
+               Comparator:
+               <A href="#Text">Text</A></td>
+            <td><A href="ExpectedTestResults/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTPosFilter-q2a.txt">
+                  Results/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTPosFilter-q2a.txt</A></td>
          </tr>
       </table>
       <p></p>
@@ -20419,6 +20481,12 @@
             <td><A href="ExpectedTestResults/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTPosFilter-q5.txt">
                   Results/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTPosFilter-q5.txt</A></td>
          </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0004">
+                  err:FTST0004</A></td>
+         </tr>
       </table>
       <p></p>
       <table width="80%" bgcolor="tan"><a name="FTPosFilter-q6"></a><tr>
@@ -20480,6 +20548,12 @@
                <A href="#Text">Text</A></td>
             <td><A href="ExpectedTestResults/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTPosFilter-q6.txt">
                   Results/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/FTPosFilter-q6.txt</A></td>
+         </tr>
+         <tr>
+            <td colspan="3">
+               Error:
+               <A href="http://www.w3.org/TR/xquery/#ERRFTST0004">
+                  err:FTST0004</A></td>
          </tr>
       </table>
       <p></p><A name="FTOrder"></A><h3>1.2.2.1.1.1.4.1Ordered Selection</h3>
@@ -28570,8 +28644,8 @@
             <td>
                Comparator:
                <A href="#Fragment">Fragment</A></td>
-            <td><A href="ExpectedTestResults/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/FTOperators/FTUnaryNot/FTNot-unconstrained-q5.xml">
-                  Results/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/FTOperators/FTUnaryNot/FTNot-unconstrained-q5.xml</A></td>
+            <td><A href="ExpectedTestResults/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/FTOperators/FTUnaryNot/FTNot-unconstrained-q5.txt">
+                  Results/Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/FTOperators/FTUnaryNot/FTNot-unconstrained-q5.txt</A></td>
          </tr>
       </table>
       <p></p>
@@ -37107,8 +37181,8 @@
             <td>
                Comparator:
                <A href="#Fragment">Fragment</A></td>
-            <td><A href="ExpectedTestResults/UseCase/UseCase-ACROSS/across-queries-results-q6.xml">
-                  Results/UseCase/UseCase-ACROSS/across-queries-results-q6.xml</A></td>
+            <td><A href="ExpectedTestResults/UseCase/UseCase-ACROSS/across-queries-results-q6.txt">
+                  Results/UseCase/UseCase-ACROSS/across-queries-results-q6.txt</A></td>
          </tr>
       </table>
       <p></p><A name="UseCase-OTHER"></A><h3>3.3Use Case "OTHER"</h3>
