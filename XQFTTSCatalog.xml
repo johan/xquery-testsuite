@@ -3,7 +3,7 @@
 <test-suite xmlns="http://www.w3.org/2005/02/query-test-full-text"
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             CatalogDesignDate="2008-02-18"
-            version="1.0.3"
+            version="1.0.4"
             SourceOffsetPath="./"
             ResultOffsetPath="ExpectedTestResults/"
             XQueryQueryOffsetPath="Queries/XQuery/"
@@ -14,7 +14,7 @@
                                 http://dev.w3.org/2007/xpath-full-text-10-test-suite/TestSuiteStagingArea/XQFTTSCatalog.xsd">
 
   <test-suite-info>
-    <title>XQuery and XPath Full Text 1.0 Test Suite v1.0.3</title>
+    <title>XQuery and XPath Full Text 1.0 Test Suite v1.0.4</title>
     <description>Test Suite for XQuery and XPath Full-Text 1.0. 
       See http://dev.w3.org/2007/xpath-full-text-10-test-suite/.</description>
   </test-suite-info>
@@ -2687,7 +2687,7 @@
                     <spec-citation spec="XQueryFullText" section-number="3.5.4" section-title="Not-Selection" section-pointer="sec-ftnot"/>
                     <query name="FTNot-q2" date="2008-11-24"/>
                     <input-file role="principal-data" variable="input-context">ftbookexample</input-file>
-                    <output-file role="principal" compare="Fragment">FTNot-q2.xml</output-file>
+                    <output-file role="principal" compare="Fragment">FTNot-q2.txt</output-file>
                   </test-case>
                   <test-case is-XPath2="true" name="FTNot-q3" FilePath="Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/FTOperators/FTUnaryNot/" scenario="standard" Creator="Full-Text Task Force">
                     <description>ftnot with ftor query</description>
@@ -3398,11 +3398,18 @@
                   <output-file role="principal" compare="Text">FTPosFilter-q1.txt</output-file>
                 </test-case>
                 <test-case is-XPath2="true" name="FTPosFilter-q2" FilePath="Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/" scenario="standard" Creator="Full-Text Task Force">
-                  <description>Processing order for multiple positional filters</description>
+                  <description>Processing order for multiple positional filters, with "ordered" applied first</description>
                   <spec-citation spec="XQueryFullText" section-number="3.6" section-title="Positional Filters" section-pointer="ftposfilter"/>
-                  <query name="FTPosFilter-q2" date="2009-02-19"/>
+                  <query name="FTPosFilter-q2" date="2010-12-02"/>
                   <input-file role="principal-data" variable="input-context">emptydoc</input-file>
                   <output-file role="principal" compare="Text">FTPosFilter-q2.txt</output-file>
+                </test-case>
+                <test-case is-XPath2="true" name="FTPosFilter-q2a" FilePath="Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/" scenario="standard" Creator="Full-Text Task Force">
+                  <description>Processing order for multiple positional filters</description>
+                  <spec-citation spec="XQueryFullText" section-number="3.6" section-title="Positional Filters" section-pointer="ftposfilter"/>
+                  <query name="FTPosFilter-q2a" date="2010-12-02"/>
+                  <input-file role="principal-data" variable="input-context">emptydoc</input-file>
+                  <output-file role="principal" compare="Text">FTPosFilter-q2a.txt</output-file>
                 </test-case>
                 <test-case is-XPath2="true" name="FTPosFilter-q3" FilePath="Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/" scenario="standard" Creator="Full-Text Task Force">
                   <description>Processing order for multiple positional filters</description>
@@ -3424,6 +3431,7 @@
                   <query name="FTPosFilter-q5" date="2009-02-26"/>
                   <input-file role="principal-data" variable="input-context">emptydoc</input-file>
                   <output-file role="principal" compare="Text">FTPosFilter-q5.txt</output-file>
+                  <expected-error>FTST0004</expected-error>
                 </test-case>
                 <test-case is-XPath2="true" name="FTPosFilter-q6" FilePath="Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/PositionalFilters/" scenario="standard" Creator="Full-Text Task Force">
                   <description>Processing order for multiple positional filters</description>
@@ -3431,6 +3439,7 @@
                   <query name="FTPosFilter-q6" date="2009-02-26"/>
                   <input-file role="principal-data" variable="input-context">emptydoc</input-file>
                   <output-file role="principal" compare="Text">FTPosFilter-q6.txt</output-file>
+                  <expected-error>FTST0004</expected-error>
                 </test-case>
                 <test-group name="FTOrder">
                   <GroupInfo>
@@ -4575,7 +4584,7 @@
         <spec-citation spec="XQueryFullText" section-number="5.2.2" section-title="FTUnaryNot Operator" section-pointer="id-unary-not-option"/>
         <query name="FTNot-unconstrained-q5" date="2008-11-24"/>
         <input-file role="principal-data" variable="input-context">ftbookexample</input-file>
-        <output-file role="principal" compare="Fragment">FTNot-unconstrained-q5.xml</output-file>
+        <output-file role="principal" compare="Fragment">FTNot-unconstrained-q5.txt</output-file>
         <!-- <expected-error>FTST0003</expected-error> unsupported units (words)? -->
       </test-case>
       <test-case is-XPath2="true" name="FTNot-unconstrained-q6" FilePath="Expressions/Operators/CompExpr/FTContainsExpr/FTSelection/FTOperators/FTUnaryNot/" scenario="standard" Creator="Full-Text Task Force">
@@ -5670,7 +5679,7 @@
         <spec-citation spec="FTUseCases" section-number="3.2.6" section-title="Q6 Query on Entire Document" section-pointer="across-queries-results-q6"/>
         <query name="across-queries-results-q6" date="2008-06-26"/>
         <input-file role="principal-data" variable="input-context">ftusecases</input-file>
-        <output-file role="principal" compare="Fragment">across-queries-results-q6.xml</output-file>
+        <output-file role="principal" compare="Fragment">across-queries-results-q6.txt</output-file>
       </test-case>
     </test-group>
     <test-group name="UseCase-OTHER">
