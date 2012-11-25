@@ -9,11 +9,6 @@ version of them to point people to,
 and pieced one together with meta data
 from the W3C's "release" zip files.
 
-Unless the W3C's [XPath 1.0 spec](http://www.w3.org/TR/xpath/)
-says otherwise, the XPath standard itself
-is a W3C Recommendation
-since November 16, 1999.
-
 
 ## Running the test suite
 
