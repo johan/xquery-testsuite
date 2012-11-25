@@ -9,6 +9,39 @@ version of them to point people to,
 and pieced one together with meta data
 from the W3C's "release" zip files.
 
+Unless the W3C's [XPath 1.0 spec](http://www.w3.org/TR/xpath/)
+says otherwise, the XPath standard itself
+is a W3C Recommendation
+since November 16, 1999.
+
+
+## Running the test suite
+
+We encourage you,
+the implementors of XQuery
+and XPath Full Text 1.0,
+to run these tests
+and send us your results.
+These results will help us
+exit the Candidate Recommendation stage
+(described in the [W3C Process Document](http://www.w3.org/Consortium/Process/)).
+
+As there is no _de jure_ or _de facto_
+API for implementations of XQuery,
+we are not able to provide a test harness
+to execute these tests.
+You will have to provide your own test harnesses.
+
+We have provided
+[Guidelines for Running the XQuery and
+XPath Full Text 1.0 Test Suite](http://dev.w3.org/2007/xpath-full-text-10-test-suite/GuidelinesForRunningTheFullTextTestSuite.html)
+to assist you in running these tests.
+These guidelines will tell you
+how the queries may be modified
+before they are executed
+and how to compare your actual results
+with the expected results that we have provided.
+
 
 ## Status
 
